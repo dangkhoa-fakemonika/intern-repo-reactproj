@@ -1,0 +1,9 @@
+- https://fakeapi.platzi.com/en/rest/products/
+- View products (Grid view, single view)
+- View single product
+- Filter products (server side)
+- Sort products (client side)
+- Search products
+- Category view
+- Cart (later)
+- Authentication (login, save user)

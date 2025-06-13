@@ -23,6 +23,10 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      'max-depth': ['error', 2],
+      'no-useless-assignment' : 'error',
+      'no-use-before-define' : 'error'
+
     },
   },
 )
