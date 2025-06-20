@@ -11,7 +11,7 @@ export class Products {
     else {
       query = `/products?${filterQuery}`;
     }
-    const response = await axiosInstance(query);
+    const response = await axiosInstance.get(query);
 
     if (response.status === 200)
       return response.data;

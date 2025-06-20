@@ -5,8 +5,8 @@ import icon_heart from "@/assets/images/icon_heart.png"
 import icon_menu from "@/assets/images/icon_menu.png"
 import { FaCaretDown } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { getCategories } from "@/shared/services/categoryService";
 import LoadingComponent from "@/components/ui/LoadingComponent";
+import {Categories} from "@/shared/services/services.ts";
 
 
 type Category = {
@@ -15,15 +15,15 @@ type Category = {
 };
 
 function NavBar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);    
-    const [categories, setCategories] = useState<Category[]>([]);
-    const [isloading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [isloading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const data = await getCategories();
+        const data = await Categories.getCategories();
         setCategories(data as Category[]);
       } catch (err) {
         console.error(err);
@@ -36,10 +36,10 @@ function NavBar() {
     fetchCategories();
   }, []);
 
-   
+
   return (
-    <div className="w-full h-full relative"> 
-      
+    <div className="w-full h-full relative">
+
       <div className="hidden md:flex items-center justify-between text-gray-500 text-xs h-6 border-b border-gray-200 px-4 mt-3">
         <span className="px-10">+84 123 456 789</span>
         <span className="px-4">Trang mua sắm trực tuyến uy tín hàng đầu</span>
@@ -109,9 +109,9 @@ function NavBar() {
             <i className="w-8 h-8  p-0.5 hover:scale-105  transition-all cursor-pointer" onClick={() => alert("Chưa có sản phẩm trong giỏ hàng!")}><img src={icon_cart} alt="" /></i>
         </div>
 
-        
+
         <i className=" w-10 h-10 xl:hidden block text-5x1 cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}><img src={icon_menu} alt=""/></i>
-        <div className={`absolute xl:hidden top-24 left-0 w-full bg-white flex flex-col items-center gap-6 font-semibold text-lg transform transition-transform 
+        <div className={`absolute xl:hidden top-24 left-0 w-full bg-white flex flex-col items-center gap-6 font-semibold text-lg transform transition-transform
         ${isMenuOpen ?"opacity-100" : "opacity-0"}`} style={{ transition: "transform 0.3s ease, opacity 0.3s ease" }}>
             <li className="list-none w-full text-center p-4 hover:scale-105 transition-all cursor-pointer hover:text-[#F09728] ">Trang chủ</li>
             <li className="list-none w-full text-center p-4 hover:scale-105 transition-all cursor-pointer hover:text-[#F09728] ">Sản phẩm</li>
@@ -119,7 +119,7 @@ function NavBar() {
             <li className="list-none w-full text-center p-4 hover:scale-105 transition-all cursor-pointer hover:text-[#F09728] ">Liên hệ</li>
             <li className="list-none w-full text-center p-4 hover:scale-105 transition-all cursor-pointer hover:text-[#F09728] ">Về chúng tôi</li>
         </div>
-    </header> 
+    </header>
     </div>
   )
 }

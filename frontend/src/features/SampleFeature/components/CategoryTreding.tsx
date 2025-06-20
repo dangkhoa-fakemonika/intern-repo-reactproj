@@ -1,33 +1,34 @@
-import { getCategories } from "@/shared/services/categoryService";
-import { getProduct } from "@/shared/services/productService";
 import {  useEffect, useState } from "react";
-import LoadingComponent from "../../../components/ui/LoadingComponent";
+import LoadingComponent from "@/components/ui/LoadingComponent";
+import type {Category, Product} from "@/shared/types/type.ts";
+import {Products} from "@/shared/services/products.ts";
+import {Categories} from "@/shared/services/services.ts";
 
-type Category = {
-  aosDelay: unknown;
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-};
-
-type Product={
-  id:number;
-  title:string;
-  price:number;
-  images:string[]
-};
+// type Category = {
+//   aosDelay: unknown;
+//   id: number;
+//   name: string;
+//   image: string;
+//   price: number;
+// };
+//
+// type Product={
+//   id:number;
+//   title:string;
+//   price:number;
+//   images:string[]
+// };
 
 function CategoryTrending() {
       const [categories, setCategories] = useState<Category[]>([]);
       const [products, setProducts] = useState<Product[]>([]);
       const [isloading, setLoading] = useState(true);
       const [error, setError] = useState<string | null>(null);
-  
+
     useEffect(() => {
       const fetchCategories = async () => {
         try {
-          const data = await getCategories();
+          const data = await Categories.getCategories();
           setCategories(data as Category[]);
         } catch (err) {
           console.error(err);
@@ -36,13 +37,13 @@ function CategoryTrending() {
           setLoading(false);
         }
       };
-  
+
       fetchCategories();
     }, []);
     useEffect(() => {
       const fetchProduct = async () => {
         try {
-          const data = await getProduct();
+          const data = await Products.getProducts();
           setProducts(data as Product[]);
         } catch (err) {
           console.error(err);
@@ -51,7 +52,7 @@ function CategoryTrending() {
           setLoading(false);
         }
       };
-  
+
       fetchProduct();
     }, []);
 
@@ -77,15 +78,15 @@ function CategoryTrending() {
                 data-aos="zoom-in"
                 data-aos-delay={idx * 100}
              key={categories.id} className="space-y-3">
-              <img src={categories.image} 
-              alt="" 
+              <img src={categories.image}
+              alt=""
               className="h-[250px] w-[250px] object-cover rounded-md hover:scale-105"
               />
               <div className="text-center">
                 <p className="font-semibold">{categories.name}</p>
               </div>
             </div>
-            )}  
+            )}
           </div>
           )}
         </div>
@@ -104,7 +105,7 @@ function CategoryTrending() {
             data-aos="zoom-in"
             data-aos-delay={idx * 100}
              className="w-125 bg-gray-100 rounded-2xl p-4 flex flex-col items-center relative shadow-md hover:shadow-lg transition-shadow duration-200 mr-10 gap-4">
-             
+
               <div className="text-center">
                 <div className="text-xs uppercase text-gray-500 mb-1 tracking-wide">
                   {products.title}
@@ -126,7 +127,7 @@ function CategoryTrending() {
                 />
               </div>
             </div>
-            )}  
+            )}
           </div>
           )}
         </div>

@@ -1,6 +1,6 @@
-import { getProduct } from "@/shared/services/productService";
 import LoadingComponent from "@/components/ui/LoadingComponent";
 import { useEffect, useState } from "react";
+import {Products} from "@/shared/services/products.ts";
 
 type Product = {
   id: number;
@@ -10,7 +10,7 @@ type Product = {
 };
 
 type ProductCardProps = {
-  limit?: number; 
+  limit?: number;
 };
 
 function ProductCard({ limit }: ProductCardProps) {
@@ -21,14 +21,14 @@ function ProductCard({ limit }: ProductCardProps) {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const data = await getProduct(); 
+        const data = await Products.getProducts();
         let productList = data as Product[];
-        
-        
+
+
         if (limit && limit > 0) {
           productList = productList.slice(0, limit);
         }
-        
+
         console.log(productList);
         setProducts(productList);
       } catch (err) {
@@ -40,7 +40,7 @@ function ProductCard({ limit }: ProductCardProps) {
     };
 
     fetchProduct();
-  }, [limit]); 
+  }, [limit]);
 
   return (
     <div>
