@@ -1,6 +1,6 @@
 import type {Category} from "@/shared/types/category.ts";
 
-interface Product {
+type Product = {
   id : number,
   title : string,
   slug : string,

@@ -1,7 +1,7 @@
 import {createContext, useContext} from 'react';
-import type {FilterDataType} from "@/features/SearchAndFilter/common/types/filterData.ts";
+import type {ProductFilter} from "@/shared/types/product-filter.ts";
 
-export const FilterContext = createContext<FilterDataType | undefined>(undefined);
+export const FilterContext = createContext<ProductFilter | undefined>(undefined);
 
 export function useFilterContext(){
   const context = useContext(FilterContext);

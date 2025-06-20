@@ -1,19 +1,23 @@
 import type {Product} from "@/shared/types/product.ts";
+import {useNavigate} from "react-router";
 
 interface ShopProductProps {
   productData : Product
 }
 
 export function ShopProduct(props : ShopProductProps){
+  const navigate = useNavigate();
+
   return (
     <div
       key={props.productData.id}
       className={"flex flex-col rounded border border-2 w-[360px] h-[480px] p-4"}
+      onClick={() => navigate(`/products?id=${props.productData.id}`)}
     >
       <img
         src={props.productData.images[0]}
         alt={props.productData.slug}
-        className={"rounded hover:scale-105 transition-transform duration-300 transform mb-4"}
+        className={"rounded hover:scale-105 transition-transform duration-300 transform mb-4 min-w-9/12 min-h-9/12"}
       />
       <div className={"h-full flex flex-col justify-between"}>
         <div>

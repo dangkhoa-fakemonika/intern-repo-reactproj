@@ -1,2 +1,3 @@
 export {axiosInstance} from "@/shared/services/axios/axios.ts";
-export {ProductManagement} from "@/shared/services/products.ts";
+export {Products} from "@/shared/services/products.ts";
+export {Categories} from "@/shared/services/categories.ts";
