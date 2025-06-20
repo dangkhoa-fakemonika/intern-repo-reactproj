@@ -1,18 +1,18 @@
 import type {Product} from "@/shared/types/product.ts";
-import {useNavigate} from "react-router";
+import {memo} from "react";
 
 interface ShopProductProps {
   productData : Product
 }
 
-export function ShopProduct(props : ShopProductProps){
-  const navigate = useNavigate();
+export const ShopProduct = memo(function ShopProduct(props : ShopProductProps){
+  // const navigate = useNavigate();
 
   return (
     <div
       key={props.productData.id}
       className={"flex flex-col rounded border border-2 w-[360px] h-[480px] p-4"}
-      onClick={() => navigate(`/products?id=${props.productData.id}`)}
+      // onClick={() => navigate(`/products?id=${props.productData.id}`)}
     >
       <img
         src={props.productData.images[0]}
@@ -31,4 +31,4 @@ export function ShopProduct(props : ShopProductProps){
       </div>
     </div>
   )
-}
+})

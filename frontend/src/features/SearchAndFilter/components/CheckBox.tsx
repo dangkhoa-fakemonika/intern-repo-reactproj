@@ -1,10 +1,10 @@
-import type {ReactNode} from "react";
 import {useFormContext} from "react-hook-form";
+import type {Category} from "@/shared/types/type.ts";
 
 interface CheckBoxProps {
-  name : string,
-  label? : ReactNode,
+  category: Category,
   className? : string,
+  index: number
 }
 
 export function CheckBox(props : CheckBoxProps){
@@ -12,10 +12,10 @@ export function CheckBox(props : CheckBoxProps){
 
   return (
     <label className={"w-full flex flex-row justify-between"}>
-      <div className={""}>{props.label}</div>
+      <div className={""}>{props.category.name}</div>
       <input
-        type={"checkbox"}
-        {...register(props.name)}
+        type={"radio"}
+        {...register(`categories.${props.index}`)}
         className={"appearance-auto h-[25px] w-[25px] accent-[#f09728]"}
       />
     </label>

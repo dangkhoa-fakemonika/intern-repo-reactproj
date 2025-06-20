@@ -5,29 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Added complete selection view of the filter/searching page.">
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/shared/services/categories.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/shared/types/product-filter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/NumberTextField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/shared/hooks/useDebounce.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/configs/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ShopProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/common/components/CheckBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/CheckBox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/common/contexts/FilterContext.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/common/contexts/FilterContext.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/common/types/filterData.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable/FilterTable.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopItemGrid/ShopProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ShopProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopItemGrid/ShopProductGrid.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/pages/SearchAndFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/pages/SearchAndFilter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/hooks/hooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/hooks/hooks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/axios/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/axios/axios.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/products.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/products.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/services.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/shared/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/types/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/types/category.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/types/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/types/product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/types/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/types/type.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -105,11 +94,11 @@
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\public\samples" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\components\product-display" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SearchAndFilter\components" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\components" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SearchAndFilter\components\ShopItemGrid" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SearchAndFilter\components\FilterTable" />
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SearchAndFilter\common\types" />
     </key>
   </component>
   <component name="RunManager">
@@ -155,7 +144,7 @@
       <workItem from="1750297538945" duration="9421000" />
       <workItem from="1750313181181" duration="9988000" />
       <workItem from="1750324889271" duration="1264000" />
-      <workItem from="1750384011456" duration="2261000" />
+      <workItem from="1750384011456" duration="10904000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -205,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750152663997</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added complete selection view of the filter/searching page.">
+      <option name="closed" value="true" />
+      <created>1750386415105</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1750386415105</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

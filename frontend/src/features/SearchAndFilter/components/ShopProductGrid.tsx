@@ -1,24 +1,38 @@
-import {Products} from "@/shared/services/services.ts";
-import {useMemo, useState} from "react";
-import {ShopProduct} from "@/features/SearchAndFilter/components/index.tsx";
+import {ShopProduct} from "@/components/product-display/ShopProduct.tsx";
+import {memo, useEffect, useState} from "react";
+import {Products} from "@/shared/services/products.ts";
 import type {Product} from "@/shared/types/product.ts";
-import {useFilterContext} from "@/features/SearchAndFilter/common/contexts/FilterContext.ts";
+import type {ProductFilter} from "@/shared/types/product-filter.ts";
+import {useDebounce} from "@/shared/hooks/hooks.ts";
 
-// interface ShopItemGridProps{
-//
-// }
+interface ShopItemGridProps{
+  filters : ProductFilter
+}
 
-export function ShopProductGrid(){
+export const ShopProductGrid = memo(function ShopProductGrid(props: ShopItemGridProps){
+  console.log("Shop renders");
   const [products, setProducts] = useState<Product[]>([]);
-  const filter = useFilterContext();
+  // const filterData = useFilterContext();
+  const filters = useDebounce(props.filters, 1000);
 
-  useMemo(() => {
-    Products.getProducts(12, 0, filter).then((result) => {setProducts(result);});
-  }, [filter]);
+  useEffect(() => {
+    // let active = true;
+    //
+    // async function load() {
+    //   if (!active) { return }
+    //   const productResults = await Products.getProducts(props.filters);
+    //   setProducts(productResults);
+    // }
+    //
+    // load();
+    // return () => { active = false };
+    Products.getProducts(filters).then(r => setProducts(r));
+
+  }, [filters]);
 
   return (
     <div className={"w-full h-screen flex-wrap flex flex-row place-items-center overflow-y-scroll content-around gap-2 py-4 justify-center"}>
-      {products.length === 0 ? products.map((product) => <ShopProduct productData={product} key={product.id}/>) : <>No products available</>}
+      {products.length !== 0 ? products.map((product) => <ShopProduct productData={product} key={product.id}/>) : <>No products available</>}
     </div>
   )
-}
+})

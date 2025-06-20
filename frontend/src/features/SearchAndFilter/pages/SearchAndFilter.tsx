@@ -1,23 +1,24 @@
-import {FilterTable, ShopProductGrid} from "@/features/SearchAndFilter/components";
 import {useCallback, useState} from "react";
-import { FilterContext } from "@/features/SearchAndFilter/common/contexts/FilterContext.ts";
-import type {ProductFilter} from "@/shared/types/product-filter.ts";
+import {convertToFilterQuery, type ProductFilter} from "@/shared/types/type.ts";
+import {FilterTable, ShopProductGrid} from "@/features/SearchAndFilter/components";
+
 
 export function SearchAndFilter(){
+  console.log("Rerenders");
   const [filterData, setFilterData] = useState<ProductFilter>({});
 
   const updateFilterData = useCallback((filter: ProductFilter) => {
-    setFilterData(filter);
-  }, []);
+    if (convertToFilterQuery(filter) !== convertToFilterQuery(filterData)) setFilterData(filter);
+  }, [filterData]);
 
   return (
     <div className={"w-full"}>
-      <FilterContext.Provider value={filterData}>
+      {/*<FilterContext.Provider value={filterData}>*/}
         <div className={"w-full flex flex-row"}>
-          <FilterTable className={"w-1/5 mx-4 my-4"} setfilterdata={updateFilterData}/>
-          <ShopProductGrid/>
+          <FilterTable className={"w-1/5 mx-4 my-4"} setFilterData={updateFilterData}/>
+          <ShopProductGrid filters={filterData}/>
         </div>
-      </FilterContext.Provider>
+      {/*</FilterContext.Provider>*/}
     </div>
   )
 }

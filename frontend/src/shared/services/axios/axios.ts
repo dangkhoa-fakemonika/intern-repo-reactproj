@@ -8,3 +8,18 @@ export const axiosInstance = axios.create({
   // timeout : 1000,
 
 })
+
+
+axiosInstance.interceptors.request.use(
+  (config) => {
+    console.log(config);
+    return config;
+  }
+)
+
+axiosInstance.interceptors.response.use(
+  (result) => {
+    console.log(result);
+    return result;
+  }
+)
