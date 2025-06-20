@@ -62,7 +62,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column; 
   min-width: 320px;
   min-height: 100vh;
 }
@@ -184,3 +184,4 @@ button:focus-visible {
     @apply bg-background text-foreground;
   }
 }
+@layer components{.search-bar{     @apply w-0 group-hover:w-[300px] transition-all duration-300 rounded-full group-hover:border group-hover:border-gray-500     px-3 py-1 focus:outline-none focus:border-1 dark:border-gray-800 dark:bg-gray-900 group-hover:dark:bg-gray-800;   } }
