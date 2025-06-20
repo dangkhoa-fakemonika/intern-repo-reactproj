@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   return (
+    <div className={"w-screen"}>
        <div className="flex flex-col min-h-screen">
       <div className="relative z-20">
         <NavBar />

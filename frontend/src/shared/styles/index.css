@@ -140,6 +140,8 @@ button:focus-visible {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-palette : #f09728;
 }
 
 .dark {
@@ -174,6 +176,11 @@ button:focus-visible {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+}
+
+body {
+  font-family: "Merriweather Sans", serif ;
 }
 
 @layer base {
@@ -184,4 +191,17 @@ button:focus-visible {
     @apply bg-background text-foreground;
   }
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 @layer components{.search-bar{     @apply w-0 group-hover:w-[300px] transition-all duration-300 rounded-full group-hover:border group-hover:border-gray-500     px-3 py-1 focus:outline-none focus:border-1 dark:border-gray-800 dark:bg-gray-900 group-hover:dark:bg-gray-800;   } }
+
