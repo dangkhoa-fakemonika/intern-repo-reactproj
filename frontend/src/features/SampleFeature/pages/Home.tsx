@@ -3,13 +3,13 @@ import CategoryTrending from "@/features/SampleFeature/components/CategoryTredin
 import AOS from "aos"
 import React from "react";
 import "aos/dist/aos.css";
-import ProductViewed from "../../components/ProductViewed";
-import BannerPromotion from "../../components/BannerPromotion";
-import PopularProducts from "../../components/PopularProducts";
-import Blog from "../../components/Blog";
-import Policies from "../../components/Policies";
+import ProductViewed from "../components/ProductViewed";
+import BannerPromotion from "../components/BannerPromotion";
+import PopularProducts from "../components/PopularProducts";
+import Blog from "../components/Blog";
+import Policies from "../components/Policies";
 
-function Home() {
+export function Home() {
     React.useEffect(() => {
     AOS.init({
         offset:100,

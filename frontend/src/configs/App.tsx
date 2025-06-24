@@ -1,8 +1,8 @@
 import Footer from "@/components/ui/Footer";
 import NavBar from "@/components/ui/NavBar"
-import Home from "@/features/SampleFeature/pages/Home/Home";
+import Home from "@/features/SampleFeature/pages/Home";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {SearchAndFilter} from "@/features";
+import {LoginPage, RegisterPage, SearchAndFilter} from "@/features";
 
 
 function App() {
@@ -11,14 +11,17 @@ function App() {
     <div className={"w-screen"}>
       <div className="flex flex-col min-h-screen">
         <div className="relative z-20">
-          <NavBar/>
+         <NavBar/>
         </div>
         <div className="flex flex-col ">
-          {/*<Home/>*/}
-          <SearchAndFilter/>
+          <Home/>
+          
+          {/*<SearchAndFilter/>*/}
+          {/*<RegisterPage/>*/}
         </div>
         <div className="relative z-20">
-          <Footer/>
+         <Footer/>
+          
         </div>
       </div>
     </div>
