@@ -1,11 +1,15 @@
 import {useCallback, useState} from "react";
 import {convertToFilterQuery, type ProductFilter} from "@/shared/types/type.ts";
 import {FilterTable, ShopProductGrid} from "@/features/SearchAndFilter/components";
+import {useParams} from "react-router-dom";
 
 
 export function SearchAndFilter(){
-  console.log("Rerenders");
-  const [filterData, setFilterData] = useState<ProductFilter>({});
+  const params = useParams();
+  const [filterData, setFilterData] = useState<ProductFilter>({
+    title: params.title,
+    categoryId: parseInt(params.category_id ?? "-1")
+  });
 
   const updateFilterData = useCallback((filter: ProductFilter) => {
     if (convertToFilterQuery(filter) !== convertToFilterQuery(filterData)) setFilterData(filter);

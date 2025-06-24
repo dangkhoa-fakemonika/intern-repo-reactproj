@@ -10,24 +10,12 @@ interface ShopItemGridProps{
 }
 
 export const ShopProductGrid = memo(function ShopProductGrid(props: ShopItemGridProps){
-  console.log("Shop renders");
   const [products, setProducts] = useState<Product[]>([]);
   // const filterData = useFilterContext();
   const filters = useDebounce(props.filters, 1000);
 
   useEffect(() => {
-    // let active = true;
-    //
-    // async function load() {
-    //   if (!active) { return }
-    //   const productResults = await Products.getProducts(props.filters);
-    //   setProducts(productResults);
-    // }
-    //
-    // load();
-    // return () => { active = false };
     Products.getProducts(filters).then(r => setProducts(r));
-
   }, [filters]);
 
   return (

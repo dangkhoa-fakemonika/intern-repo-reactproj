@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "tailwindcss/preflight.css" layer(base);
 
 @custom-variant dark (&:is(.dark *));
 
@@ -62,7 +63,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
 }

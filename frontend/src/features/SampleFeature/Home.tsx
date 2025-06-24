@@ -1,15 +1,15 @@
-import Banner from "@/components/ui/Banner"
-import CategoryTrending from "@/features/SampleFeature/components/CategoryTreding"
+import Banner from "@/components/ui/Banner.tsx"
+import CategoryTrending from "@/features/SampleFeature/components/CategoryTreding.tsx"
 import AOS from "aos"
 import React from "react";
 import "aos/dist/aos.css";
-import ProductViewed from "../../components/ProductViewed";
-import BannerPromotion from "../../components/BannerPromotion";
-import PopularProducts from "../../components/PopularProducts";
-import Blog from "../../components/Blog";
-import Policies from "../../components/Policies";
+import ProductViewed from "./components/ProductViewed.tsx";
+import BannerPromotion from "./components/BannerPromotion.tsx";
+import PopularProducts from "./components/PopularProducts.tsx";
+import Blog from "./components/Blog.tsx";
+import Policies from "./components/Policies.tsx";
 
-function Home() {
+export function Home() {
     React.useEffect(() => {
     AOS.init({
         offset:100,
@@ -18,7 +18,7 @@ function Home() {
         delay:100,
     });
     AOS.refresh();
-   }, []); 
+   }, []);
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
         <Banner/>
@@ -29,9 +29,7 @@ function Home() {
         <Blog/>
         <Policies/>
     </div>
-    
+
 
   )
 }
-
-export default Home
