@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Added complete selection view of the filter/searching page.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/configs/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/CategoryTreding.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/CategoryTreding.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/categories.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/categoryService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/categoryService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/productService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/productService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/products.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/products.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +37,7 @@
     </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="staging" />
+        <entry key="$PROJECT_DIR$" value="feature/routing-layout-Khoa" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,6 +54,9 @@
     &quot;accountId&quot;: &quot;7c61bafb-7c45-4dea-ae48-9ef77fafd443&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -74,7 +70,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "staging",
+    "git-widget-placeholder": "feature/upgrade-products-page-Khoa",
     "last_opened_file_path": "C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/frontend/public/samples",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -111,6 +107,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
