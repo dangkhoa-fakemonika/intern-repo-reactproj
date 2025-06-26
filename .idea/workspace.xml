@@ -4,12 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Adjustment to responsiveness of the product page">
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Implement routing for existing screen and single product screen">
+      <change afterPath="$PROJECT_DIR$/frontend/src/configs/layouts/CommonLayout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/configs/routers/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/SingleProduct/components/CategoryTag.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/SingleProduct/components/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Banner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/configs/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SampleFeature/pages/Home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SampleFeature/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SampleFeature/pages/Home/index.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/NumberTextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/NumberTextField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/pages/SearchAndFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/pages/SearchAndFilter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/pages/SearchAndFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/SearchAndFilter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/pages/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/products.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/products.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/styles/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -40,7 +56,7 @@
     </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/routing-layout-Khoa" />
+        <entry key="$PROJECT_DIR$" value="staging" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,9 +73,6 @@
     &quot;accountId&quot;: &quot;7c61bafb-7c45-4dea-ae48-9ef77fafd443&quot;
   }
 }</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -73,7 +86,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/upgrade-products-page-Khoa&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/routing-layout-Khoa&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/frontend/public/samples&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -90,11 +103,11 @@
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\public\samples" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SingleProduct" />
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SampleFeature" />
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SearchAndFilter" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\components\product-display" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SearchAndFilter\components" />
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\components" />
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SearchAndFilter\components\ShopItemGrid" />
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SearchAndFilter\components\FilterTable" />
     </key>
   </component>
   <component name="RunManager">
@@ -110,7 +123,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -142,8 +154,9 @@
       <workItem from="1750313181181" duration="9988000" />
       <workItem from="1750324889271" duration="1264000" />
       <workItem from="1750384011456" duration="10904000" />
-      <workItem from="1750903031791" duration="10052000" />
-      <workItem from="1750917642140" duration="7422000" />
+      <workItem from="1750571337649" duration="599000" />
+      <workItem from="1750730518570" duration="9676000" />
+      <workItem from="1750746030700" duration="1564000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -201,13 +214,13 @@
       <option name="project" value="LOCAL" />
       <updated>1750386415105</updated>
     </task>
-    <task id="LOCAL-00008" summary="Dynamic lazy loading on the scrolling feed">
+    <task id="LOCAL-00008" summary="Slight adjustment from merging process, simplifying services">
       <option name="closed" value="true" />
-      <created>1750753511795</created>
+      <created>1750402181825</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1750753511795</updated>
+      <updated>1750402181827</updated>
     </task>
     <option name="localTasksCounter" value="9" />
     <servers />
@@ -234,8 +247,8 @@
     <MESSAGE value="Initial commit for search and filter feature branch" />
     <MESSAGE value="Implemented basic view of filter feature, including calling the API." />
     <MESSAGE value="Added complete selection view of the filter/searching page." />
-    <MESSAGE value="Dynamic lazy loading on the scrolling feed" />
-    <MESSAGE value="Adjustment to responsiveness of the product page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjustment to responsiveness of the product page" />
+    <MESSAGE value="Slight adjustment from merging process, simplifying services" />
+    <MESSAGE value="Implement routing for existing screen and single product screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement routing for existing screen and single product screen" />
   </component>
 </project>

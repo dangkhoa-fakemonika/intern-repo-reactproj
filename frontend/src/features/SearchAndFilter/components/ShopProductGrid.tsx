@@ -10,7 +10,6 @@ interface ShopItemGridProps{
 }
 
 export const ShopProductGrid = memo(function ShopProductGrid(props: ShopItemGridProps){
-  console.log("Shop renders");
   const [products, setProducts] = useState<Product[]>([]);
   const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
   const [limit, setLimit] = useState<number>(8);

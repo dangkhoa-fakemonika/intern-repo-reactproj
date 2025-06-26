@@ -14,6 +14,7 @@ interface FilterTableProps {
 
 export const FilterTable = memo(function FilterTable(props: FilterTableProps) {
   console.log("Filter renders");
+  const [priceToggle, setPriceToggle] = useState<boolean>();
   const [categories, setCategories] = useState<Category[]>([]);
   const methods = useForm<ProductFilter>();
   const {
