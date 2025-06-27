@@ -1,19 +1,33 @@
 import {axiosInstance} from "@/shared/services/axios/axios.ts";
+import Cookies from "js-cookie";
 
 export class Users {
-  static signup(arg0: { name: string; email: string; password: string; avatar: string; }) {
-    throw new Error("Method not implemented.");
-  } 
    public static async getUser(id : number){
     const response = await axiosInstance.get(`users/${id}`);
     if (response.status === 200)
       return response.data;
     else return {};
   }
-  public static async signInUser(){
-    const response = await axiosInstance.get(`/users/`);
-    if (response.status === 200)
-      return response.data;
-    else return {};
+    public static async signup(payload: {
+    name: string;
+    email: string;
+    password: string;
+    avatar: string;
+  }) {
+    const res = await axiosInstance.post('users/', payload);
+    return res.data;
+  }
+
+  public static async login(payload: {
+    email: string;
+    password: string;
+  }) {
+    
+    const res = await axiosInstance.post('/users/', payload);
+    const { access, refresh } = res.data as { access: string; refresh: string };
+    
+    Cookies.set('access_token', access, { path: '/' });
+    Cookies.set('refresh_token', refresh, { path: '/' });
+    return res.data;
   }
 }
