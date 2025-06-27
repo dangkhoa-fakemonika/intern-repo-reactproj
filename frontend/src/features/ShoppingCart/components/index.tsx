@@ -1,0 +1,1 @@
+export {ShoppingCartList} from "@/features/ShoppingCart/components/ShoppingCartList.tsx";

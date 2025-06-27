@@ -5,12 +5,19 @@ import {Products} from "@/shared/services/products.ts";
 import {CategoryTag} from "@/features/SingleProduct/components";
 import {PlusIcon, MinusIcon, ChevronRightIcon, ChevronLeftIcon} from "@radix-ui/react-icons";
 import {ShopProduct} from "@/components/product-display/ShopProduct.tsx";
+import {adjustItemToCart} from "@/shared/stores/states/shopping-cart.ts";
+import {useDispatch, useSelector} from "react-redux";
+import {type AppDispatch, type RootState} from "@/shared/stores/store.ts";
 
 export const SingleProduct = memo(function SingleProduct() {
   const params = useParams();
   const [product, setProduct] = useState<Product | undefined>();
   const [selectedImage, setSelectedImage] = useState<string>();
-  const [relatedProducts, setRelatedProducts] = useState<Product[]>()
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>();
+  const [productAmount, setProductAmount] = useState<number>(0);
+
+  const productState = useSelector((state : RootState) => state.shoppingCart);
+  const dispatch = useDispatch<AppDispatch>();
 
   useLayoutEffect(() => {
     async function getData() {
@@ -22,12 +29,19 @@ export const SingleProduct = memo(function SingleProduct() {
 
       const related = await Products.getSimilarProduct(productID);
       setRelatedProducts(related);
+
+      const currentProduct = productState.cartContent.find((item) => item.product.id === productID);
+      if (currentProduct){
+        setProductAmount(currentProduct.amount);
+      }
+      else {
+        setProductAmount(0);
+      }
     }
 
     getData();
 
-  }, [params])
-
+  }, [params, productState])
 
   return (
     <div className={""}>
@@ -59,13 +73,23 @@ export const SingleProduct = memo(function SingleProduct() {
               <div className={"w-full lg:w-fit flex flex-row justify-between lg:justify-start my-4 items-center gap-4"}>
                 <div
                   className={"rounded p-2 bg-palette text-white duration-300 transition-transform hover:scale-105 cursor-pointer active:scale-100"}
-                  onClick={() => {
-                  }}>
+                  onClick={() => dispatch(adjustItemToCart({
+                    product : product,
+                    amount : 1
+                  }))}>
                   Mua ngay
                 </div>
-                <div className={"w-fit flex flex-row items-center gap-2 lg:justify-start justify-end"}>
+                <div className={"w-fit flex flex-row items-center gap-2 lg:justify-start justify-end"} hidden={productAmount === 0}>
                   <div className={"font-extrabold rounded p-2 text-palette cursor-pointer"}><PlusIcon/></div>
-                  <input type={"number"} className={"border-1 border-gray-400 p-2 rounded w-1/6 text-center"} defaultValue={1}/>
+                  <input
+                    type={"number"}
+                    className={"border-1 border-gray-400 p-2 rounded w-1/6 text-center"}
+                    value={productAmount}
+                    onChange={(event) => {
+                      setProductAmount(parseInt(event.target.value));
+                      dispatch(adjustItemToCart({product : product, amount : parseInt(event.target.value)}))
+                    }}
+                  />
                   <div className={"font-extrabold rounded p-2 text-palette cursor-pointer"}><MinusIcon/></div>
                 </div>
               </div>
@@ -91,7 +115,7 @@ export const SingleProduct = memo(function SingleProduct() {
               <div className={"flex lg:!flex-nowrap flex-wrap flex-row w-fit lg:gap-8 pb-4"}>
                 {
                   (relatedProducts && relatedProducts.length !== 0) ?
-                  relatedProducts.map((p) => <ShopProduct productData={p}/>) :
+                  relatedProducts.map((p) => <ShopProduct productData={p} key={p.id}/>) :
                     <div>
                       Không tìm thấy sản phẩm nào tương tự.
                     </div>

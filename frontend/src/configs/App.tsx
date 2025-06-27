@@ -1,12 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {RouterProvider} from "react-router-dom";
 import router from "@/configs/routers/route.ts";
+import {Provider} from "react-redux";
+import {store} from "@/shared/stores/store.ts";
 
 
 function App() {
-
   return (
-    <RouterProvider router={router}/>
+    <Provider store={store}>
+      <RouterProvider router={router}/>
+    </Provider>
   )
 }
 

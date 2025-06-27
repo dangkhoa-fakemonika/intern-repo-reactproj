@@ -116,8 +116,7 @@ function NavBar() {
           </div>
           <i className="w-8 h-8  p-0.5 hover:scale-105  transition-all cursor-pointer"
              onClick={() => alert("Bạn chưa có sản phẩm yêu thích!")}><img src={icon_heart} alt=""/></i>
-          <i className="w-8 h-8  p-0.5 hover:scale-105  transition-all cursor-pointer"
-             onClick={() => alert("Chưa có sản phẩm trong giỏ hàng!")}><img src={icon_cart} alt=""/></i>
+          <NavLink to={"/shopping-cart"} className="w-8 h-8  p-0.5 hover:scale-105  transition-all cursor-pointer"><img src={icon_cart} alt=""/></NavLink>
         </div>
 
 

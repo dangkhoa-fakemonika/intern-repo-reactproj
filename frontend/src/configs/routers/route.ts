@@ -3,7 +3,12 @@ import {
 } from "react-router";
 
 import {CommonLayout} from "@/configs/layouts/CommonLayout.tsx";
-import {Home, SearchAndFilter, SingleProduct} from "@/features/index.tsx";
+import {
+  Home,
+  SearchAndFilter,
+  SingleProduct,
+  ShoppingCart
+} from "@/features/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +49,10 @@ const router = createBrowserRouter([
             Component: SearchAndFilter
           }
         ]
+      },
+      {
+        path: "shopping-cart",
+        Component: ShoppingCart
       },
       {
         path: "*",

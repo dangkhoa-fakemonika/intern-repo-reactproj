@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Implement routing for existing screen and single product screen" />
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Patching up version after merging files">
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCartList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/shared/stores/states/shopping-cart.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/shared/stores/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/shared/types/cart-product.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/configs/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/configs/routers/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/routers/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/types/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/types/type.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,22 +75,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "staging",
-    "last_opened_file_path": "C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/frontend/public/samples",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/shopping-cart-Khoa&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/frontend/public/samples&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\public\samples" />
@@ -135,6 +150,10 @@
       <workItem from="1750571337649" duration="599000" />
       <workItem from="1750730518570" duration="9676000" />
       <workItem from="1750746030700" duration="1564000" />
+      <workItem from="1750926791158" duration="17000" />
+      <workItem from="1750929016706" duration="194000" />
+      <workItem from="1750989024229" duration="9516000" />
+      <workItem from="1751003778130" duration="339000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -200,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750402181827</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Patching up version after merging files">
+      <option name="closed" value="true" />
+      <created>1750926501587</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1750926501587</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +254,9 @@
     <MESSAGE value="Added complete selection view of the filter/searching page." />
     <MESSAGE value="Slight adjustment from merging process, simplifying services" />
     <MESSAGE value="Implement routing for existing screen and single product screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement routing for existing screen and single product screen" />
+    <MESSAGE value="Merge remote-tracking branch 'refs/remotes/origin/feature/routing-layout-Khoa' into staging&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;frontend/src/features/SearchAndFilter/SearchAndFilter.tsx&#10;#&#9;frontend/src/features/SearchAndFilter/components/FilterTable.tsx&#10;#&#9;frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" />
+    <MESSAGE value="Adjustment to responsiveness of the product page" />
+    <MESSAGE value="Patching up version after merging files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Patching up version after merging files" />
   </component>
 </project>
