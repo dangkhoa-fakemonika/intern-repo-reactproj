@@ -4,21 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Patching up version after merging files">
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCartList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/shared/stores/states/shopping-cart.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/shared/stores/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/shared/types/cart-product.ts" afterDir="false" />
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Adding debounce and loading states  to cart interactions">
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/PriceChangeDialog.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/shared/helpers/cart-interactions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/sonner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/sonner.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/configs/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/configs/routers/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/routers/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCartList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCartList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/types/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/types/type.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/stores/states/shopping-cart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/stores/states/shopping-cart.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -153,7 +152,10 @@
       <workItem from="1750926791158" duration="17000" />
       <workItem from="1750929016706" duration="194000" />
       <workItem from="1750989024229" duration="9516000" />
-      <workItem from="1751003778130" duration="339000" />
+      <workItem from="1751003778130" duration="9442000" />
+      <workItem from="1751285978817" duration="4547000" />
+      <workItem from="1751335685217" duration="6822000" />
+      <workItem from="1751342989369" duration="628000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -227,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750926501587</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Draft version of shopping interface : cart view, adding items">
+      <option name="closed" value="true" />
+      <created>1751011710462</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1751011710462</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +267,8 @@
     <MESSAGE value="Merge remote-tracking branch 'refs/remotes/origin/feature/routing-layout-Khoa' into staging&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;frontend/src/features/SearchAndFilter/SearchAndFilter.tsx&#10;#&#9;frontend/src/features/SearchAndFilter/components/FilterTable.tsx&#10;#&#9;frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" />
     <MESSAGE value="Adjustment to responsiveness of the product page" />
     <MESSAGE value="Patching up version after merging files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Patching up version after merging files" />
+    <MESSAGE value="Draft version of shopping interface : cart view, adding items" />
+    <MESSAGE value="Adding debounce and loading states  to cart interactions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding debounce and loading states  to cart interactions" />
   </component>
 </project>

@@ -9,6 +9,8 @@ import LoadingComponent from "@/components/ui/LoadingComponent";
 import {Categories} from "@/shared/services/services.ts";
 import {NavLink} from "react-router-dom";
 import '@/shared/styles/index.css'
+import {useSelector} from "react-redux";
+import type {RootState} from "@/shared/stores/store.ts";
 
 type Category = {
   id: number;
@@ -20,6 +22,8 @@ function NavBar() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [isloading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const cartState = useSelector((state : RootState) => state.shoppingCart);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -116,7 +120,15 @@ function NavBar() {
           </div>
           <i className="w-8 h-8  p-0.5 hover:scale-105  transition-all cursor-pointer"
              onClick={() => alert("Bạn chưa có sản phẩm yêu thích!")}><img src={icon_heart} alt=""/></i>
-          <NavLink to={"/shopping-cart"} className="w-8 h-8  p-0.5 hover:scale-105  transition-all cursor-pointer"><img src={icon_cart} alt=""/></NavLink>
+          <NavLink to={"/shopping-cart"} className="relative w-8 h-8  p-0.5 scale-110 hover:scale-125  transition-all cursor-pointer">
+            <img src={icon_cart} alt="" className={"absolute"}/>
+            <div
+              className={"relative scale-75 block text-xs text-white bg-red-600 pt-1.5 left-3 -top-1.5 rounded-xl aspect-square text-center align-middle"}
+              hidden={cartState.cartContent.length === 0}
+            >
+              {cartState.cartContent.length}
+            </div>
+          </NavLink>
         </div>
 
 

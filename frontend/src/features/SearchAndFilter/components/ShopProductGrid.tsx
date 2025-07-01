@@ -4,6 +4,7 @@ import {Products} from "@/shared/services/products.ts";
 import type {Product} from "@/shared/types/product.ts";
 import type {ProductFilter} from "@/shared/types/product-filter.ts";
 import {useDebounce} from "@/shared/hooks/hooks.ts";
+import LoadingComponent from "@/components/ui/LoadingComponent.tsx";
 
 interface ShopItemGridProps{
   filters : ProductFilter
@@ -59,7 +60,7 @@ export const ShopProductGrid = memo(function ShopProductGrid(props: ShopItemGrid
   return (
     <div className={"w-full h-screen flex-wrap flex flex-row place-items-center overflow-y-scroll content-around gap-2 lg:py-4 py-2 justify-center"} ref={productGrid} onScroll={onScrollRenderItems}>
       {visibleProducts.length !== 0 ? visibleProducts.map((product) => <ShopProduct productData={product} key={product.id}/>) : <>No products available</>}
-      <div className={"w-full text-center"} ref={loadingTag} hidden={limitDebounce >= products.length}>Loading more products...</div>
+      <div className={"w-full text-center py-6"} ref={loadingTag} hidden={limitDebounce >= products.length}><LoadingComponent/></div>
     </div>
   )
 })

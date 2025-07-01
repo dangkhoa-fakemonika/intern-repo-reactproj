@@ -18,7 +18,7 @@ const shoppingCartSlice = createSlice({
       console.log(product);
       state.cartContent = state.cartContent.filter((item) => item.product.id !== product.product.id);
       state.cartContent.push(product);
-      state.cartContent = state.cartContent.filter((item) => item.amount >= 0);
+      state.cartContent = state.cartContent.filter((item) => item.amount > 0);
     },
     clearCart : (state) => {
       state.cartContent = [];
