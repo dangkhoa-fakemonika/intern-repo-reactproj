@@ -1,4 +1,4 @@
-import {memo, useEffect, useMemo, useRef, useState} from "react";
+import {memo, useMemo, useRef} from "react";
 import type {CartProduct} from "@/shared/types/type.ts";
 import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "@/shared/stores/store.ts";
@@ -11,19 +11,10 @@ import {TrashIcon} from "@radix-ui/react-icons";
 import {adjustItemToCart} from "@/shared/stores/states/shopping-cart.ts";
 import {debounce, sumBy} from "lodash";
 import {toast} from "sonner";
-import LoadingComponent from "@/components/ui/LoadingComponent.tsx";
 
 export const ShoppingCartList = memo(function ShoppingCartList() {
   const data: CartProduct[] = useSelector((state: RootState) => state.shoppingCart).cartContent;
   const dispatch = useDispatch<AppDispatch>();
-
-  const [loading, isLoading] = useState(true);
-
-  useEffect(() => {
-    new Promise(() => setTimeout(() => {
-      isLoading(false)
-    }, 2000));
-  }, []);
 
   const updateCart = (product: CartProduct) => {
     dispatch(adjustItemToCart(product));
@@ -33,7 +24,7 @@ export const ShoppingCartList = memo(function ShoppingCartList() {
   }
 
   const debounceUpdateCart = useRef(
-    debounce((product: CartProduct) => updateCart(product), 300)
+    debounce((product: CartProduct) => updateCart(product), 1000)
   ).current
 
   const columnHelper = createColumnHelper<CartProduct>();
@@ -114,64 +105,60 @@ export const ShoppingCartList = memo(function ShoppingCartList() {
   });
 
   return (
-    loading ?
-      <div>
-        <LoadingComponent/>
-      </div> :
-      <div className={"w-1/2 px-8 py-4"}>
-        <table className={"w-full table-auto"}>
-          <thead className={"text-white"}>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map(header => (
-                <th
-                  key={header.id}
-                  className={"bg-palette p-2 first:rounded-l-md last:rounded-r-md"}
-                >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-                </th>
-              ))}
-            </tr>
-          ))}
-          </thead>
-          <tbody className={"*:odd:bg-white *:even:bg-gray-200"}>
-          {table.getRowModel().rows.map(row => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map(cell => (
-                <td key={cell.id} className={"p-2 ps-4"}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-          </tbody>
-          <tfoot>
-          {table.getFooterGroups().map(footerGroup => (
-            <tr key={footerGroup.id}>
-              {footerGroup.headers.map(header => (
-                <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                      header.column.columnDef.footer,
-                      header.getContext()
-                    )}
-                </th>
-              ))}
-            </tr>
-          ))}
-          </tfoot>
-        </table>
-        <div className={"w-1/2 text-end py-2"}>
-          Total : {sumBy(data, (product) => {
-          return product.product.price * product.amount
-        })}
-        </div>
+    <div className={"w-1/2 px-8 py-4"}>
+      <table className={"w-full table-auto"}>
+        <thead className={"text-white"}>
+        {table.getHeaderGroups().map(headerGroup => (
+          <tr key={headerGroup.id}>
+            {headerGroup.headers.map(header => (
+              <th
+                key={header.id}
+                className={"bg-palette p-2 first:rounded-l-md last:rounded-r-md"}
+              >
+                {header.isPlaceholder
+                  ? null
+                  : flexRender(
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
+              </th>
+            ))}
+          </tr>
+        ))}
+        </thead>
+        <tbody className={"*:odd:bg-white *:even:bg-gray-200"}>
+        {table.getRowModel().rows.map(row => (
+          <tr key={row.id}>
+            {row.getVisibleCells().map(cell => (
+              <td key={cell.id} className={"p-2 ps-4"}>
+                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+              </td>
+            ))}
+          </tr>
+        ))}
+        </tbody>
+        <tfoot>
+        {table.getFooterGroups().map(footerGroup => (
+          <tr key={footerGroup.id}>
+            {footerGroup.headers.map(header => (
+              <th key={header.id}>
+                {header.isPlaceholder
+                  ? null
+                  : flexRender(
+                    header.column.columnDef.footer,
+                    header.getContext()
+                  )}
+              </th>
+            ))}
+          </tr>
+        ))}
+        </tfoot>
+      </table>
+      <div className={"w-full text-end rounded-md text-white bg-palette py-2 px-4"}>
+        Total : {sumBy(data, (product) => {
+        return product.product.price * product.amount
+      })}
       </div>
+    </div>
   )
 })

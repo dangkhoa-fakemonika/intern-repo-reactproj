@@ -120,10 +120,10 @@ function NavBar() {
           </div>
           <i className="w-8 h-8  p-0.5 hover:scale-105  transition-all cursor-pointer"
              onClick={() => alert("Bạn chưa có sản phẩm yêu thích!")}><img src={icon_heart} alt=""/></i>
-          <NavLink to={"/shopping-cart"} className="relative w-8 h-8  p-0.5 scale-110 hover:scale-125  transition-all cursor-pointer">
+          <NavLink to={"/shopping-cart"} className="relative w-8 h-8 px-0.5 scale-110 hover:scale-125  transition-all cursor-pointer">
             <img src={icon_cart} alt="" className={"absolute"}/>
             <div
-              className={"relative scale-75 block text-xs text-white bg-red-600 pt-1.5 left-3 -top-1.5 rounded-xl aspect-square text-center align-middle"}
+              className={"relative scale-75 block text-xs text-white bg-red-600 pt-1.5 left-3 -top-1.5 rounded-xl aspect-square text-center align-middle font-bold"}
               hidden={cartState.cartContent.length === 0}
             >
               {cartState.cartContent.length}

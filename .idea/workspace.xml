@@ -5,19 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Adding debounce and loading states  to cart interactions">
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/PriceChangeDialog.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/shared/helpers/cart-interactions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/common/delivery-info.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckoutForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/SmartHintTextField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/sonner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/sonner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/configs/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/ShopProductGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/NumberTextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/NumberTextField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCartList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCartList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/stores/states/shopping-cart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/stores/states/shopping-cart.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/styles/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +156,11 @@
       <workItem from="1751003778130" duration="9442000" />
       <workItem from="1751285978817" duration="4547000" />
       <workItem from="1751335685217" duration="6822000" />
-      <workItem from="1751342989369" duration="628000" />
+      <workItem from="1751342989369" duration="938000" />
+      <workItem from="1751347753095" duration="11400000" />
+      <workItem from="1751452172271" duration="694000" />
+      <workItem from="1751453637698" duration="1987000" />
+      <workItem from="1751510120500" duration="5708000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -237,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751011710462</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Adding debounce and loading states  to cart interactions">
+      <option name="closed" value="true" />
+      <created>1751343735184</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1751343735184</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

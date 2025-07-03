@@ -61,7 +61,7 @@ export const SingleProduct = memo(function SingleProduct() {
   }
 
   const debounceUpdateCart = useRef(
-    debounce((product : CartProduct) => updateCart(product), 300)
+    debounce((product : CartProduct) => updateCart(product), 1000)
   ).current
 
   useEffect(() => {

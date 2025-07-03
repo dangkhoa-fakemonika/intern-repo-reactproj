@@ -10,7 +10,6 @@ interface NumberTextFieldProps {
 export const NumberTextField = memo(function NumberTextField(props : NumberTextFieldProps){
   const { register, watch } = useFormContext();
   const value = watch(props.registerName);
-  console.log("Logged value: ", value);
 
   return (
     <label hidden={props.hidden} className={"relative items-center my-2"}>
