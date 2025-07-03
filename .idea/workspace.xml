@@ -4,21 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Adding debounce and loading states  to cart interactions">
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/common/delivery-info.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckoutForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/SmartHintTextField.tsx" afterDir="false" />
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Fully implemented view of shopping process">
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/common/fake-data.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/CheckoutForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/CustomFormRadio.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/OrderedItems.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCart/SmartHintTextField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/sonner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/sonner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/NumberTextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/NumberTextField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCartList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCartList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/common/delivery-info.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/common/delivery-info.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckoutForm.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/PriceChangeDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCart/PriceChangeDialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCartList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCart/ShoppingCartList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/SmartHintTextField.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/styles/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,11 +95,11 @@
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\public\samples" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\ShoppingCart\components\ShoppingCart" />
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\ShoppingCart\components\CheckOut" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SingleProduct" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SampleFeature" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SearchAndFilter" />
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\components\product-display" />
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SearchAndFilter\components" />
     </key>
   </component>
   <component name="RunManager">
@@ -160,7 +159,8 @@
       <workItem from="1751347753095" duration="11400000" />
       <workItem from="1751452172271" duration="694000" />
       <workItem from="1751453637698" duration="1987000" />
-      <workItem from="1751510120500" duration="5708000" />
+      <workItem from="1751510120500" duration="5991000" />
+      <workItem from="1751530572346" duration="17163000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -250,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751343735184</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Applies formatting and create schema object for delivery info">
+      <option name="closed" value="true" />
+      <created>1751516001150</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1751516001150</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +290,8 @@
     <MESSAGE value="Patching up version after merging files" />
     <MESSAGE value="Draft version of shopping interface : cart view, adding items" />
     <MESSAGE value="Adding debounce and loading states  to cart interactions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding debounce and loading states  to cart interactions" />
+    <MESSAGE value="Applies formatting and create schema object for delivery info" />
+    <MESSAGE value="Fully implemented view of shopping process" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fully implemented view of shopping process" />
   </component>
 </project>

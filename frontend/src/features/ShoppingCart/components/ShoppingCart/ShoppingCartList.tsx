@@ -6,10 +6,10 @@ import {
   createColumnHelper, flexRender, getCoreRowModel,
   useReactTable
 } from "@tanstack/react-table";
-import {PriceChangeDialog} from "@/features/ShoppingCart/components/PriceChangeDialog.tsx";
+import {PriceChangeDialog} from "@/features/ShoppingCart/components/ShoppingCart/PriceChangeDialog.tsx";
 import {TrashIcon} from "@radix-ui/react-icons";
 import {adjustItemToCart} from "@/shared/stores/states/shopping-cart.ts";
-import {debounce, sumBy} from "lodash";
+import {debounce} from "lodash";
 import {toast} from "sonner";
 
 export const ShoppingCartList = memo(function ShoppingCartList() {
@@ -18,7 +18,7 @@ export const ShoppingCartList = memo(function ShoppingCartList() {
 
   const updateCart = (product: CartProduct) => {
     dispatch(adjustItemToCart(product));
-    toast("Cập nhật vật phẩm thành công!", {
+    toast("Item updated!", {
       description: product.product.title
     });
   }
@@ -43,7 +43,7 @@ export const ShoppingCartList = memo(function ShoppingCartList() {
       'product.description', {
         header: 'Description',
         cell: props => (
-          <div className={"overflow-hidden"}>
+          <div className={"overflow-hidden lg:flex hidden "}>
             {props.getValue().split(" ").slice(0, 12).join(" ")}
           </div>
         ),
@@ -105,7 +105,7 @@ export const ShoppingCartList = memo(function ShoppingCartList() {
   });
 
   return (
-    <div className={"w-1/2 px-8 py-4"}>
+    <div className={"w-full"}>
       <table className={"w-full table-auto"}>
         <thead className={"text-white"}>
         {table.getHeaderGroups().map(headerGroup => (
@@ -113,7 +113,7 @@ export const ShoppingCartList = memo(function ShoppingCartList() {
             {headerGroup.headers.map(header => (
               <th
                 key={header.id}
-                className={"bg-palette p-2 first:rounded-l-md last:rounded-r-md"}
+                className={"bg-palette p-2 first:rounded-l-md last:rounded-r-md " + ((header.column.columnDef.header === "Description" || header.column.columnDef.header === "") ? "lg:table-cell justify-center items-center hidden" : "")}
               >
                 {header.isPlaceholder
                   ? null
@@ -130,7 +130,7 @@ export const ShoppingCartList = memo(function ShoppingCartList() {
         {table.getRowModel().rows.map(row => (
           <tr key={row.id}>
             {row.getVisibleCells().map(cell => (
-              <td key={cell.id} className={"p-2 ps-4"}>
+              <td key={cell.id} className={"p-2 " + ((cell.column.columnDef.header === "Description" || cell.column.columnDef.header === "") ? "lg:table-cell justify-center items-center hidden" : "")}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}
@@ -154,11 +154,6 @@ export const ShoppingCartList = memo(function ShoppingCartList() {
         ))}
         </tfoot>
       </table>
-      <div className={"w-full text-end rounded-md text-white bg-palette py-2 px-4"}>
-        Total : {sumBy(data, (product) => {
-        return product.product.price * product.amount
-      })}
-      </div>
     </div>
   )
 })
