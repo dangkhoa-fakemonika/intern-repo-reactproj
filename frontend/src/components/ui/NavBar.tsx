@@ -68,7 +68,7 @@ function NavBar() {
         });
     }
 
-  }, []);
+  }, [userState.access_token]);
 
   const handleSearch = () => {
     navigate(`products/title/${searchTitle}`);
