@@ -12,10 +12,10 @@ function Policies() {
               <img src={Personalize} alt="Quyền riêng tư" className="w-8 h-8" />
             </div>
             <h4 className="text-lg font-semibold text-gray-800 mb-2">
-              Quyền riêng tư
+              Privacy
             </h4>
             <p className="text-sm text-gray-600">
-              Bảo mật quyền riêng tư của khách hàng
+              Protecting Your Privacy
             </p>
           </div>
 
@@ -25,10 +25,10 @@ function Policies() {
               <img src={Payment} alt="Thanh toán đa dạng" className="w-8 h-8" />
             </div>
             <h4 className="text-lg font-semibold text-gray-800 mb-2">
-              Thanh toán đa dạng
+              Pay Your Way
             </h4>
             <p className="text-sm text-gray-600">
-              Thanh toán an toàn với nhiều phương thức
+              Flexible Payment Options
             </p>
           </div>
 
@@ -38,10 +38,10 @@ function Policies() {
               <img src={Deleivery} alt="Vận chuyển nhanh chóng" className="w-8 h-8" />
             </div>
             <h4 className="text-lg font-semibold text-gray-800 mb-2">
-              Vận chuyển nhanh chóng
+              Fast & Reliable Shipping
             </h4>
             <p className="text-sm text-gray-600">
-              Giao hàng nhanh, an toàn
+              Fast & Secure Delivery
             </p>
           </div>
 

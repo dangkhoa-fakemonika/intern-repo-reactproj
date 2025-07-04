@@ -12,7 +12,7 @@ export const ShopProduct = memo(function ShopProduct(props : ShopProductProps){
   return (
     <div
       key={props.productData.id}
-      className={"flex flex-col rounded border border-2 lg:w-[360px] lg:h-[480px] w-[180px] h-[320px] lg:p-4 p-3"}
+      className={"flex flex-col rounded border lg:w-[360px] lg:h-[480px] w-[180px] h-[320px] lg:p-4 p-3"}
       onClick={() => navigate(`/products/${props.productData.id}`)}
     >
       <img

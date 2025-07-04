@@ -34,9 +34,10 @@ export function LoginPage() {
         const maxAge = 30 * 24 * 60 * 60;
         document.cookie = `refresh_token=${refresh_token}; max-age=${maxAge}; path=/`;
       }
+
       const profileRes = await axiosInstance.get("auth/profile", {
         headers: { Authorization: `Bearer ${access_token}` }
-      });
+      }); 
       const user = profileRes.data;
       document.cookie = `current_user=${JSON.stringify(user)}; path=/`;
 

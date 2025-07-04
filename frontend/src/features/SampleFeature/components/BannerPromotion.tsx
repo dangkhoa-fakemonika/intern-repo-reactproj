@@ -55,13 +55,13 @@ export default function BannerPromotion() {
 
       <div className="flex-[2] flex flex-col items-center justify-center text-center">
         <span className="inline-block bg-orange-500   text-white px-4 py-1 rounded-[20px] text-xl font-medium">
-          Giảm giá!
+          Sale Up!
         </span>
 
         <h2 className="mt-4 text-4xl md:text-5xl justify-center font-bold text-gray-800">
-          Giảm giá sốc lên tới <span className="text-orange-500">20%</span>
+          Shocking discounts up to <span className="text-orange-500">20%</span>
         </h2>
-        <p className="mt-2 text-2xl md:text-3xl items-center text-gray-700">Khám phá ngay!!!</p>
+        <p className="mt-2 text-2xl md:text-3xl items-center text-gray-700">Explore Now!!!</p>
 
         <div className="mt-8 mb-6 flex justify-center w-full gap-6">
           {units.map((unit, i) => (
@@ -70,18 +70,19 @@ export default function BannerPromotion() {
                 {timeLeft[unit]}
               </div>
               <div className="text-xs text-gray-500 uppercase">
-                {unit === 'days' ? 'Ngày'
-                  : unit === 'hours' ? 'Giờ'
-                    : unit === 'minutes' ? 'Phút'
-                      : 'Giây'}
+                {unit === 'days' ? 'Day'
+                  : unit === 'hours' ? 'Hour'
+                    : unit === 'minutes' ? 'Minute'
+                      : 'Second'}
               </div>
             </div>
           ))}
         </div>
 
         <button
-          className="mt-6 inline-block bg-gray-800 text-white font-semibold hover:scale-105 px-6 py-2 rounded hover:bg-gray-900 transition">
-          Mua ngay
+          className="mt-6 inline-block bg-gray-800 text-white font-semibold hover:scale-105 px-6 py-2 rounded hover:bg-gray-900 transition"
+          onClick={() => window.location.href = '/products'}>
+          Buy Now
         </button>
       </div>
 

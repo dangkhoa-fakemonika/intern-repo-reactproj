@@ -51,10 +51,10 @@ export const SingleProduct = memo(function SingleProduct() {
   const updateCart = (product : CartProduct) => {
     setProductAmount(product.amount);
     dispatch(adjustItemToCart(product));
-    toast("Cập nhật vật phẩm thành công!", {
+    toast("Update Successful!", {
       description : product.product.title,
       action: {
-        label : "Xem giỏ hàng",
+        label : "View Cart",
         onClick : () => navigate("/shopping-cart")
       }
     });
@@ -86,10 +86,20 @@ export const SingleProduct = memo(function SingleProduct() {
               }
               <div
                 className={"absolute flex flex-row items-center justify-between w-full h-full text-white p-8 lg:hidden z-50"}>
-                <ChevronLeftIcon className={""} width={40} height={40}/>
-                <ChevronRightIcon className={""} width={40} height={40}/>
+                <ChevronLeftIcon className={""} width={40} height={40}
+                onClick={() => {
+                if (!product) return;
+                const idx = product.images.indexOf(selectedImage ?? "");
+                setSelectedImage(product.images[(idx - 1 + product.images.length) % product.images.length]);
+              }}/>
+                <ChevronRightIcon className={""} width={40} height={40}
+                  onClick={() => {
+                  if (!product) return;
+                  const idx = product.images.indexOf(selectedImage ?? "");
+                  setSelectedImage(product.images[(idx + 1) % product.images.length]);
+                }}/>
               </div>
-            </div>
+            </div>  
             <div className={"lg:w-1/3 w-full flex flex-col h-full justify-center"}>
               <div className={"text-3xl font-bold my-2"}>{product.title}</div>
               <div className={"text-2xl text-palette font-bold"}>{product.price}</div>
@@ -112,7 +122,7 @@ export const SingleProduct = memo(function SingleProduct() {
                     //   }
                     // });
                   }}>
-                  Mua ngay
+                  Buy Now
                 </div>
                 <div className={"w-fit flex flex-row items-center gap-2 lg:justify-start justify-end"} hidden={productAmount === 0}>
                   <div
@@ -153,7 +163,7 @@ export const SingleProduct = memo(function SingleProduct() {
           </div>
           <div className={"w-full lg:p-6 p-4"}>
             <div className={"text-2xl font-bold mb-4"}>
-              Các sản phẩm tương tự
+              Related Products
             </div>
             <div className={"w-full lg:!w-screen overflow-x-scroll"}>
               <div className={"flex lg:!flex-nowrap flex-wrap flex-row w-fit lg:gap-8 pb-4"}>
@@ -161,7 +171,7 @@ export const SingleProduct = memo(function SingleProduct() {
                   (relatedProducts && relatedProducts.length !== 0) ?
                   relatedProducts.map((p) => <ShopProduct productData={p} key={p.id}/>) :
                     <div>
-                      Không tìm thấy sản phẩm nào tương tự.
+                      No Related Products Found.
                     </div>
                 }
               </div>

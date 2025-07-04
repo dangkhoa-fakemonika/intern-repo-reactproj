@@ -8,15 +8,15 @@ function Banner() {
         <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col justify-center items-center text-center sm:items-start sm:text-left gap-4 pt-8 sm:pt-0 order-2 sm:order-1 w-full sm:pl-16">
-                  <h1 data-aos="fade-up-right" className="text-4xl sm:text-5xl lg:text-7xl font-bold text-[#F09728]">
-                    Thỏa sức mua sắm cả ngày
-                  </h1>
+                  <h3 data-aos="fade-up-right" className="text-4xl sm:text-4xl lg:text-4xl font-bold text-[#F09728]">
+                    Endless Shopping, Anytime You Want
+                  </h3>
                   <p data-aos="fade-up-right" className="text-base sm:text-1xl w-full max-w-full sm:max-w-xl lg:max-w-2xl mx-auto sm:mx-0">
-                    Từ công nghệ đến thời trang, gia dụng đến làm đẹp - chất lượng đảm bảo, giao hàng siêu tốc, an toàn tuyệt đối.
+                    From cutting-edge tech and the latest fashion to everyday home goods and beauty essentials—experience guaranteed quality, lightning-fast delivery, and total peace of mind.
                   </p>
                   <div>
-                    <button data-aos="fade-up-right" className="bg-gradient-to-r from-[#F09728] to-[#F09728] text-white sm:text-2xl rounded-full px-4 py-2 font-bold hover:scale-105 duration-200 transition-all">
-                      Mua ngay
+                    <button data-aos="fade-up-right"  onClick={() => window.location.href = '/products'} className="bg-gradient-to-r from-[#F09728] to-[#F09728] text-white sm:text-1xl rounded-full px-4 py-2 font-bold hover:scale-105 duration-200 transition-all">
+                      Buy now
                     </button>
                   </div>
                 </div>

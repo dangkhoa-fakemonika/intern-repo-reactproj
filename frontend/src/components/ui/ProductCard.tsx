@@ -1,7 +1,7 @@
 import LoadingComponent from "@/components/ui/LoadingComponent";
 import { useEffect, useState } from "react";
 import {Products} from "@/shared/services/products.ts";
-
+import {Link } from "react-router-dom";
 type Product = {
   id: number;
   title: string;
@@ -54,11 +54,12 @@ function ProductCard({ limit }: ProductCardProps) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 place-items-center mt-8">
           {products.slice(0,limit).map((product, idx) => (
+            <Link to={`/products/${product.id}`} key={product.id}>
             <div
               data-aos="zoom-in"
               data-aos-delay={idx * 100}
               key={product.id}
-              className="h-[450px] w-[220px] bg-white shadow-md rounded-md overflow-hidden  transform transition hover:scale-105 flex flex-col"
+              className="h-[350px] w-[220px] bg-white shadow-md rounded-md overflow-hidden  transform transition hover:scale-105 flex flex-col"
             >
                   <div className="w-full h-full overflow-hidden">
                     <img
@@ -76,6 +77,7 @@ function ProductCard({ limit }: ProductCardProps) {
                 </p>
                 </div>
             </div>
+           </Link>
           ))}
         </div>
       )}

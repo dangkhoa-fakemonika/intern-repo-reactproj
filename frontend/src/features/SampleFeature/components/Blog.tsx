@@ -12,7 +12,7 @@ const BlogSection: React.FC = () => {
   return (
     <section data-aos="zoom-in" className="px-6 py-8 mb-30 w-full">
       <h4 className="text-2xl font-bold text-gray-800 mb-8">
-        Blog và sự kiện
+        Blog & News
       </h4>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <a
@@ -32,7 +32,7 @@ const BlogSection: React.FC = () => {
               <span>{today1}</span>
             </div>
             <h5 className="text-base !no-underline !text-gray-700 font-medium  truncate">
-              Phụ kiện tốt cho trải nghiệm làm việc tuyệt vời
+              Accessories That Enhance Your Productivity
             </h5>
           </div>
         </a>
@@ -54,7 +54,7 @@ const BlogSection: React.FC = () => {
               <span>{today2}</span>
             </div>
             <h5 className="text-base font-medium !no-underline !text-gray-700 truncate">
-              Phụ kiện tốt cho trải nghiệm làm việc tuyệt vời
+              Accessories That Enhance Your Productivity
             </h5>
           </div>
         </a>
@@ -76,7 +76,7 @@ const BlogSection: React.FC = () => {
               <span>{today3}</span>
             </div>
             <h5 className="text-base font-medium  !text-gray-700 truncate">
-              Phụ kiện tốt cho trải nghiệm làm việc tuyệt vời
+              Accessories That Enhance Your Productivity
             </h5>
           </div>
         </a>

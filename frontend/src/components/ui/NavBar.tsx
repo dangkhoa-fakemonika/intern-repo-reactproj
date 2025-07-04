@@ -70,12 +70,12 @@ function NavBar() {
       <div
         className="hidden md:flex items-center justify-between text-gray-500 text-xs h-6 border-b border-gray-200 px-4 mt-3">
         <span className="px-10">+84 123 456 789</span>
-        <span className="px-4">Trang mua sắm trực tuyến uy tín hàng đầu</span>
+        <span className="px-4">Shop with confidence at the Premier Online Marketplace</span>
          {user ? (
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
                 <div className="flex items-center space-x-1 px-4 whitespace-nowrap cursor-pointer text-[13.5px] text-gray-500 hover:text-gray-700">
-                  Xin chào, <strong>{user.name}</strong> <FaCaretDown />
+                  Welcome, <strong>{user.name}</strong> <FaCaretDown />
                 </div>
               </DropdownMenu.Trigger>
               <DropdownMenu.Portal>
@@ -92,7 +92,7 @@ function NavBar() {
                           to="/admin/dashboard"
                           className="w-full text-left text-sm !text-gray-500 hover:text-gray-700 !no-underline"
                         >
-                          Quản lý hệ thống
+                          System management 
                         </NavLink>
                       </DropdownMenu.Item>
                     )}
@@ -101,7 +101,7 @@ function NavBar() {
                         to="/auth/userpage"
                         className="w-full text-left text-sm !text-gray-500 hover:text-gray-700 !no-underline"
                       >
-                        Trang cá nhân
+                        Personal information
                       </NavLink>
                     </DropdownMenu.Item>
                   </DropdownMenu.Group>
@@ -110,7 +110,7 @@ function NavBar() {
                     className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700"
                     onClick={handleLogout}
                   >
-                    Đăng xuất
+                    Logout
                   </DropdownMenu.Item>
                 </DropdownMenu.Content>
               </DropdownMenu.Portal>
@@ -121,14 +121,14 @@ function NavBar() {
                 to="/auth/login"
                 className="!text-gray-500 !no-underline hover:text-gray-700"
               >
-                Đăng nhập
+                Login
               </NavLink>
               <span className="text-gray-500">/</span>
               <NavLink
                 to="/auth/register"
                 className="!text-gray-500 !no-underline hover:text-gray-700"
               >
-                Đăng ký
+                Register
               </NavLink>
             </span>
           )}
@@ -141,12 +141,12 @@ function NavBar() {
         </NavLink>
         <ul className="hidden xl:flex items-center gap-12 font-semibold text-base mt-2">
           <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">
-            Trang chủ
+            Home
           </NavLink>
           <li className="p-3 hover:scale-105 transition-all cursor-pointer group">
             <NavLink to={"/products"}
                 className="flex items-center gap-[2px] !text-black !no-underline group-hover:!text-[#F09728]">
-              Sản phẩm
+              Products
               <span>
                 <FaCaretDown className="transition-all duration-200 group-hover:rotate-180"/>
               </span>
@@ -163,16 +163,16 @@ function NavBar() {
                 </div>
               ) : (
                 <ul className="w-full space-y-1">
-                  {categories.map((cat) => (
+                  {categories.map((categories) => (
                     <li
-                      key={cat.id}
+                      key={categories.id}
                       className="p-2 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] break-words"
                     >
                       <NavLink
-                        to={`/products/category/${cat.id}`}
+                        to={`/products/category/${categories.id}`}
                         className="!text-black !no-underline break-words"
                       >
-                        {cat.name}
+                        {categories.name}
                       </NavLink>
                     </li>
                   ))}
@@ -180,9 +180,9 @@ function NavBar() {
               )}
             </div>
           </li>
-          <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Bài viết</NavLink>
-          <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Liên hệ</NavLink>
-          <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Về chúng tôi</NavLink>
+          <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Blogs</NavLink>
+          <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Contacts</NavLink>
+          <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">About Us</NavLink>
         </ul>
 
         <div className="relative hidden md:flex items-center justify-center gap-3">
@@ -211,26 +211,34 @@ function NavBar() {
         <div className={`absolute xl:hidden top-20 left-0 w-full bg-white flex flex-col items-center gap-6 font-semibold text-lg transform transition-transform
         ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} style={{transition: "transform 0.3s ease, opacity 0.3s ease"}}>
           <NavLink to={"/"}
-                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Trang
-            chủ
+                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline"> Home
           </NavLink>
           <NavLink to={"/products"}
-                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Sản
-            phẩm
+                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Products
           </NavLink>
           <NavLink to={"/"}
-                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Bài
-            viết
+                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Blogs
           </NavLink>
           <NavLink to={"/"}
-                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Liên
-            hệ
+                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Contacts
           </NavLink>
           <NavLink to={"/"}
-                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline ">Về
-            chúng tôi
+                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline ">About Us
           </NavLink>
+          
         </div>
+        <NavLink
+          to="/shopping-cart"
+          className="fixed bottom-25 right-6 z-50  xl:hidden bg-[#F09728] rounded-full shadow-lg p-4 flex items-center justify-center hover:scale-110 transition"
+          style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}
+        >
+          <img src={icon_cart} alt="Cart" className="w-7 h-7" />
+          {cartState.cartContent.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2 py-0.5 font-bold">
+              {cartState.cartContent.length}
+            </span>
+          )}
+        </NavLink>
       </header>
     </div>
   )

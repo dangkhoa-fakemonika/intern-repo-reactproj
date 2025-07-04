@@ -3,7 +3,7 @@ import LoadingComponent from "@/components/ui/LoadingComponent";
 import type {Category, Product} from "@/shared/types/type.ts";
 import {Products} from "@/shared/services/products.ts";
 import {Categories} from "@/shared/services/services.ts";
-
+import {Link } from "react-router-dom";
 // type Category = {
 //   aosDelay: unknown;
 //   id: number;
@@ -60,7 +60,7 @@ function CategoryTrending() {
   return (
     <div className="w-full">
   <div className="text-left mt-7 pr-5 ml-7 max-w-[600px]">
-    <h2 data-aos="fade-up" className=" text-2xl font-bold">Danh mục thịnh hành</h2>
+    <h2 data-aos="fade-up" className=" text-2xl font-bold">Category Trending</h2>
   </div>
   <div>
     {error && <p className="text-red-500 text-sm mb-2 px-2">{error}</p>}
@@ -71,11 +71,12 @@ function CategoryTrending() {
     ) : (
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 place-items-center mt-5">
         {categories.slice(0, 5).map((category, idx) => (
+          <Link to={`/products/category/${category.id}`} >
           <div
             data-aos="zoom-in"
             data-aos-delay={idx * 100}
             key={category.id}
-            className="space-y-3"
+            className="space-y-3 !text-black"
           >
             <img
               src={category.image}
@@ -86,6 +87,7 @@ function CategoryTrending() {
               <p className="font-semibold">{category.name}</p>
             </div>
           </div>
+          </Link>
         ))}
       </div>
     )}
@@ -108,11 +110,11 @@ function CategoryTrending() {
             <div className="text-center">
               <div className="text-xs uppercase text-gray-500 mb-1 tracking-wide">{product.title}</div>
               <div className="text-lg font-semibold text-gray-800 mb-3">
-                Giá khởi điểm: <span className="text-[#333]">{product.price}</span>
+                Prices starting from: <span className="text-[#333]">{product.price}</span>
               </div>
             </div>
-            <button className="!bg-[#F09728] text-white text-sm px-4 py-1 !rounded-full mb-4 hover:scale-105 transition-transform duration-200">
-              Mua ngay
+            <button className="!bg-[#F09728] text-white sm:text-1xl px-4 py-1 !rounded-full mb-4 hover:scale-105 transition-transform duration-200">
+              Buy now
             </button>
             <div className="w-full flex justify-center mt-auto">
               <img

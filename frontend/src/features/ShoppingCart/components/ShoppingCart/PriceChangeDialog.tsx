@@ -25,7 +25,7 @@ export function PriceChangeDialog(props : PriceChangeDialogProps){
           <Dialog.Content
             className={"absolute z-20 -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2 flex flex-col justify-center items-center bg-white gap-4 px-4 py-2"}>
             <Dialog.Title>
-              Nhập số lượng muốn thay đổi
+              Enter the quantity you want to change
             </Dialog.Title>
             <input ref={inputField}
               className={"text-center p-2"}
@@ -38,7 +38,7 @@ export function PriceChangeDialog(props : PriceChangeDialogProps){
                   amount: inputField.current?.value
                 }))
               }}>
-                Xong
+                Done!
               </div>
             </Dialog.Close>
           </Dialog.Content>
