@@ -48,8 +48,8 @@ export const ShoppingCart = memo(function ShoppingCart() {
         <LoadingComponent/>
       </div>
       : (data.length === 0 && !processDone) ?
-        <div className={"flex flex-col justify-center items-center w-full scale-200 py-16"}>
-          Your cart is empty, please add an item to your cart to proceed.
+        <div className={"flex flex-col justify-center text-center w-full text-2xl lg:text-5xl py-16"}>
+            Your cart is empty, please add an item to your cart to proceed.
         </div>
         :
         <div className={"flex flex-col justify-center items-center w-full"}>
@@ -173,7 +173,7 @@ export const ShoppingCart = memo(function ShoppingCart() {
                   </div>
                 </div>
                 :
-                <div className={"flex flex-col justify-center items-center w-full scale-150 py-16"}>
+                <div className={"flex flex-col justify-center text-center w-full text-2xl lg:text-5xl py-16"}>
                   Order placed successfully! Please check your email for further notice
                 </div>
           }

@@ -9,7 +9,7 @@ export function CommonLayout() {
         <div className="relative z-20">
           <NavBar/>
         </div>
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           {/*<Home/>*/}
           <Outlet/>
         </div>
