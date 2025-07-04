@@ -4,11 +4,9 @@ import Payment from '@/assets/images/Payment.svg';
 import Personalize from '@/assets/images/Personalize.svg'
 function Policies() {
   return (
-    <section data-aos="zoom-in" className="py-12 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-around space-y-8 md:space-y-0 md:space-x-6">
-          
-          
+    <section data-aos="zoom-in" className="py-12 px-4 bg-gray-50 w-full">
+      <div>
+        <div className="flex flex-col md:flex-row items-center justify-around space-y-8 md:space-y-0 md:space-x-6">      
           <div className="flex-1 flex flex-col items-center text-center px-4">
             <div className="p-4 bg-white rounded-full shadow-md mb-4">
               <img src={Personalize} alt="Quyền riêng tư" className="w-8 h-8" />

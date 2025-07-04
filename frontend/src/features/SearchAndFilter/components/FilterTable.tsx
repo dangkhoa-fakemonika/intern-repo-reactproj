@@ -1,5 +1,4 @@
 import {FormProvider, useForm} from "react-hook-form";
-// import {CheckBox} from "@/features/SearchAndFilter/common/components/CheckBox.tsx";
 import {memo, useEffect, useMemo, useState} from "react";
 import type {ProductFilter} from "@/shared/types/product-filter.ts";
 import type {Category} from "@/shared/types/type.ts";

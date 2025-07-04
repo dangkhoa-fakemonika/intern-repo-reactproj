@@ -2,6 +2,7 @@ import {axiosInstance} from "@/shared/services/axios/axios.ts";
 import Cookies from "js-cookie";
 
 export class Users {
+
    public static async getUser(id : number){
     const response = await axiosInstance.get(`users/${id}`);
     if (response.status === 200)
@@ -30,4 +31,15 @@ export class Users {
     Cookies.set('refresh_token', refresh, { path: '/' });
     return res.data;
   }
+  public static async updateUser(id: number, payload: {
+    newname?: string;
+    newemail?: string;
+    newavatar?: string;
+    newpassword?: string;
+  }) {
+    const res = await axiosInstance.put(`users/${id}`, payload);
+    return res.data;
+  }
+  
+  
 }

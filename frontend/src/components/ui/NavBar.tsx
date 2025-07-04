@@ -7,15 +7,17 @@ import {FaCaretDown} from "react-icons/fa";
 import {useEffect, useState} from "react";
 import LoadingComponent from "@/components/ui/LoadingComponent";
 import Cookies from "js-cookie";
-import {axiosInstance, Categories} from "@/shared/services/services.ts";
+import { axiosInstance, Categories} from "@/shared/services/services.ts";
 import {NavLink} from "react-router-dom";
 import '@/shared/styles/index.css'
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+
 
 type Category = {
   id: number;
   name: string;
 };
-type Users = { name: string;};
+type Users = { name: string; role: string};
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -38,7 +40,9 @@ function NavBar() {
 
     fetchCategories();
   }, []);
-  useEffect(() => {
+
+  
+    useEffect(() => {
       const token = Cookies.get("access_token");
       if (token) {
         axiosInstance
@@ -52,47 +56,76 @@ function NavBar() {
     }, []);
       const handleLogout = () => {
     Cookies.remove("access_token");
-    Cookies.remove("refresh_token");
+    Cookies.remove('current_user');
     setUser(null);
-    window.location.reload();
   };
   return (
     <div className="w-full h-full relative">
-
       <div
         className="hidden md:flex items-center justify-between text-gray-500 text-xs h-6 border-b border-gray-200 px-4 mt-3">
         <span className="px-10">+84 123 456 789</span>
         <span className="px-4">Trang mua sắm trực tuyến uy tín hàng đầu</span>
-        {user ? (
-          <span className="flex items-center space-x-1 px-4">
-            <span>Xin chào, <strong>{user.name}</strong></span>
-            <span className="text-gray-500">|</span>
-            <a
-              onClick={handleLogout}
-              className="!text-gray-500 !no-underline hover:text-gray-700"
-            >
-              Đăng xuất
-              
-            </a>
-            
-          </span>
-        ) : (
-          <span className="flex items-center space-x-1 px-4">
-            <NavLink
-              to="/auth/login"
-              className="!text-gray-500 !no-underline hover:text-gray-700"
-            >
-              Đăng nhập
-            </NavLink>
-            <span className="text-gray-500">/</span>
-            <NavLink
-              to="/auth/register"
-              className="!text-gray-500 !no-underline hover:text-gray-700"
-            >
-              Đăng ký
-            </NavLink>
-          </span>
-        )}
+         {user ? (
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger asChild>
+                <div className="flex items-center space-x-1 px-4 whitespace-nowrap cursor-pointer text-[13.5px] text-gray-500 hover:text-gray-700">
+                  Xin chào, <strong>{user.name}</strong> <FaCaretDown />
+                </div>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Portal>
+                <DropdownMenu.Content
+                side="bottom"       
+                align="start"
+                className="absolute w-35 bg-white shadow-lg rounded-md p-2 z-[9999]"
+                sideOffset={4}
+                >
+                  <DropdownMenu.Group>
+                    {user.role === 'admin' && (
+                      <DropdownMenu.Item className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700">
+                        <NavLink
+                          to="/admin/dashboard"
+                          className="w-full text-left text-sm !text-gray-500 hover:text-gray-700 !no-underline"
+                        >
+                          Quản lý hệ thống
+                        </NavLink>
+                      </DropdownMenu.Item>
+                    )}
+                    <DropdownMenu.Item className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700 ">
+                      <NavLink
+                        to="/auth/userpage"
+                        className="w-full text-left text-sm !text-gray-500 hover:text-gray-700 !no-underline"
+                      >
+                        Trang cá nhân
+                      </NavLink>
+                    </DropdownMenu.Item>
+                  </DropdownMenu.Group>
+                  
+                  <DropdownMenu.Item
+                    className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700"
+                    onClick={handleLogout}
+                  >
+                    Đăng xuất
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Portal>
+            </DropdownMenu.Root>
+          ) : (
+            <span className="flex items-center space-x-1 px-4 whitespace-nowrap">
+              <NavLink
+                to="/auth/login"
+                className="!text-gray-500 !no-underline hover:text-gray-700"
+              >
+                Đăng nhập
+              </NavLink>
+              <span className="text-gray-500">/</span>
+              <NavLink
+                to="/auth/register"
+                className="!text-gray-500 !no-underline hover:text-gray-700"
+              >
+                Đăng ký
+              </NavLink>
+            </span>
+          )}
       </div>
 
       <header
@@ -101,19 +134,19 @@ function NavBar() {
           <img src={logo} alt="" className="w-30 h-18 hover:scale-105 transition-all"/>
         </NavLink>
         <ul className="hidden xl:flex items-center gap-12 font-semibold text-base mt-2">
-          <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">
+          <NavLink to={"/"} className="p-3 !font-extrabold hover:scale-105 text-bold transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">
             Trang chủ
           </NavLink>
           <li className="p-3 hover:scale-105 transition-all cursor-pointer group">
             <NavLink to={"/products"}
-                className="flex items-center gap-[2px] !text-black !no-underline group-hover:!text-[#F09728]">
+                className="flex items-center gap-[2px] !font-extrabold !text-black !no-underline group-hover:!text-[#F09728]">
               Sản phẩm
               <span>
                 <FaCaretDown className="transition-all duration-200 group-hover:rotate-180"/>
               </span>
             </NavLink>
             <div
-              className="absolute z-[9999] hidden group-hover:block w-[180px] rounded-md bg-white p-2 text-black shadow-lg">
+              className="absolute z-[9999]  hidden group-hover:block w-[180px] rounded-md bg-white p-2 text-black shadow-lg">
               {error && (
                 <p className="text-red-500 text-sm mb-2 px-2">{error}</p>
               )}
@@ -141,9 +174,9 @@ function NavBar() {
               )}
             </div>
           </li>
-          <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Bài viết</NavLink>
-          <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Liên hệ</NavLink>
-          <NavLink to={"/"} className="p-3 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Về chúng tôi</NavLink>
+          <NavLink to={"/"} className="p-3 !font-extrabold hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Bài viết</NavLink>
+          <NavLink to={"/"} className="p-3 !font-extrabold hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Liên hệ</NavLink>
+          <NavLink to={"/"} className="p-3 !font-extrabold hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Về chúng tôi</NavLink>
         </ul>
 
         <div className="relative hidden md:flex items-center justify-center gap-3">
@@ -165,23 +198,23 @@ function NavBar() {
         <div className={`absolute xl:hidden top-24 left-0 w-full bg-white flex flex-col items-center gap-6 font-semibold text-lg transform transition-transform
         ${isMenuOpen ? "opacity-100" : "opacity-0"}`} style={{transition: "transform 0.3s ease, opacity 0.3s ease"}}>
           <NavLink to={"/"}
-                className="list-none w-full text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Trang
+                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Trang
             chủ
           </NavLink>
           <NavLink to={"/products"}
-                className="list-none w-full text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Sản
+                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Sản
             phẩm
           </NavLink>
           <NavLink to={"/"}
-                className="list-none w-full text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Bài
+                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Bài
             viết
           </NavLink>
           <NavLink to={"/"}
-                className="list-none w-full text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Liên
+                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Liên
             hệ
           </NavLink>
           <NavLink to={"/"}
-                className="list-none w-full text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline ">Về
+                className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline ">Về
             chúng tôi
           </NavLink>
         </div>

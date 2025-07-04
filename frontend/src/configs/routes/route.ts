@@ -3,7 +3,7 @@ import {
 } from "react-router";
 
 import {CommonLayout} from "@/configs/layouts/CommonLayout.tsx";
-import {Home, SearchAndFilter, LoginPage, RegisterPage  } from "@/features/index.tsx";
+import {Home, SearchAndFilter, LoginPage, RegisterPage, UserPage  } from "@/features/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +20,7 @@ const router = createBrowserRouter([
         children: [
           { path: "login", Component: LoginPage },
           { path: "register", Component: RegisterPage },
+          { path: "userpage", Component: UserPage }
         ],
       },
       // Product Browsing Path

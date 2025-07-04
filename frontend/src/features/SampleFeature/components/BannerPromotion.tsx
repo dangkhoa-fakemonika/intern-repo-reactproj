@@ -1,6 +1,8 @@
 import promoPhone from '@/assets/images/phonepromotion.png';
 import {useEffect, useState, useMemo} from 'react';
 
+type TimeUnit = 'days' | 'hours' | 'minutes' | 'seconds';
+
 export default function BannerPromotion() {
 
   const deadline = useMemo(() => {
@@ -9,14 +11,12 @@ export default function BannerPromotion() {
     return d;
   }, []);
 
-
-  const [timeLeft, setTimeLeft] = useState<{ days: string, hours: string, minutes: string, seconds: string }>({
-    'days': '00',
-    'hours': '00',
-    'minutes': '00',
-    'seconds': '00',
+  const [timeLeft, setTimeLeft] = useState<Record<TimeUnit, string>>({
+    days: '00',
+    hours: '00',
+    minutes: '00',
+    seconds: '00',
   });
-
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -47,24 +47,24 @@ export default function BannerPromotion() {
     return () => clearInterval(timerId);
   }, [deadline]);
 
+  const units: TimeUnit[] = ['days', 'hours', 'minutes', 'seconds'];
+
   return (
     <div data-aos="zoom-in"
-         className="w-full bg-blue-50 rounded-lg overflow-hidden py-8 px-6 md:px-12 flex flex-col-reverse md:flex-row items-center justify-between gap-6 mb-30">
+         className="w-full bg-blue-50 rounded-lg  overflow-hidden py-8 px-6 md:px-12 flex flex-col-reverse md:flex-row items-center justify-center gap-6 mb-30">
 
-
-      <div className="flex-[2] text-center md:text-left">
-        <span className="inline-block bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+      <div className="flex-[2] flex flex-col items-center justify-center text-center">
+        <span className="inline-block bg-orange-500   text-white px-4 py-1 rounded-[20px] text-xl font-medium">
           Giảm giá!
         </span>
 
-        <h2 className="mt-4 text-4xl md:text-5xl font-bold text-gray-800">
+        <h2 className="mt-4 text-4xl md:text-5xl justify-center font-bold text-gray-800">
           Giảm giá sốc lên tới <span className="text-orange-500">20%</span>
         </h2>
-        <p className="mt-2 text-2xl md:text-3xl text-gray-700">Khám phá ngay!!!</p>
+        <p className="mt-2 text-2xl md:text-3xl items-center text-gray-700">Khám phá ngay!!!</p>
 
-
-        <div className="mt-8 mb-6 flex w-full justify-center gap-6">
-          {['days', 'hours', 'minutes', 'seconds'].map((unit, i) => (
+        <div className="mt-8 mb-6 flex justify-center w-full gap-6">
+          {units.map((unit, i) => (
             <div key={i} className="bg-white shadow rounded-lg px-4 py-3">
               <div className="text-lg font-bold text-gray-800">
                 {timeLeft[unit]}
@@ -84,7 +84,6 @@ export default function BannerPromotion() {
           Mua ngay
         </button>
       </div>
-
 
       <div className="flex-[1] flex justify-center md:justify-end ">
         <img

@@ -4,7 +4,7 @@ import {Outlet} from "react-router-dom";
 
 export function CommonLayout() {
   return (
-    <div className={"w-screen"}>
+    <div className={"w-full"}>
       <div className="flex flex-col min-h-screen">
         <div className="relative z-20">
           <NavBar/>

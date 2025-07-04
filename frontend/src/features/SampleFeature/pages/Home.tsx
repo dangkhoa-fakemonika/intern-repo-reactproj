@@ -19,8 +19,10 @@ export function Home() {
     });
     AOS.refresh();
    }, []); 
+
   return (
-    <div className="flex flex-col min-h-screen overflow-x-hidden">
+    <div className="w-full">
+    <div className="flex w-full flex-col min-h-screen overflow-x-hidden">
         <Banner/>
         <CategoryTrending/>
         <ProductViewed/>
@@ -29,6 +31,8 @@ export function Home() {
         <Blog/>
         <Policies/>
     </div>
+    </div>
+    
     
 
   )
