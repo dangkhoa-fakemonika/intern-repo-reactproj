@@ -21,8 +21,8 @@ export const schema = joi.object({
     "string.pattern.base": "Password must contain at least one letter and one digit",
     "any.required": "Password is required"
   }),
-  avatar: joi.string().uri().optional().messages({
-    "string.uri": "Avatar must be a valid URL"
+  avatar: joi.string().uri().messages({
+    "string.uri": "Avatar must be a valid URL",
   }),
   remember: joi.boolean()
 }).required();

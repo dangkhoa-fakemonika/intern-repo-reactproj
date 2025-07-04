@@ -11,6 +11,8 @@ import { axiosInstance, Categories} from "@/shared/services/services.ts";
 import {NavLink} from "react-router-dom";
 import '@/shared/styles/index.css'
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import {useSelector} from "react-redux";
+import type {RootState} from "@/shared/stores/store.ts"
 
 
 type Category = {
@@ -24,7 +26,6 @@ function NavBar() {
   const [isloading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [user ,setUser] = useState<Users | null>(null);
-
 
   const cartState = useSelector((state : RootState) => state.shoppingCart);
 
