@@ -1,11 +1,11 @@
 import {FormProvider, useForm, Controller} from "react-hook-form";
-// import {CheckBox} from "@/features/SearchAndFilter/common/components/CheckBox.tsx";
 import {memo, useEffect, useState} from "react";
 import type {ProductFilter} from "@/shared/types/product-filter.ts";
 import type {Category} from "@/shared/types/type.ts";
 import {Categories} from "@/shared/services/categories.ts";
 import {NumberTextField} from "@/features/SearchAndFilter/components/NumberTextField.tsx";
 import {Select} from "radix-ui";
+import {useFilterContext} from "@/features/SearchAndFilter/common/contexts/FilterContext.ts";
 
 interface FilterTableProps {
   className?: string,
@@ -13,9 +13,11 @@ interface FilterTableProps {
 }
 
 export const FilterTable = memo(function FilterTable(props: FilterTableProps) {
-  console.log("Filter renders");
   const [categories, setCategories] = useState<Category[]>([]);
-  const methods = useForm<ProductFilter>();
+  const filterContext = useFilterContext();
+  const methods = useForm<ProductFilter>({
+    defaultValues: filterContext
+  });
   const {
     register,
     subscribe,
@@ -23,7 +25,7 @@ export const FilterTable = memo(function FilterTable(props: FilterTableProps) {
     watch
   } = methods;
 
-  const searchTitle = watch('title');
+  const searchTitle = watch("title");
 
   useEffect(() => {
     // make sure to unsubscribe;
@@ -64,30 +66,39 @@ export const FilterTable = memo(function FilterTable(props: FilterTableProps) {
       <form
         className={"flex flex-col gap-2 text-lg " + (props.className ?? "")}
       >
-        <div className={"font-extrabold text-2xl hidden lg:flex"}>Bộ lọc</div>
-        <div className={"font-extrabold text-xl"}>Thông tin</div>
+        <div className={"font-extrabold text-2xl hidden lg:flex"}>Filters</div>
+        <div className={"font-extrabold text-xl"}>General</div>
         <div className={"flex flex-col border rounded py-4 px-4"}>
           <div className={"flex flex-col gap-2"}>
             <label className={"relative items-center my-2"}>
-              <div className={"absolute duration-300 transition-all z-10 " + ((searchTitle) ? "text-sm -my-3 mx-2 bg-white text-palette" : "my-1 mx-2")}>Tên sản phẩm</div>
+              <div
+                className={"absolute duration-300 transition-all z-10 " + ((searchTitle) ? "text-sm -my-3 mx-2 bg-white text-palette" : "my-1 mx-2")}>
+                Product Name
+              </div>
               <input className={"w-full outline-2 rounded focus:outline-palette px-2 py-1 text-lg relative"}
                      type={"text"} {...register('title')}/>
             </label>
-            <div>Loại</div>
             <Controller
               control={control}
               name={"categorySlug"}
               render={({field}) => (
                 <Select.Root onValueChange={field.onChange} value={field.value}>
-                  <Select.Trigger className={"z-40 bg-white text-black rounded !border-2 !border-gray-300 hover:!border-palette outline-none"}
-                                  onPointerDown={(e) => e.stopPropagation()}
+                  <Select.Trigger
+                    className={"relative z-40 py-1 px-2 bg-white text-black rounded border-2 border-gray-300 hover:border-palette focus:border-palette outline-none duration-300 transition-colors"}
+                    onPointerDown={(e) => e.stopPropagation()}
                   >
-                    <Select.Value placeholder={field.value} className={"text-black"}/>
-                    <Select.Icon/>
+                    <div
+                      className={"absolute duration-300 transition-all z-10 text-sm -my-4 mx-1 bg-white text-palette"}>
+                      Category
+                    </div>
+                    <div className={"flex flex-row justify-between"}>
+                      <Select.Value placeholder={"All"} className={"text-black"}/>
+                      <Select.Icon/>
+                    </div>
                   </Select.Trigger>
                   <Select.Portal>
                     <Select.Content className={"z-50 text-black bg-white"} position={"popper"}
-                      onPointerDown={(e) => e.stopPropagation()}
+                                    onPointerDown={(e) => e.stopPropagation()}
                     >
                       <Select.Item
                         value={" "}
@@ -112,10 +123,10 @@ export const FilterTable = memo(function FilterTable(props: FilterTableProps) {
           </div>
         </div>
         <div>
-          <div className={"font-extrabold text-xl py-2"}>Khoảng giá</div>
+          <div className={"font-extrabold text-xl py-2"}>Price Range</div>
           <div className={"flex flex-col border rounded py-2 px-4 gap-2"}>
-            <NumberTextField name={"Giá thấp nhất"} registerName={"price_min"}/>
-            <NumberTextField name={"Giá cao nhất"} registerName={"price_max"}/>
+            <NumberTextField name={"Min price"} registerName={"price_min"}/>
+            <NumberTextField name={"Max price"} registerName={"price_max"}/>
           </div>
         </div>
       </form>

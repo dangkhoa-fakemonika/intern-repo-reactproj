@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Fully implemented view of shopping process">
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/common/fake-data.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/CheckoutForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/CustomFormRadio.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/OrderedItems.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCart/SmartHintTextField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/common/delivery-info.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/common/delivery-info.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckoutForm.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/PriceChangeDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCart/PriceChangeDialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCartList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCart/ShoppingCartList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/SmartHintTextField.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/SearchAndFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/SearchAndFilter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/CheckoutForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/CheckoutForm.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +152,8 @@
       <workItem from="1751452172271" duration="694000" />
       <workItem from="1751453637698" duration="1987000" />
       <workItem from="1751510120500" duration="5991000" />
-      <workItem from="1751530572346" duration="17163000" />
+      <workItem from="1751530572346" duration="17605000" />
+      <workItem from="1751594759147" duration="2756000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -258,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751516001150</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fully implemented view of shopping process">
+      <option name="closed" value="true" />
+      <created>1751548392488</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1751548392488</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

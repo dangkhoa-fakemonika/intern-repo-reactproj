@@ -12,7 +12,7 @@ export const ShopProduct = memo(function ShopProduct(props : ShopProductProps){
   return (
     <div
       key={props.productData.id}
-      className={"flex flex-col rounded border border-2 lg:w-[360px] lg:h-[480px] w-1/2 h-[360px] lg:p-4 p-3"}
+      className={"flex flex-col rounded border border-2 lg:w-[360px] lg:h-[480px] w-[180px] h-[320px] lg:p-4 p-3"}
       onClick={() => navigate(`/products/${props.productData.id}`)}
     >
       <img
@@ -27,7 +27,7 @@ export const ShopProduct = memo(function ShopProduct(props : ShopProductProps){
         </div>
         <div className={"flex flex-row justify-between"}>
           <div className={"text-[#f09728]"}>{props.productData.price}</div>
-          <div className={"opacity-75"}>Còn hàng</div>
+          <div className={"opacity-75"}>Available</div>
         </div>
       </div>
     </div>

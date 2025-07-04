@@ -24,7 +24,7 @@ export function CheckoutForm() {
                     render={({field}) => (
                       <Select.Root onValueChange={field.onChange} value={field.value}>
                         <Select.Trigger
-                          className={"relative w-full justify-start outline-2 rounded focus:outline-palette px-2 py-2 my-2 text-lg"}>
+                          className={"relative w-full justify-start outline-2 rounded hover:outline-palette focus:outline-palette px-2 py-2 my-2 text-lg"}>
                           <div
                             className={"absolute text-sm -my-5 mx-1 bg-white " + ((errors.billingMethod) ? "text-red-600" : "text-palette")}>
                             {errors.billingMethod ? "Please select a billing method" : "Billing Method"}

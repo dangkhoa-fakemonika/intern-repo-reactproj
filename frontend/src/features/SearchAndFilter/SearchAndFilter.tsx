@@ -23,9 +23,9 @@ export function SearchAndFilter(){
         <div className={"w-full flex lg:flex-row flex-col"}>
           <FilterTable className={"w-1/5 mx-4 my-4 hidden lg:flex"} setFilterData={updateFilterData}/>
           <Popover.Root>
-            <Popover.Trigger className={"bg-white w-fit z-50 lg:hidden"} asChild={true}>
+            <Popover.Trigger className={"w-fit z-50 lg:hidden m-2"} asChild={true}>
               <div className={"bg-palette text-white p-2 rounded shadow"}>
-                Bộ lọc
+                Filters
               </div>
             </Popover.Trigger>
             <Popover.Portal>
