@@ -10,7 +10,7 @@ export function SearchAndFilter(){
   const params = useParams();
   const [filterData, setFilterData] = useState<ProductFilter>({
     title: params.title,
-    categoryId: parseInt(params.category_id ?? "-1")
+    categorySlug: params.category_slug ?? ""
   });
 
   const updateFilterData = useCallback((filter: ProductFilter) => {

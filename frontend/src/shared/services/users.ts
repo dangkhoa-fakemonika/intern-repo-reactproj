@@ -1,5 +1,5 @@
 import {axiosInstance} from "@/shared/services/axios/axios.ts";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 export class Users {
 
@@ -25,10 +25,11 @@ export class Users {
   }) {
     
     const res = await axiosInstance.post('/users/', payload);
-    const { access, refresh } = res.data as { access: string; refresh: string };
+    // const { access, refresh } = res.data as { access: string; refresh: string };
     
-    Cookies.set('access_token', access, { path: '/' });
-    Cookies.set('refresh_token', refresh, { path: '/' });
+    // Cookies.set('access_token', access, { path: '/' });
+    // Cookies.set('refresh_token', refresh, { path: '/' });
+
     return res.data;
   }
   public static async updateUser(id: number, payload: {

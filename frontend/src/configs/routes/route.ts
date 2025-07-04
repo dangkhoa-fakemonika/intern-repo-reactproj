@@ -1,10 +1,30 @@
 import {
-  createBrowserRouter
+  createBrowserRouter, redirect
 } from "react-router";
 
 import {CommonLayout} from "@/configs/layouts/CommonLayout.tsx";
 import {Home, SearchAndFilter, LoginPage, RegisterPage, UserPage, ShoppingCart} from "@/features/index.tsx";
 import {SingleProduct} from "@/features/SingleProduct/SingleProduct.tsx";
+import {InvalidRoute} from "@/components/ui/InvalidRoute.tsx";
+import {store} from "@/shared/stores/store.ts";
+import {waitForRehydration} from "@/shared/helpers/wait-for-rehydration.ts";
+
+const authLoader = async () => {
+  await waitForRehydration();
+  const userState = store.getState().user;
+  if (userState.access_token !== undefined) {
+    return redirect("/");
+  }
+  else return null;
+}
+
+const nonAuthLoader = async () => {
+  await waitForRehydration();
+  const userState = store.getState().user;
+  if (userState.access_token === undefined) return redirect("/auth/login");
+  else return null;
+}
+
 
 const router = createBrowserRouter([
   {
@@ -18,6 +38,7 @@ const router = createBrowserRouter([
       // Authentication path
       {
         path: "auth",
+        loader: authLoader,
         children: [
           { path: "login", Component: LoginPage },
           { path: "register", Component: RegisterPage },
@@ -33,7 +54,7 @@ const router = createBrowserRouter([
             Component: SearchAndFilter,
           },
           {
-            path: "category/:category_id",
+            path: "category/:category_slug",
             Component: SearchAndFilter,
           },
           {
@@ -48,11 +69,12 @@ const router = createBrowserRouter([
       },
       {
         path : "shopping-cart",
+        loader : nonAuthLoader,
         Component: ShoppingCart
       },
       {
         path: "*",
-        Component: Home
+        Component: InvalidRoute
       }
     ]
   }
