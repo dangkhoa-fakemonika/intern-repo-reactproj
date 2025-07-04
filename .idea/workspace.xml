@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Synchronize changes and apply consistency through branches" />
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Fix pnpm error for deployment" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -273,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751602086743</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fix pnpm error for deployment">
+      <option name="closed" value="true" />
+      <created>1751622676874</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1751622676874</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +317,7 @@
     <MESSAGE value="Fully implemented view of shopping process" />
     <MESSAGE value="Merging all current feature branches" />
     <MESSAGE value="Synchronize changes and apply consistency through branches" />
-    <option name="LAST_COMMIT_MESSAGE" value="Synchronize changes and apply consistency through branches" />
+    <MESSAGE value="Fix pnpm error for deployment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix pnpm error for deployment" />
   </component>
 </project>

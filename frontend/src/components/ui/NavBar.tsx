@@ -10,7 +10,7 @@ import LoadingComponent from "@/components/ui/LoadingComponent";
 import {axiosInstance, Categories} from "@/shared/services/services.ts";
 import {NavLink} from "react-router-dom";
 import '@/shared/styles/index.css'
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { DropdownMenu } from "radix-ui";
 import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "@/shared/stores/store.ts"
 import {updateAccessToken, updateRefreshToken, updateUser} from "@/shared/stores/states/user.ts";
