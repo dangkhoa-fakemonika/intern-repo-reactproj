@@ -60,6 +60,7 @@ function NavBar() {
       const handleLogout = () => {
     Cookies.remove("access_token");
     Cookies.remove('current_user');
+    window.location.href = '/';
     setUser(null);
   };
   return (
@@ -206,8 +207,8 @@ function NavBar() {
 
         <i className=" w-10 h-10 xl:hidden block text-5x1 cursor-pointer"
            onClick={() => setIsMenuOpen(!isMenuOpen)}><img src={icon_menu} alt=""/></i>
-        <div className={`absolute xl:hidden top-24 left-0 w-full bg-white flex flex-col items-center gap-6 font-semibold text-lg transform transition-transform
-        ${isMenuOpen ? "opacity-100" : "opacity-0"}`} style={{transition: "transform 0.3s ease, opacity 0.3s ease"}}>
+        <div className={`absolute xl:hidden top-20 left-0 w-full bg-white flex flex-col items-center gap-6 font-semibold text-lg transform transition-transform
+        ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} style={{transition: "transform 0.3s ease, opacity 0.3s ease"}}>
           <NavLink to={"/"}
                 className="list-none w-full !font-extrabold text-center p-4 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] !text-black !no-underline">Trang
             chủ
