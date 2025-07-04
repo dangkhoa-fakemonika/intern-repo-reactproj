@@ -1,4 +1,7 @@
 import axios from 'axios';
+import {store} from "@/shared/stores/store.ts";
+import {updateAccessToken} from "@/shared/stores/states/user.ts";
+import {waitForRehydration} from "@/shared/helpers/wait-for-rehydration.ts";
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -14,10 +17,11 @@ export const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.use((config) => {
-  const accessToken = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("access_token="))
-    ?.split("=")[1];
+  // const accessToken = document.cookie
+  //   .split("; ")
+  //   .find((row) => row.startsWith("access_token="))
+  //   ?.split("=")[1];
+  const accessToken = store.getState().user.access_token;
   if (accessToken) {
     if (!config.headers) {
       config.headers = {};
@@ -31,18 +35,17 @@ type RefreshTokenResponse = {
   access_token: string;
 };
 
-async function handleTokenRefresh(originalRequest: any) {
-  const refreshToken = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("refresh_token="))
-    ?.split("=")[1];
-  if (refreshToken) {
+async function handleTokenRefresh(originalRequest: Axios.AxiosXHRConfig<unknown> ) {
+  await waitForRehydration();
+  const refreshToken = store.getState().user.refresh_token;
+  if (refreshToken && originalRequest && originalRequest.headers) {
     try {
       const response = await axios.post<RefreshTokenResponse>(`${API_URL}auth-jwt/refresh/`, {
         refresh_token: refreshToken,
       });
       const { access_token } = response.data;
-      document.cookie = `access_token=${access_token}; path=/`;
+      // document.cookie = `access_token=${access_token}; path=/`;
+      store.dispatch(updateAccessToken(access_token));
       originalRequest.headers["Authorization"] = `Bearer ${access_token}`;
       return axiosInstance(originalRequest);
     } catch (refreshError) {

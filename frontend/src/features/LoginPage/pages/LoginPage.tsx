@@ -1,10 +1,13 @@
-import { useState } from "react";
+import {useState} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import bg_login from "@/assets/images/bg_login_register.png";
 import { axiosInstance } from "@/shared/services/axios/axios.ts";
 import { useForm } from "react-hook-form";
 import { type LoginForm, schema} from "@/features/LoginPage/pages/common/type";
 import {joiResolver} from '@hookform/resolvers/joi';
+import {useDispatch} from "react-redux";
+import type {AppDispatch} from "@/shared/stores/store.ts";
+import {updateAccessToken, updateRefreshToken, updateUser} from "@/shared/stores/states/user.ts";
 
 export function LoginPage() {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({
@@ -13,7 +16,8 @@ export function LoginPage() {
   });
 
   const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate();     
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const onSubmit = async (data: LoginForm) => {
     setError(null);
@@ -29,17 +33,17 @@ export function LoginPage() {
         password: data.password
       });
       const { access_token, refresh_token } = response.data;
-      document.cookie = `access_token=${access_token}; path=/`;
-      if (data.remember) {
-        const maxAge = 30 * 24 * 60 * 60;
-        document.cookie = `refresh_token=${refresh_token}; max-age=${maxAge}; path=/`;
-      }
 
+      dispatch(updateAccessToken(access_token));
+      if (data.remember) {
+        dispatch(updateRefreshToken({refresh_token : refresh_token, max_age : 30 * 24 * 60 * 60}));
+      }
       const profileRes = await axiosInstance.get("auth/profile", {
         headers: { Authorization: `Bearer ${access_token}` }
-      }); 
+      });
       const user = profileRes.data;
       document.cookie = `current_user=${JSON.stringify(user)}; path=/`;
+      dispatch(updateUser(user));
 
       navigate("/");
       window.location.reload();
