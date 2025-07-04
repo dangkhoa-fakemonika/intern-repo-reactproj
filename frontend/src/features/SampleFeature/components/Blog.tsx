@@ -10,7 +10,7 @@ const BlogSection: React.FC = () => {
   const today3 = '17-06-2025';
 
   return (
-    <section data-aos="zoom-in" className="px-6 py-8 mb-30">
+    <section data-aos="zoom-in" className="px-6 py-8 mb-30 w-full">
       <h4 className="text-2xl font-bold text-gray-800 mb-8">
         Blog và sự kiện
       </h4>

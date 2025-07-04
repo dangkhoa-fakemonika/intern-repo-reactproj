@@ -4,12 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Fully implemented view of shopping process">
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Merging all current feature branches">
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/images/avatar_mac_dinh.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/images/bg_login_register.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/LoginPage/pages/LoginPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/LoginPage/pages/common/type.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/LoginPage/pages/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/RegisterPage/pages/RegisterPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/RegisterPage/pages/common/type.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/RegisterPage/pages/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/SampleFeature/pages/Home.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/SampleFeature/pages/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/UserPage/Page/UserPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/UserPage/Page/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/shared/services/users.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/SearchAndFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/SearchAndFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/CheckoutForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/CheckoutForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Banner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/ProductCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/configs/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/configs/layouts/CommonLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/layouts/CommonLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/configs/routers/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SampleFeature/Home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/BannerPromotion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/BannerPromotion.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/Blog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/Blog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/CategoryTreding.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/CategoryTreding.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/Policies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/Policies.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/PopularProducts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/PopularProducts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/ProductViewed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SampleFeature/components/ProductViewed.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/axios/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/axios/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/services.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +68,7 @@
     </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="staging" />
+        <entry key="$PROJECT_DIR$" value="feature/shopping-cart-Khoa" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,22 +94,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/shopping-cart-Khoa&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/frontend/public/samples&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Merging staging",
+    "last_opened_file_path": "C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/frontend/public/samples",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\public\samples" />
@@ -293,6 +321,7 @@
     <MESSAGE value="Adding debounce and loading states  to cart interactions" />
     <MESSAGE value="Applies formatting and create schema object for delivery info" />
     <MESSAGE value="Fully implemented view of shopping process" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fully implemented view of shopping process" />
+    <MESSAGE value="Merging all current feature branches" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merging all current feature branches" />
   </component>
 </project>

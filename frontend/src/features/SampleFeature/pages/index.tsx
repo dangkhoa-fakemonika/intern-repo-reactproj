@@ -1,0 +1,1 @@
+export {Home} from "@/features/SampleFeature/pages/Home"

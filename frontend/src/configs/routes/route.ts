@@ -3,12 +3,7 @@ import {
 } from "react-router";
 
 import {CommonLayout} from "@/configs/layouts/CommonLayout.tsx";
-import {
-  Home,
-  SearchAndFilter,
-  SingleProduct,
-  ShoppingCart
-} from "@/features/index.tsx";
+import {Home, SearchAndFilter, LoginPage, RegisterPage, UserPage  } from "@/features/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +17,11 @@ const router = createBrowserRouter([
       // Authentication path
       {
         path: "auth",
-        // Component: AuthLayout,
-        // children: [
-        //   { path: "login", Component: Login },
-        //   { path: "register", Component: Register },
-        // ],
+        children: [
+          { path: "login", Component: LoginPage },
+          { path: "register", Component: RegisterPage },
+          { path: "userpage", Component: UserPage }
+        ],
       },
       // Product Browsing Path
       {
@@ -37,10 +32,6 @@ const router = createBrowserRouter([
             Component: SearchAndFilter,
           },
           {
-            path: ":id",
-            Component: SingleProduct
-          },
-          {
             path: "category/:category_id",
             Component: SearchAndFilter,
           },
@@ -49,10 +40,6 @@ const router = createBrowserRouter([
             Component: SearchAndFilter
           }
         ]
-      },
-      {
-        path: "shopping-cart",
-        Component: ShoppingCart
       },
       {
         path: "*",

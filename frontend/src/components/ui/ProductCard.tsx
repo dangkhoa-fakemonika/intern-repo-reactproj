@@ -58,7 +58,7 @@ function ProductCard({ limit }: ProductCardProps) {
               data-aos="zoom-in"
               data-aos-delay={idx * 100}
               key={product.id}
-              className="h-[450px] w-[275px] bg-white shadow-md rounded-md overflow-hidden  transform transition hover:scale-105 flex flex-col"
+              className="h-[450px] w-[220px] bg-white shadow-md rounded-md overflow-hidden  transform transition hover:scale-105 flex flex-col"
             >
                   <div className="w-full h-full overflow-hidden">
                     <img
