@@ -188,8 +188,7 @@ function NavBar() {
                       key={category.id}
                       className="p-2 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] break-words"
                     >
-                      <NavLink
-                        to={`/products/category/${category.id}`}
+                      <div
                         className="!text-black !no-underline break-words"
                         onClick={() => {
                           navigate(`/products/category/${category.slug}`);
@@ -197,7 +196,7 @@ function NavBar() {
                         }}
                       >
                         {category.name}
-                      </NavLink>
+                      </div>
                     </li>
                   ))}
                 </ul>
