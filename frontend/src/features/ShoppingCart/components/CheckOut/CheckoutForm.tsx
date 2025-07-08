@@ -1,5 +1,5 @@
 import {Controller, useFormContext} from "react-hook-form";
-import {SmartHintTextField} from "@/features/ShoppingCart/components/ShoppingCart/SmartHintTextField.tsx";
+import {SmartHintTextField} from "@/components/ui/SmartHintTextField.tsx";
 import {Select} from "radix-ui";
 import {CustomFormRadio} from "@/features/ShoppingCart/components/CheckOut/CustomFormRadio.tsx";
 import {deliveryProvider, priceProvider} from "@/features/ShoppingCart/common/fake-data.ts";

@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Synchronize changes and apply consistency through branches">
+      <change afterPath="$PROJECT_DIR$/frontend/src/features/AddProducts/ManageProducts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/ShoppingCart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/CheckoutForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/CheckOut/CheckoutForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/ShoppingCart/components/ShoppingCart/SmartHintTextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/SmartHintTextField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/types/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/types/product.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/types/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/types/type.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +76,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "staging",
+    "git-widget-placeholder": "feature/add-product-and-categories-Khoa",
     "last_opened_file_path": "C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/frontend/public/samples",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -87,11 +93,11 @@
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\public\samples" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\components\ui" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\configs\routes" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\configs\routes\loaders" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\ShoppingCart\components\ShoppingCart" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\ShoppingCart\components\CheckOut" />
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\SingleProduct" />
     </key>
   </component>
   <component name="RunManager">
