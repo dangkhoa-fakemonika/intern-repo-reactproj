@@ -1,4 +1,4 @@
-import {memo, useEffect, useState} from "react";
+import {memo, useEffect, useMemo, useState} from "react";
 import {Controller, FormProvider, useFieldArray, useForm} from "react-hook-form";
 import {SmartHintTextField} from "@/components/ui/SmartHintTextField.tsx";
 import {type Category, type Product, productSchema} from "@/shared/types/type.ts";
@@ -6,10 +6,14 @@ import {joiResolver} from "@hookform/resolvers/joi";
 import {Select} from "radix-ui";
 import {Categories} from "@/shared/services/categories.ts";
 import {Cross2Icon} from "@radix-ui/react-icons";
+import {isValidImageURL} from "@/shared/helpers/is-valid-url.ts";
+import {useThrottle} from "@/shared/hooks/useThrottle.ts";
 
-export const ManageProducts = memo(function ManageProducts(){
+export const AddProducts = memo(function AddProducts(){
   const [categories, setCategories] = useState<Category[]>([]);
   const [imageInput, setImageInput] = useState<string>("");
+  const [imageError, setImageError] = useState<string>("");
+  const imageInputThrottle = useThrottle(imageInput, 1000);
 
   useEffect(() => {
     let active = true;
@@ -29,16 +33,23 @@ export const ManageProducts = memo(function ManageProducts(){
 
   }, []);
 
+  useMemo(() => {
+    if (imageInputThrottle.length <= 0 || !isValidImageURL(imageInputThrottle)){
+      setImageError("Not a valid image URL");
+    }
+    else setImageError("");
+  }, [imageInputThrottle])
+
 
   const methods = useForm<Product>({
     resolver: joiResolver(productSchema)
   });
 
-
   const {
     control,
     watch,
-    formState : {errors}
+    formState : {errors},
+    handleSubmit
   } = methods;
 
   const watchImages = watch("images");
@@ -75,7 +86,7 @@ export const ManageProducts = memo(function ManageProducts(){
                           </Select.Trigger>
                           <Select.Portal>
                             <Select.Content
-                              className={"z-50 flex flex-row text-black bg-white flex flex-col *:py-2 *:px-2 shadow my-2 *:hover:bg-gray-200 *:duration-300 *:transition-colors *:cursor-pointer"}
+                              className={"z-50 flex flex-row text-black bg-white flex flex-col *:py-2 *:px-2 shadow my-2 *:hover:bg-gray-200 *:duration-300 *:transition-colors *:cursor-pointer SelectContent"}
                               position={"popper"}>
                               {
                                 categories.map((category) => (
@@ -93,9 +104,9 @@ export const ManageProducts = memo(function ManageProducts(){
           <div className={"w-full flex flex-row gap-2"}>
             <button
               type={"button"}
-              disabled={imageInput.length <= 0}
+              disabled={imageInputThrottle.length <= 0 || !isValidImageURL(imageInputThrottle)}
               onClick={() => {append(imageInput); setImageInput("");}}
-              className={"w-fit text-white bg-palette p-2 rounded hover:scale-105 duration-300 transition-transform"}
+              className={"w-fit text-white bg-palette disabled:bg-gray-300 p-2 rounded hover:scale-105 duration-300 transition-transform"}
             >
               <span className={"inline-block w-full flex-nowrap"}> Add Image </span>
             </button>
@@ -104,7 +115,7 @@ export const ManageProducts = memo(function ManageProducts(){
               <div
                 className={"absolute duration-300 transition-all z-10 "
                   + ((imageInput) ? "text-sm -my-3 mx-2 bg-white text-palette" : "mx-2 my-2.5 opacity-60")}>
-                Image URL
+                {imageError.length === 0 ? "Image URL" : imageError}
               </div>
 
               <input
@@ -134,7 +145,6 @@ export const ManageProducts = memo(function ManageProducts(){
                     alt={item.id}
                     className={"relative aspect-square w-[240px] rounded"}
                   />
-                  {/*<SmartHintTextField name={`Image URL ${index}`} registerName={`images.${index}`}/>*/}
                 </div>
               ))
             }

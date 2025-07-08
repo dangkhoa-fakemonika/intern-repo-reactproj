@@ -161,7 +161,7 @@ export const SingleProduct = memo(function SingleProduct() {
               </div>
             </div>
           </div>
-          <div className={"w-full lg:p-6 p-4"}>
+          <div className={"w-full lg:p-6 p-4 overflow-hidden"}>
             <div className={"text-2xl font-bold mb-4"}>
               Related Products
             </div>

@@ -1,9 +1,10 @@
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {convertToFilterQuery, type ProductFilter} from "@/shared/types/type.ts";
 import {FilterTable, ShopProductGrid} from "@/features/SearchAndFilter/components";
 import {Popover} from "radix-ui";
 import { FilterContext } from "@/features/SearchAndFilter/common/contexts/FilterContext";
 import {useParams} from "react-router-dom";
+import {useNavigate} from "react-router";
 
 
 export function SearchAndFilter(){
@@ -12,6 +13,12 @@ export function SearchAndFilter(){
     title: params.title,
     categorySlug: params.category_slug ?? ""
   });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/products");
+  }, []);
 
   const updateFilterData = useCallback((filter: ProductFilter) => {
     if (convertToFilterQuery(filter) !== convertToFilterQuery(filterData)) setFilterData(filter);

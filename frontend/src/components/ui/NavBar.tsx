@@ -16,7 +16,6 @@ import type {AppDispatch, RootState} from "@/shared/stores/store.ts"
 import {updateAccessToken, updateRefreshToken, updateUser} from "@/shared/stores/states/user.ts";
 import {useNavigate} from "react-router";
 
-
 type Category = {
   id: number,
   slug : string,
@@ -63,9 +62,7 @@ function NavBar() {
       axiosInstance
         .get<Users>("/auth/profile")
         .then(res => setUser(res.data))
-        .catch(err => {
-          console.error("Can't find user info ", err);
-        });
+        .catch(() => {});
     }
 
   }, [userState.access_token]);
@@ -188,8 +185,7 @@ function NavBar() {
                       key={category.id}
                       className="p-2 hover:scale-105 transition-all cursor-pointer hover:!text-[#F09728] break-words"
                     >
-                      <NavLink
-                        to={`/products/category/${category.id}`}
+                      <div
                         className="!text-black !no-underline break-words"
                         onClick={() => {
                           navigate(`/products/category/${category.slug}`);
@@ -197,7 +193,7 @@ function NavBar() {
                         }}
                       >
                         {category.name}
-                      </NavLink>
+                      </div>
                     </li>
                   ))}
                 </ul>

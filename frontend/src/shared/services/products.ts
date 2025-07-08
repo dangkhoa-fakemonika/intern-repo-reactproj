@@ -33,4 +33,12 @@ export class Products {
       return response.data as Product[];
     else return [] as Product[];
   }
+
+  public static async uploadProduct(product: Product) {
+    const response = await axiosInstance.post(`/products`, {
+      ...product
+    });
+
+    return (response.status === 200);
+  }
 }

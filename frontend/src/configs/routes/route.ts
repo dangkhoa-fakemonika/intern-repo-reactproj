@@ -3,7 +3,7 @@ import {
 } from "react-router";
 
 import {CommonLayout} from "@/configs/layouts/CommonLayout.tsx";
-import {Home, SearchAndFilter, LoginPage, RegisterPage, UserPage, ShoppingCart, ManageProducts} from "@/features/index.tsx";
+import {Home, SearchAndFilter, LoginPage, RegisterPage, UserPage, ShoppingCart, AddProducts} from "@/features/index.tsx";
 import {SingleProduct} from "@/features/SingleProduct/SingleProduct.tsx";
 import {InvalidRoute} from "@/components/ui/InvalidRoute.tsx";
 import {store} from "@/shared/stores/store.ts";
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        Component: ManageProducts
+        Component: AddProducts
       }
     ]
   }

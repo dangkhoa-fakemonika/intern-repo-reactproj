@@ -4,4 +4,4 @@ export {LoginPage} from "@/features/LoginPage/pages/LoginPage";
 export {RegisterPage} from "@/features/RegisterPage/pages/RegisterPage"
 export {UserPage} from "@/features/UserPage/Page/UserPage";
 export {ShoppingCart} from "@/features/ShoppingCart/ShoppingCart";
-export {ManageProducts} from "@/features/AddProducts/ManageProducts.tsx"
+export {AddProducts} from "@/features/AddProducts/AddProducts.tsx"

@@ -47,18 +47,15 @@ export const ShopProductGrid = memo(function ShopProductGrid(props: ShopItemGrid
     const loadingTagRect = loadingTag.current.getBoundingClientRect();
     const productGridRect = productGrid.current.getBoundingClientRect();
 
-    // console.log(loadingTagRect.bottom, productGridRect.bottom);
-
     if (loadingTagRect.bottom < productGridRect.bottom){
       // setLimit(prevState => {return Math.min(prevState + 8, products.length)});
       const newLimit =  Math.min(limitDebounce + 8, products.length);
-      console.log(newLimit);
       setLimit(newLimit);
     }
   }
 
   return (
-    <div className={"w-full h-screen flex-wrap flex flex-row place-items-center overflow-y-scroll content-around gap-2 lg:py-4 py-2 justify-center"} ref={productGrid} onScroll={onScrollRenderItems}>
+    <div className={"w-full h-screen flex-wrap flex flex-row place-items-center overflow-y-scroll content-around gap-2 lg:py-4 py-2 justify-center"} style={{scrollbarWidth : "none"}} ref={productGrid} onScroll={onScrollRenderItems}>
       {visibleProducts.length !== 0 ? visibleProducts.map((product) => <ShopProduct productData={product} key={product.id}/>) : <>No products available</>}
       <div className={"w-full text-center py-6"} ref={loadingTag} hidden={limitDebounce >= products.length}><LoadingComponent/></div>
     </div>
