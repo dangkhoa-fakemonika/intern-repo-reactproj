@@ -62,7 +62,7 @@ function NavBar() {
       axiosInstance
         .get<Users>("/auth/profile")
         .then(res => setUser(res.data))
-        .catch(() => {});
+        .catch((error) => {console.log(error)});
     }
 
   }, [userState.access_token]);
@@ -72,8 +72,6 @@ function NavBar() {
   };
 
   const handleLogout = () => {
-    // Cookies.remove("access_token");
-    // Cookies.remove('current_user');
     dispatch(updateAccessToken(undefined));
     dispatch(updateRefreshToken({refresh_token: undefined, max_age: undefined}));
     dispatch(updateUser(undefined));

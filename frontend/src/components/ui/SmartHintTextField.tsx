@@ -17,7 +17,7 @@ export function SmartHintTextField(props : SmartHintTextFieldProps) {
 
         {value ? errors[props.registerName] ? "" + (errors[props.registerName]?.message) : (props.name) : (props.name)}
       </div>
-      <input className={"w-full outline-2 rounded focus:outline-palette px-2 py-2 text-lg relative " + ((errors[props.registerName] ? "outline-red-400" : ""))}
+      <input className={"w-full outline rounded hover:outline-palette hover:shadow duration-500 transition-all focus:outline-palette px-2 py-2 text-lg relative " + ((errors[props.registerName] ? "outline-red-400" : ""))}
              type={"text"} {...register(props.registerName)}/>
     </label>
   )

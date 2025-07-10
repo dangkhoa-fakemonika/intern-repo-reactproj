@@ -6,6 +6,7 @@ import {Categories} from "@/shared/services/categories.ts";
 import {NumberTextField} from "@/features/SearchAndFilter/components/NumberTextField.tsx";
 import {Select} from "radix-ui";
 import {useFilterContext} from "@/features/SearchAndFilter/common/contexts/FilterContext.ts";
+import {SmartHintTextField} from "@/components/ui/SmartHintTextField.tsx";
 
 interface FilterTableProps {
   className?: string,
@@ -19,13 +20,9 @@ export const FilterTable = memo(function FilterTable(props: FilterTableProps) {
     defaultValues: filterContext
   });
   const {
-    register,
     subscribe,
     control,
-    watch
   } = methods;
-
-  const searchTitle = watch("title");
 
   useEffect(() => {
     // make sure to unsubscribe;
@@ -70,21 +67,14 @@ export const FilterTable = memo(function FilterTable(props: FilterTableProps) {
         <div className={"font-extrabold text-xl"}>General</div>
         <div className={"flex flex-col border rounded py-4 px-4"}>
           <div className={"flex flex-col gap-2"}>
-            <label className={"relative items-center my-2"}>
-              <div
-                className={"absolute duration-300 transition-all z-10 " + ((searchTitle) ? "text-sm -my-3 mx-2 bg-white text-palette" : "my-1 mx-2")}>
-                Product Name
-              </div>
-              <input className={"w-full outline-2 rounded focus:outline-palette px-2 py-1 text-lg relative"}
-                     type={"text"} {...register('title')}/>
-            </label>
+            <SmartHintTextField name={'Product Name'} registerName={'title'}/>
             <Controller
               control={control}
               name={"categorySlug"}
               render={({field}) => (
                 <Select.Root onValueChange={field.onChange} value={field.value}>
                   <Select.Trigger
-                    className={"relative z-40 py-1 px-2 bg-white text-black rounded border-2 border-gray-300 hover:border-palette focus:border-palette outline-none duration-300 transition-colors"}
+                    className={"relative z-40 py-2 px-2 bg-white text-black rounded border border-gray-300 hover:border-palette focus:border-palette outline-none duration-300 transition-colors"}
                     onPointerDown={(e) => e.stopPropagation()}
                   >
                     <div
@@ -97,7 +87,7 @@ export const FilterTable = memo(function FilterTable(props: FilterTableProps) {
                     </div>
                   </Select.Trigger>
                   <Select.Portal>
-                    <Select.Content className={"z-50 text-black bg-white"} position={"popper"}
+                    <Select.Content className={"z-50 text-black bg-white rounded SelectContent min-w-[var(--radix-popper-anchor-width)]"} position={"popper"}
                                     onPointerDown={(e) => e.stopPropagation()}
                     >
                       <Select.Item

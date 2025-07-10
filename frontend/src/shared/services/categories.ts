@@ -18,4 +18,12 @@ export class Categories{
     else return {} as Category;
   }
 
+  public static async addCategory(category : Category) : Promise<boolean> {
+    const response = await axiosInstance.post("categories", {
+      ...category
+    });
+
+    return (response.status === 201)
+  }
+
 }

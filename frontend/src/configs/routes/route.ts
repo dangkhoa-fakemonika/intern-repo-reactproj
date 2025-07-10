@@ -3,7 +3,7 @@ import {
 } from "react-router";
 
 import {CommonLayout} from "@/configs/layouts/CommonLayout.tsx";
-import {Home, SearchAndFilter, LoginPage, RegisterPage, UserPage, ShoppingCart, AddProducts} from "@/features/index.tsx";
+import {Home, SearchAndFilter, LoginPage, RegisterPage, UserPage, ShoppingCart, AddProductsAndCategories} from "@/features/index.tsx";
 import {SingleProduct} from "@/features/SingleProduct/SingleProduct.tsx";
 import {InvalidRoute} from "@/components/ui/InvalidRoute.tsx";
 import {store} from "@/shared/stores/store.ts";
@@ -22,6 +22,15 @@ const nonAuthLoader = async () => {
   await waitForRehydration();
   const userState = store.getState().user;
   if (userState.access_token === undefined) return redirect("/auth/login");
+  else return null;
+}
+
+const authAdminLoader = async () => {
+  await waitForRehydration();
+  const userState = store.getState().user;
+  if (userState.access_token !== undefined) {
+    return redirect("/");
+  }
   else return null;
 }
 
@@ -78,7 +87,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        Component: AddProducts
+        Component: AddProductsAndCategories
       }
     ]
   }

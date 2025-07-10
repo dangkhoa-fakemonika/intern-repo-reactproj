@@ -20,13 +20,17 @@ const productSchema = Joi.object({
     'any.required' : "Title is required",
     'string.empty' : "Title is required"
   }),
-  price : Joi.number().required().integer().positive().max(100).messages({
+  price : Joi.number().required().integer().positive().max(1000).messages({
     'any.required' : "Price is required",
     'number.base' : "Price should be an integer only",
     'number.positive' : "Price should be positive",
+    'number.max' : "Maximum price is 1000"
   }),
-  description : Joi.string().optional().max(250).messages({
-    'string.max' : "Description should not have more than 250 characters"
+  description : Joi.string().required().min(10).max(250).messages({
+    'any.required' : "Description should have at least 10 characters",
+    'string.empty' : "Description should have at least 10 characters",
+    'string.max' : "Description should not have more than 250 characters",
+    'string.min' : "Description should have at least 10 characters",
   }),
   categoryId : Joi.number().required().messages({
     'any.required' : "Please select a category"

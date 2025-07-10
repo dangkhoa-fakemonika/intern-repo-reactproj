@@ -1,10 +1,10 @@
 type Category = {
-  id : number,
+  id? : number,
   name : string,
-  slug : string,
+  slug? : string,
   image : string,
-  creationAt : string,
-  updatedAt : string
+  creationAt? : string,
+  updatedAt? : string
 }
 
 export {type Category};
