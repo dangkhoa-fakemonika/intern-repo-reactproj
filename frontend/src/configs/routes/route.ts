@@ -3,11 +3,12 @@ import {
 } from "react-router";
 
 import {CommonLayout} from "@/configs/layouts/CommonLayout.tsx";
-import {Home, SearchAndFilter, LoginPage, RegisterPage, UserPage, ShoppingCart} from "@/features/index.tsx";
+import {Home, SearchAndFilter, LoginPage, RegisterPage, UserPage, ShoppingCart, AdminPage} from "@/features/index.tsx";
 import {SingleProduct} from "@/features/SingleProduct/SingleProduct.tsx";
 import {InvalidRoute} from "@/components/ui/InvalidRoute.tsx";
 import {store} from "@/shared/stores/store.ts";
 import {waitForRehydration} from "@/shared/helpers/wait-for-rehydration.ts";
+import { AdminLayout } from "../layouts/AdminLayout";
 
 const authLoader = async () => {
   await waitForRehydration();
@@ -42,9 +43,14 @@ const router = createBrowserRouter([
         children: [
           { path: "login", Component: LoginPage },
           { path: "register", Component: RegisterPage },
-          { path: "userpage", Component: UserPage }
         ],
       },
+      {
+        path: "userpage",
+        Component: UserPage,
+        loader: nonAuthLoader
+      },
+      
       // Product Browsing Path
       {
         path: "products",
@@ -72,12 +78,21 @@ const router = createBrowserRouter([
         loader : nonAuthLoader,
         Component: ShoppingCart
       },
+      
       {
         path: "*",
         Component: InvalidRoute
       }
     ]
-  }
+  },
+  {
+        path: "/admin",
+        Component: AdminLayout,
+        loader: nonAuthLoader,
+        children: [
+          {path: "dashboard", Component: AdminPage},
+        ]
+      },
 ]);
 
 export default router;

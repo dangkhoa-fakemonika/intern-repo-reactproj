@@ -9,7 +9,9 @@ import {useDispatch} from "react-redux";
 import type {AppDispatch} from "@/shared/stores/store.ts";
 import {updateAccessToken, updateRefreshToken, updateUser} from "@/shared/stores/states/user.ts";
 
+
 export function LoginPage() {
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({
     resolver: joiResolver(schema),
     defaultValues: { email: "", password: "", remember: false }
@@ -21,7 +23,7 @@ export function LoginPage() {
 
   const onSubmit = async (data: LoginForm) => {
     setError(null);
-
+    setLoading(true);
     try {
       interface AuthResponse {
         access_token: string;
@@ -50,6 +52,8 @@ export function LoginPage() {
     } catch (err) {
       setError("Đăng nhập thất bại. Vui lòng kiểm tra lại email và mật khẩu.");
       console.error("Lỗi đăng nhập:", err);
+    }finally {
+    setLoading(false);
     }
   };
 
@@ -104,9 +108,10 @@ export function LoginPage() {
             </div>
             <button
               type="submit"
-              className=" py-2 text-base font-medium text-white !rounded-xl !bg-[#F09728] hover:bg-orange-600 transition"
+              disabled={loading}
+              className=" w-full py-2 text-white !bg-[#F09728] !rounded-xl hover:bg-orange-600 transition disabled:opacity-50"
             >
-              Login
+             {loading ? 'Processing...' : 'Login'}
             </button>
           </form>
         </div>

@@ -58,7 +58,7 @@ function NavBar() {
   useEffect(() => {
     // const token = Cookies.get("access_token");
     const token = userState.access_token;
-
+    console.log('Access Token:', token);
     if (token) {
       axiosInstance
         .get<Users>("/auth/profile")
@@ -67,7 +67,6 @@ function NavBar() {
           console.error("Can't find user info ", err);
         });
     }
-
   }, [userState.access_token]);
 
   const handleSearch = () => {
@@ -106,7 +105,7 @@ function NavBar() {
                 sideOffset={4}
                 >
                   <DropdownMenu.Group>
-                    {user.role === 'admin' && (
+                    {user.role === 'admin' || user.name === 'Khoi' && (
                       <DropdownMenu.Item className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700">
                         <NavLink
                           to="/admin/dashboard"
@@ -116,9 +115,9 @@ function NavBar() {
                         </NavLink>
                       </DropdownMenu.Item>
                     )}
-                    <DropdownMenu.Item className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700 ">
+                    <DropdownMenu.Item className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700">
                       <NavLink
-                        to="/auth/userpage"
+                        to="/userpage"
                         className="w-full text-left text-sm !text-gray-500 hover:text-gray-700 !no-underline"
                       >
                         Personal information
@@ -153,7 +152,6 @@ function NavBar() {
             </span>
         )}
       </div>
-
       <header
         className="flex items-center justify-between text-black py-1 px-6 md:px-10 bg-white border-b border-gray-200 ">
         <NavLink to={"/"}>
