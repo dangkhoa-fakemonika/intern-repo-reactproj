@@ -1,127 +1,157 @@
-import {isValidURL} from "@/shared/helpers/is-valid-url.ts";
 import {Cross2Icon} from "@radix-ui/react-icons";
-import {useFieldArray, useFormContext} from "react-hook-form";
-import {useEffect, useMemo, useRef, useState} from "react";
-import {useThrottle} from "@/shared/hooks/useThrottle.ts";
+// import {useFieldArray, useFormContext} from "react-hook-form";
+import {memo, useCallback, useEffect, useRef, useState} from "react";
+import LoadingComponent from "@/components/ui/LoadingComponent.tsx";
+import {Files} from "@/shared/services/services.ts";
 
-export function ImageInput(){
-  const {watch, control} = useFormContext();
-  const [imageInput, setImageInput] = useState<string>("");
-  const [imageError, setImageError] = useState<string>("");
-  const imageInputThrottle = useThrottle(imageInput, 1000);
+interface ImageInputProps {
+  submitImages : (func : () => Promise<string[]>) => void,
+}
 
-  // const [isDraggingFile, setDraggingFile] = useState<boolean>("");
+export const ImageInput = memo(function ImageInput(props : ImageInputProps){
+  console.log("rendering");
+  // const {control} = useFormContext();
+  const [loadingImages, setLoadingImages] = useState<boolean>(false);
+  const [isDraggingFile, setDraggingFile] = useState<boolean>(false);
 
   const imageInputRef = useRef<HTMLInputElement>(null);
-  // const [imageList, setImageList] = useState<string[]>([]);
+  const pageRef = useRef<HTMLElement>(null);
+  const [images, setImages] = useState<File[]>([]);
+  const imagesURL = useRef<string[]>([]);
 
-  const watchImages = watch("images");
-  const {fields, append, remove} = useFieldArray({
-    control,
-    name: "images",
-    rules: {
-      maxLength: 5
+  // const {append} = useFieldArray({
+  //   control,
+  //   name: "images",
+  //   rules: {
+  //     maxLength: 5
+  //   }
+  // });
+
+  const processInputFiles = (files : FileList) =>{
+    for (let i = 0; i < files.length ; i++){
+      const currentFile = files[i];
+
+      setImages(prevState => {
+        return [...prevState, currentFile].slice(0, 5);
+      });
     }
-  });
+  }
 
   useEffect(() => {
-    if (imageInputRef.current !== null && imageInputRef.current.files !== null) {
+    if (imageInputRef.current !== null) {
       imageInputRef.current.onchange = () => {
-        if (imageInputRef.current !== null && imageInputRef.current.files !== null)
-          for (let i = 0; i < Math.min(imageInputRef.current.files.length, 5) ; i++){
-            // tempImg.push(URL.createObjectURL(imageInputRef.current.files[i]))
-            append(URL.createObjectURL(imageInputRef.current.files[i]));
-
-          }
+        if (imageInputRef.current !== null && imageInputRef.current.files !== null){
+          processInputFiles(imageInputRef.current.files);
+        }
       }
     }
-  }, [])
 
-  useMemo(() => {
-    if (imageInputThrottle.length <= 0 || !isValidURL(imageInputThrottle)) {
-      setImageError("Not a valid image URL");
-    } else setImageError("");
-  }, [imageInputThrottle])
+    pageRef.current = document.body;
+    pageRef.current.ondragover = (event) => {event.preventDefault(); setDraggingFile(true)};
+    pageRef.current.ondragleave = (event) => {event.preventDefault(); setDraggingFile(false)};
+    // pageRef.current.ondragover = (event) => {event.preventDefault(); setDraggingFile(false)};
+    pageRef.current.ondrop = (event) => {event.preventDefault(); setDraggingFile(false)};
+
+  }, []);
 
 
+  const uploadImages = useCallback(async () => {
+    const resultURLs = [];
+    for (const img of images) {
+      const result = await Files.uploadFile(img);
+      resultURLs.push(result);
+    }
+    setImages([]);
+    return resultURLs;
+  }, [images]);
 
+  useEffect(() => {
+    props.submitImages(uploadImages);
+  }, [props, uploadImages]);
+
+  useEffect(() => {
+    async function load(){
+      imagesURL.current = images.map((img) => URL.createObjectURL(img));
+      await new Promise(() => setTimeout(() => {setLoadingImages(false)}, 1000));
+    }
+
+    load();
+    return () => setLoadingImages(true);
+
+  }, [images]);
 
   return (
-    <div>
-      <div className={"w-full flex flex-row gap-2"}>
-        <label className={"w-full shrink"}>
-          <div
-            className={"absolute duration-300 transition-all z-10 "
-              + ((imageInput) ? "text-sm -my-3 mx-2 bg-white text-palette" : "mx-2 my-2.5 opacity-60")}>
-            {imageError.length === 0 ? "Image URL" : imageError}
-          </div>
+    <div
+      className={"relative flex justify-center items-center"}
+      // onDragEnter={}
+      onDrop={(event) => {
+        event.preventDefault();
+        processInputFiles(event.dataTransfer.files);
+      }}
 
-          <input
-            className={"w-full outline rounded hover:outline-palette hover:shadow duration-500 focus:outline-palette px-2 py-2 text-lg relative"}
-            value={imageInput}
-            onChange={(event) => setImageInput(event.target.value)}
-            type={"text"}/>
-        </label>
 
-        {/*<button*/}
-        {/*  type={"button"}*/}
-        {/*  disabled={imageInputThrottle.length <= 0 || !isValidURL(imageInputThrottle)}*/}
-        {/*  onClick={() => {*/}
-        {/*    append(imageInput);*/}
-        {/*    setImageInput("");*/}
-        {/*  }}*/}
-        {/*  className={"w-fit text-white bg-palette disabled:bg-gray-300 p-2 rounded hover:scale-105 duration-300 transition-transform shrink-0"}*/}
-        {/*>*/}
-        {/*  <span className={"inline-block w-full flex-nowrap"}> Add Image </span>*/}
-        {/*</button>*/}
-
-        <label
-          className={"border-2 rounded text-palette flex flex-row items-center p-2  border-palette shrink-0 hover:scale-105 duration-300 transition-transform"}
-        >
-          <div>
-            Upload Image
-          </div>
-
-          <input
-            type={"file"}
-            hidden={true}
-            accept={"image/*"}
-            multiple={true}
-            ref={imageInputRef}
-          />
-
-        </label>
+    >
+      <div className={"absolute flex justify-center items-center rounded gap-2 my-2 p-2 w-full h-full duration-500 transition-all bg-palette text-white " + (isDraggingFile ? "opacity-100 z-30 " : "opacity-0 -z-30 ")}>
+        <div className={"w-fit"}>
+          Hello
+        </div>
       </div>
 
-
+      <div className={"absolute flex justify-center items-center rounded gap-2 my-2 p-2 bg-white w-full h-full " + (loadingImages ? "opacity-100 z-20 " : "opacity-0 -z-20 ")}>
+        <div className={"scale-200 w-fit"}>
+          <LoadingComponent/>
+        </div>
+      </div>
       <div
-        className={"w-full flex flex-row flex-wrap gap-2 my-2 p-2 border-dashed rounded border border-2 border-palette min-h-[240px]"}
-        onDragOver={() => console.log("something something")}
+        className={"relative w-full flex flex-row flex-wrap gap-2 my-2 p-2 border-dashed rounded border border-2 border-palette min-h-[240px]"}
       >
         {
-          fields.length != 0 ?
-          fields.map((item, index) => (
-            <div
-              key={item.id}
-              className={"relative flex flex-wrap flex-col items-end"}
-            >
+          imagesURL.current.length != 0 ?
+            imagesURL.current.map((item, index) => (
               <div
-                className={"absolute z-10 text-white bg-red-600 p-2 rounded-full m-2 hover:bg-red-700 duration-300 transition-colors"}
-                onClick={() => remove(index)}
+                key={item}
+                className={"relative flex flex-wrap flex-col items-end"}
               >
-                <Cross2Icon/>
-              </div>
+                <div
+                  className={"absolute z-10 text-white bg-red-600 p-2 rounded-full m-2 hover:bg-red-700 duration-300 transition-colors"}
+                  onClick={() => setImages(prevState => {
+                    return prevState.filter((_file, fileIndex) => fileIndex != index)
+                  })}
+                >
+                  <Cross2Icon/>
+                </div>
 
-              <img
-                src={watchImages[index]}
-                alt={item.id}
-                className={"relative aspect-square w-[240px] rounded"}
-              />
+                <img
+                  src={item}
+                  alt={item}
+                  className={"relative aspect-square w-[240px] rounded"}
+                />
+              </div>
+            )) :
+            <div className={"flex flex-col items-center gap-2 text-palette opacity-75 w-full text-center pt-8"}>
+              <div>Enter an image URL to add an image to your product</div>
             </div>
-          )) :
-            <div className={"text-palette opacity-75 w-full text-center py-8"}>Enter an image URL to add an image to your product</div>
         }
+
+
+        <div className={"flex flex-row justify-center items-center " + (images.length === 0 ? "w-full" : "w-fit h-[240px]") + (images.length >= 5 ? " hidden" : "")}>
+          <label
+            className={"w-fit h-fit text-center border-2 rounded text-palette flex flex-row items-center p-2  border-palette shrink-0 hover:scale-105 duration-300 transition-transform"}
+          >
+            <div>
+              Upload Image
+            </div>
+
+            <input
+              type={"file"}
+              hidden={true}
+              accept={"image/*"}
+              multiple={true}
+              ref={imageInputRef}
+            />
+          </label>
+        </div>
       </div>
     </div>
   )
-}
+});

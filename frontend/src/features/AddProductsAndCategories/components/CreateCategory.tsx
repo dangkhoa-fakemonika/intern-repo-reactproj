@@ -1,7 +1,12 @@
 import {useState} from "react";
 import {Categories} from "@/shared/services/services.ts";
+import {toast} from "sonner";
 
-export function CreateCategory(){
+interface CreateCategoryProps{
+  reloadCategory : () => Promise<void>
+}
+
+export function CreateCategory(props: CreateCategoryProps){
   const [categoryName, setCategoryName] = useState<string>("");
 
   return (
@@ -20,9 +25,20 @@ export function CreateCategory(){
         />
       </label>
       <button
+        disabled={categoryName.length === 0}
         type={"button"}
-        onClick={async () => {await Categories.addCategory({name: categoryName, image: "https://placeimg.com/640/480/any"})}}
-        className={"p-2 rounded bg-palette text-white hover:scale-105 duration-300 transition-all"}
+        onClick={async () => {
+
+          const result = await Categories.addCategory({name: categoryName, image: "https://placeimg.com/640/480/any"});
+          if (result) {
+            toast("Added new category successfully", {
+              description : categoryName
+            });
+
+            await props.reloadCategory();
+          }
+        }}
+        className={"p-2 rounded bg-palette text-white hover:scale-105 duration-300 transition-all disabled:bg-gray-500 disabled:hover:scale-100"}
       >
         Confirm
       </button>

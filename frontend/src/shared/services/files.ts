@@ -10,7 +10,12 @@ export class Files {
       }
     });
 
-    return response.status === 200;
+    if (response.status === 201){
+      return (response.data as {location : string}).location;
+    }
+    else {
+      return "";
+    }
   }
 
   public static async getFile(){

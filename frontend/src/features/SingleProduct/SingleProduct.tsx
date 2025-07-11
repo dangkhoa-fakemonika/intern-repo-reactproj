@@ -81,6 +81,7 @@ export const SingleProduct = memo(function SingleProduct() {
                   alt={img}
                   className={"w-full rounded first:relative absolute aria-selected:!opacity-100 opacity-0 transition-opacity aspect-square duration-300 z-10"}
                   aria-selected={img === selectedImage}
+                  crossOrigin={"anonymous"}
                 />
               ))
               }
@@ -155,6 +156,7 @@ export const SingleProduct = memo(function SingleProduct() {
                     aria-selected={img === selectedImage} key={img}
                     className={"w-[120px] border-4 rounded aria-selected:border-palette hover:border-gray-500 border-gray-200 transition-colors duration-300 aspect-square"}
                     onClick={() => setSelectedImage(img)}
+                    crossOrigin={"anonymous"}
                   >
                   </img>
                 ))}

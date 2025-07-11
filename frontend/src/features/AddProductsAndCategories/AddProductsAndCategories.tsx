@@ -1,17 +1,17 @@
-import {memo} from "react";
+import {memo, useRef} from "react";
 import {FormProvider, useForm} from "react-hook-form";
 import {SmartHintTextField} from "@/components/ui/SmartHintTextField.tsx";
 import {type Product, productSchema} from "@/shared/types/type.ts";
 import {joiResolver} from "@hookform/resolvers/joi";
-import { Products } from "@/shared/services/products";
+import {Products} from "@/shared/services/products";
 import {toast} from "sonner";
 import {CategoryInput, ImageInput} from "@/features/AddProductsAndCategories/components";
 
 export const AddProductsAndCategories = memo(function AddProductsAndCategories() {
   const methods = useForm<Product>({
     resolver: joiResolver(productSchema),
-    defaultValues : {
-      images : []
+    defaultValues: {
+      images: []
     }
   });
 
@@ -24,18 +24,16 @@ export const AddProductsAndCategories = memo(function AddProductsAndCategories()
   } = methods;
 
   const watchDescription = watch("description");
+  const submitImages = useRef<() => Promise<string[]>>(async () => []);
 
   const onSubmit = async (data: Product) => {
-    console.log(data);
+    data.images = await submitImages.current();
     const isSubmitSuccessful = await Products.uploadProduct(data);
     if (isSubmitSuccessful) {
       reset(); // Resets the form after a successful submission
-      // reset({
-      //   images : []
-      // });
       toast(
         "Upload Product Successful!", {
-          description : "Check the Shop"
+          description: "Check the Shop"
         }
       );
     }
@@ -68,7 +66,7 @@ export const AddProductsAndCategories = memo(function AddProductsAndCategories()
             </label>
 
             <CategoryInput/>
-            <ImageInput/>
+            <ImageInput submitImages={(func: () => Promise<string[]>) => {submitImages.current = func} }/>
 
             <div className={"w-full flex flex-row justify-end"}>
               <button

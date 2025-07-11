@@ -1,11 +1,12 @@
 import {useFormContext} from "react-hook-form";
+import {memo} from "react";
 
 interface SmartHintTextFieldProps {
   name : string,
   registerName : string
 }
 
-export function SmartHintTextField(props : SmartHintTextFieldProps) {
+export const SmartHintTextField = memo(function SmartHintTextField(props : SmartHintTextFieldProps) {
   const { register, watch , formState : {errors}} = useFormContext();
   const value = watch(props.registerName);
 
@@ -21,4 +22,4 @@ export function SmartHintTextField(props : SmartHintTextFieldProps) {
              type={"text"} {...register(props.registerName)}/>
     </label>
   )
-}
+});

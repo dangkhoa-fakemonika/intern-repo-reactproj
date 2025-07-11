@@ -8,6 +8,7 @@ import {CreateCategory} from "@/features/AddProductsAndCategories/components/Cre
 export function CategoryInput() {
   const {control, formState: {errors}} = useFormContext();
   const [categories, setCategories] = useState<Category[]>([]);
+  const [openDialog, onOpenDialogChange] = useState<boolean>(false);
 
   useEffect(() => {
     let active = true;
@@ -51,7 +52,7 @@ export function CategoryInput() {
                 position={"popper"}>
                 {
                   categories.map((category) => (
-                    <Select.Item value={category.id + ""}>
+                    <Select.Item value={category.id + ""} key={category.id}>
                       <Select.ItemText>{category.name}</Select.ItemText>
                     </Select.Item>
                   ))
@@ -61,7 +62,8 @@ export function CategoryInput() {
           </Select.Root>
         )}
       />
-      <Dialog.Root>
+
+      <Dialog.Root open={openDialog} onOpenChange={onOpenDialogChange}>
         <Dialog.Trigger className={"shrink-0 my-2 p-2 rounded bg-palette text-white"}>
           <div>
             Add Category
@@ -69,9 +71,14 @@ export function CategoryInput() {
         </Dialog.Trigger>
         <Dialog.Portal>
           <Dialog.Overlay className={"absolute w-screen h-screen bg-black opacity-40 z-40"}/>
-          <Dialog.Content className={"absolute flex flex-col -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 bg-white z-50 p-4 rounded"}>
+          <Dialog.Content className={"absolute flex flex-col gap-2 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 bg-white z-50 p-4 rounded"}>
             <Dialog.Title>Add New Category</Dialog.Title>
-            <CreateCategory/>
+            <CreateCategory reloadCategory={async () => {setCategories(await Categories.getCategories()); onOpenDialogChange(false);}}/>
+            <Dialog.Close>
+              <div className={"p-2 rounded bg-palette text-white hover:scale-105 duration-300 transition-all disabled:bg-gray-500 disabled:hover:scale-100"}>
+                Close
+              </div>
+            </Dialog.Close>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>
