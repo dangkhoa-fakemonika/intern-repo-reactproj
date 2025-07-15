@@ -4,14 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Implemented complete version of add product">
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Simple backend installment, not structurally correct yet">
+      <change afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/eslint.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/app.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/config/config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/controllers/client.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/controllers/product-controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/middlewares/error-handler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/models/category.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/models/product.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/routes/product-routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/intern-repo-reactproj.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/intern-repo-reactproj.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/ProductCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/AddProductsAndCategories/components/ImageInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/AddProductsAndCategories/components/ImageInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/axios/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/axios/axios.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/users.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,20 +85,24 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/add-product-and-categories-Khoa&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/frontend/public/samples&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/backend-setup&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.11.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.16.3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/backend/src/models&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\backend\src\models" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\public\samples" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -99,7 +113,7 @@
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\ShoppingCart\components\ShoppingCart" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.test">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/frontend/package.json" />
       <command value="run" />
@@ -110,8 +124,19 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.test" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -168,6 +193,9 @@
       <workItem from="1752199683067" duration="244000" />
       <workItem from="1752199943519" duration="23266000" />
       <workItem from="1752544467597" duration="3218000" />
+      <workItem from="1752552466404" duration="3243000" />
+      <workItem from="1752561098875" duration="4870000" />
+      <workItem from="1752566036524" duration="345000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -353,6 +381,7 @@
     <MESSAGE value="Configure adding product API and fix minor bugs" />
     <MESSAGE value="Fully install the create product API except image upload and category creation" />
     <MESSAGE value="Implemented complete version of add product" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented complete version of add product" />
+    <MESSAGE value="Simple backend installment, not structurally correct yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simple backend installment, not structurally correct yet" />
   </component>
 </project>
