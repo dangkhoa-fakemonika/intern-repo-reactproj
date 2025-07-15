@@ -15,7 +15,7 @@ type ProductCardProps = {
 
 function ProductCard({ limit }: ProductCardProps) {
   const [products, setProducts] = useState<Product[]>([]);
-  const [isloading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -29,11 +29,9 @@ function ProductCard({ limit }: ProductCardProps) {
           productList = productList.slice(0, limit);
         }
 
-        console.log(productList);
         setProducts(productList);
-      } catch (err) {
-        console.error(err);
-        setError('Không tải được danh mục');
+      } catch (_err) {
+        setError("Can't load products");
       } finally {
         setLoading(false);
       }
@@ -47,7 +45,7 @@ function ProductCard({ limit }: ProductCardProps) {
       {error && (
         <p className="text-red-500 text-sm mb-2 px-2">{error}</p>
       )}
-      {isloading ? (
+      {isLoading ? (
         <div className="flex justify-center py-4">
           <LoadingComponent />
         </div>

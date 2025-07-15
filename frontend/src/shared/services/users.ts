@@ -1,8 +1,8 @@
 import {axiosInstance} from "@/shared/services/axios/axios.ts";
+import type {User} from "@/shared/types/user.ts";
 // import Cookies from "js-cookie";
 
 export class Users {
-
    public static async getUser(id : number){
     const response = await axiosInstance.get(`users/${id}`);
     if (response.status === 200)
@@ -32,6 +32,7 @@ export class Users {
 
     return res.data;
   }
+
   public static async updateUser(id: number, payload: {
     newname?: string;
     newemail?: string;
@@ -40,6 +41,15 @@ export class Users {
   }) {
     const res = await axiosInstance.put(`users/${id}`, payload);
     return res.data;
+  }
+
+  public static async getProfile() : Promise<User | undefined>{
+     const response = await axiosInstance.get("auth/profile");
+
+     if (response.status === 200){
+       return response.data as User;
+     }
+     else return undefined;
   }
   
   

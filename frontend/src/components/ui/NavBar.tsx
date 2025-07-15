@@ -6,8 +6,7 @@ import icon_menu from "@/assets/images/icon_menu.png"
 import {FaCaretDown} from "react-icons/fa";
 import {useEffect, useState} from "react";
 import LoadingComponent from "@/components/ui/LoadingComponent";
-// import Cookies from "js-cookie";
-import {axiosInstance, Categories} from "@/shared/services/services.ts";
+import {Categories, Users} from "@/shared/services/services.ts";
 import {NavLink} from "react-router-dom";
 import '@/shared/styles/index.css'
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
@@ -15,21 +14,15 @@ import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "@/shared/stores/store.ts"
 import {updateAccessToken, updateRefreshToken, updateUser} from "@/shared/stores/states/user.ts";
 import {useNavigate} from "react-router";
+import type {User, Category} from "@/shared/types/type.ts";
 
-type Category = {
-  id: number,
-  slug : string,
-  name: string
-};
-
-type Users = { name: string; role: string };
 
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [user, setUser] = useState<Users | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [searchTitle, setSearchTitle] = useState<string>("");
 
   const cartState = useSelector((state: RootState) => state.shoppingCart);
@@ -41,7 +34,7 @@ function NavBar() {
     const fetchCategories = async () => {
       try {
         const data = await Categories.getCategories();
-        setCategories(data as Category[]);
+        setCategories(data);
       } catch (err) {
         console.error(err);
         setError("Can't load categories");
@@ -55,14 +48,11 @@ function NavBar() {
 
 
   useEffect(() => {
-    // const token = Cookies.get("access_token");
     const token = userState.access_token;
 
     if (token) {
-      axiosInstance
-        .get<Users>("/auth/profile")
-        .then(res => setUser(res.data))
-        .catch((error) => {console.log(error)});
+      Users.getProfile()
+        .then(res => res ? setUser(res) : null)
     }
 
   }, [userState.access_token]);

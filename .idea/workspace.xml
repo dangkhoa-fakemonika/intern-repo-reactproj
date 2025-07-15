@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Fully install the create product API except image upload and category creation">
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Implemented complete version of add product">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/SmartHintTextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/SmartHintTextField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/AddProductsAndCategories/AddProductsAndCategories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/AddProductsAndCategories/AddProductsAndCategories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/AddProductsAndCategories/components/CategoryInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/AddProductsAndCategories/components/CategoryInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/AddProductsAndCategories/components/CreateCategory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/AddProductsAndCategories/components/CreateCategory.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/ProductCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/features/AddProductsAndCategories/components/ImageInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/AddProductsAndCategories/components/ImageInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/files.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/files.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/services.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/axios/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/axios/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/users.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +166,8 @@
       <workItem from="1752135124636" duration="2995000" />
       <workItem from="1752138339252" duration="257000" />
       <workItem from="1752199683067" duration="244000" />
-      <workItem from="1752199943519" duration="18021000" />
+      <workItem from="1752199943519" duration="23266000" />
+      <workItem from="1752544467597" duration="3218000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -307,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752138116746</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Implemented complete version of add product">
+      <option name="closed" value="true" />
+      <created>1752219733904</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1752219733905</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,6 +352,7 @@
     <MESSAGE value="Configure adding API and fix minor bugs" />
     <MESSAGE value="Configure adding product API and fix minor bugs" />
     <MESSAGE value="Fully install the create product API except image upload and category creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fully install the create product API except image upload and category creation" />
+    <MESSAGE value="Implemented complete version of add product" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented complete version of add product" />
   </component>
 </project>

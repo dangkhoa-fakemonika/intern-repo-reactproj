@@ -1,4 +1,4 @@
-import {Cross2Icon} from "@radix-ui/react-icons";
+import {Cross2Icon, FileIcon} from "@radix-ui/react-icons";
 // import {useFieldArray, useFormContext} from "react-hook-form";
 import {memo, useCallback, useEffect, useRef, useState} from "react";
 import LoadingComponent from "@/components/ui/LoadingComponent.tsx";
@@ -9,8 +9,6 @@ interface ImageInputProps {
 }
 
 export const ImageInput = memo(function ImageInput(props : ImageInputProps){
-  console.log("rendering");
-  // const {control} = useFormContext();
   const [loadingImages, setLoadingImages] = useState<boolean>(false);
   const [isDraggingFile, setDraggingFile] = useState<boolean>(false);
 
@@ -18,14 +16,6 @@ export const ImageInput = memo(function ImageInput(props : ImageInputProps){
   const pageRef = useRef<HTMLElement>(null);
   const [images, setImages] = useState<File[]>([]);
   const imagesURL = useRef<string[]>([]);
-
-  // const {append} = useFieldArray({
-  //   control,
-  //   name: "images",
-  //   rules: {
-  //     maxLength: 5
-  //   }
-  // });
 
   const processInputFiles = (files : FileList) =>{
     for (let i = 0; i < files.length ; i++){
@@ -49,9 +39,7 @@ export const ImageInput = memo(function ImageInput(props : ImageInputProps){
     pageRef.current = document.body;
     pageRef.current.ondragover = (event) => {event.preventDefault(); setDraggingFile(true)};
     pageRef.current.ondragleave = (event) => {event.preventDefault(); setDraggingFile(false)};
-    // pageRef.current.ondragover = (event) => {event.preventDefault(); setDraggingFile(false)};
     pageRef.current.ondrop = (event) => {event.preventDefault(); setDraggingFile(false)};
-
   }, []);
 
 
@@ -92,8 +80,11 @@ export const ImageInput = memo(function ImageInput(props : ImageInputProps){
 
     >
       <div className={"absolute flex justify-center items-center rounded gap-2 my-2 p-2 w-full h-full duration-500 transition-all bg-palette text-white " + (isDraggingFile ? "opacity-100 z-30 " : "opacity-0 -z-30 ")}>
-        <div className={"w-fit"}>
-          Hello
+        <div className={"w-fit font-bold flex flex-row"}>
+          Drag your files here
+          <div>
+            <FileIcon/>
+          </div>
         </div>
       </div>
 

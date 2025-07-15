@@ -7,8 +7,6 @@ const API_URL = import.meta.env.VITE_APP_API_URL;
 
 export const axiosInstance = axios.create({
   baseURL : API_URL,
-  // baseURL : "https://api.escuelajs.co/api/v1"
-  // timeout : 1000,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
@@ -17,10 +15,6 @@ export const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.use((config) => {
-  // const accessToken = document.cookie
-  //   .split("; ")
-  //   .find((row) => row.startsWith("access_token="))
-  //   ?.split("=")[1];
   const accessToken = store.getState().user.access_token;
   if (accessToken) {
     if (!config.headers) {
@@ -31,25 +25,21 @@ axiosInstance.interceptors.request.use((config) => {
   return config;
 });
 
-type RefreshTokenResponse = {
-  access_token: string;
-};
 
 async function handleTokenRefresh(originalRequest: Axios.AxiosXHRConfig<unknown> ) {
   await waitForRehydration();
   const refreshToken = store.getState().user.refresh_token;
   if (refreshToken && originalRequest && originalRequest.headers) {
     try {
-      const response = await axios.post<RefreshTokenResponse>(`${API_URL}auth-jwt/refresh/`, {
-        refresh_token: refreshToken,
+      const response = await axiosInstance.post<{access_token : string}>("auth/refresh-token/", {
+        refreshToken: refreshToken,
       });
       const { access_token } = response.data;
-      // document.cookie = `access_token=${access_token}; path=/`;
       store.dispatch(updateAccessToken(access_token));
       originalRequest.headers["Authorization"] = `Bearer ${access_token}`;
       return axiosInstance(originalRequest);
     } catch (refreshError) {
-      console.error("Làm mới token thất bại:", refreshError);
+      console.error("Refresh token failed", refreshError);
       window.location.href = "/login";
       return Promise.reject(refreshError);
     }

@@ -3,37 +3,50 @@ import {
 } from "react-router";
 
 import {CommonLayout} from "@/configs/layouts/CommonLayout.tsx";
-import {Home, SearchAndFilter, LoginPage, RegisterPage, UserPage, ShoppingCart, AddProductsAndCategories} from "@/features/index.tsx";
+import {
+  Home,
+  SearchAndFilter,
+  LoginPage,
+  RegisterPage,
+  UserPage,
+  ShoppingCart,
+  AddProductsAndCategories
+} from "@/features/index.tsx";
 import {SingleProduct} from "@/features/SingleProduct/SingleProduct.tsx";
 import {InvalidRoute} from "@/components/ui/InvalidRoute.tsx";
-import {store} from "@/shared/stores/store.ts";
 import {waitForRehydration} from "@/shared/helpers/wait-for-rehydration.ts";
+import {Users} from "@/shared/services/services.ts";
 
 const authLoader = async () => {
   await waitForRehydration();
-  const userState = store.getState().user;
-  if (userState.access_token !== undefined) {
-    return redirect("/");
+  try {
+    const response = await Users.getProfile();
+    return response ? redirect("/") : null;
+  } catch {
+    return null;
   }
-  else return null;
+
 }
 
 const nonAuthLoader = async () => {
   await waitForRehydration();
-  const userState = store.getState().user;
-  if (userState.access_token === undefined) return redirect("/auth/login");
-  else return null;
+  try {
+    const response = await Users.getProfile();
+    return response ? null : redirect("/auth/login");
+  } catch {
+    return redirect("/auth/login");
+  }
 }
 
 const authAdminLoader = async () => {
   await waitForRehydration();
-  const userState = store.getState().user;
-  if (userState.access_token !== undefined) {
-    return redirect("/");
+  try {
+    const response = await Users.getProfile();
+    return response ? response.role === "admin" ? null : redirect("/") : redirect("/auth/login");
+  } catch {
+    return redirect("/auth/login");
   }
-  else return null;
 }
-
 
 const router = createBrowserRouter([
   {
@@ -49,9 +62,9 @@ const router = createBrowserRouter([
         path: "auth",
         loader: authLoader,
         children: [
-          { path: "login", Component: LoginPage },
-          { path: "register", Component: RegisterPage },
-          { path: "userpage", Component: UserPage }
+          {path: "login", Component: LoginPage},
+          {path: "register", Component: RegisterPage},
+          {path: "userpage", Component: UserPage}
         ],
       },
       // Product Browsing Path
@@ -77,8 +90,8 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path : "shopping-cart",
-        loader : nonAuthLoader,
+        path: "shopping-cart",
+        loader: nonAuthLoader,
         Component: ShoppingCart
       },
       {
@@ -86,9 +99,15 @@ const router = createBrowserRouter([
         Component: InvalidRoute
       },
       {
-        path: "/add-product",
-        Component: AddProductsAndCategories
-      }
+        path: "admin",
+        loader: authAdminLoader,
+        children: [
+          {
+            path: "add-product",
+            Component: AddProductsAndCategories
+          }
+        ]
+      },
     ]
   }
 ]);
