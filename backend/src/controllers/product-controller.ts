@@ -14,12 +14,14 @@ export const getAllProducts = async (req: Request, res: Response, _next: NextFun
   const price_max = req.params.price_max;
 
   try {
+    await client.connect();
     const cursor = products.find({});
     const result = [];
     for await (const doc of cursor)
       result.push(doc);
     res.status(200).send(result);
   } catch (error) {
+    console.log(error);
     res.status(404).send("Can't fetch data");
   } finally {
     await client.close();
