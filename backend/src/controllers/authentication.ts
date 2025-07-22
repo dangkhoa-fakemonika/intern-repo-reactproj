@@ -1,174 +1,97 @@
-import {client} from "@/controllers/client";
 import bcrypt from "bcrypt";
-import {userCredentialSchema} from "@/models/user-credentials";
 import {NextFunction, Request, Response} from "express";
-import jwt from "jsonwebtoken";
-import { jwtDecode } from "jwt-decode";
-
-const database = client.db("user");
-const user_credentials = database.collection("credentials");
+import {getAccessToken} from "@/shared/helpers/get-access-token";
+import {CREATED, BAD_REQUEST, NOT_ACCEPTABLE, SUCCESS, NOT_AUTHORIZED} from "@/shared/constants";
+import {JwtService} from "@/shared/services/jwt-service";
+import {
+  createCredential,
+  readCredential,
+  readUserInformation,
+  updateCredential
+} from "@/shared/services/database/users";
 
 export const register = async (req: Request, res: Response, _next: NextFunction) => {
   const email = req.body.email;
   const password = req.body.password;
 
 
-  const schemaResult = userCredentialSchema.validate({email: email, password: password});
-  if (schemaResult.error) {
-    return res.send(schemaResult.error);
-  }
-
-  const encryptedPassword = bcrypt.hashSync(password, 10);
-  const result = await user_credentials.insertOne({email: email, password: encryptedPassword});
-
-  return res.status(201).send(result);
+  const result = await createCredential(email, password);
+  if (result)
+    return res.status(CREATED).send(result);
+  else
+    return res.status(BAD_REQUEST).send("Can't create user");
 }
 
 export const login = async (req: Request, res: Response, _next: NextFunction) => {
-  const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
-  const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET;
-
-  if (accessTokenSecret === undefined || refreshTokenSecret === undefined) {
-    return res.status(410).send("Secret service not available");
-  }
-
   const email = req.body.email;
   const password = req.body.password;
 
-  const storedPassword = await user_credentials.findOne({email: email});
+  const storedPassword = await readCredential(email);
 
-  if (storedPassword === null) {
-    return res.status(401).send("No user exist");
+  if (storedPassword === undefined) {
+    return res.status(BAD_REQUEST).send("No user exists");
   }
 
   const match = bcrypt.compareSync(password, storedPassword.password);
   if (match) {
-    const accessToken = jwt.sign({
-    }, accessTokenSecret , {
-      header : {
-        alg : "HS256",
-        typ : "access"
-      },
-      expiresIn : "1d",
-      issuer: "my server",
-      audience: "you",
-      subject: email
-    });
-    const refreshToken = jwt.sign({
-    }, refreshTokenSecret, {
-      header : {
-        alg : "HS256",
-        typ : "refresh",
-      },
-      expiresIn : "30d",
-      issuer: "my server",
-      audience: "you",
-      subject: email
-    });
+    const accessToken = JwtService.signAccessToken(email);
+    const refreshToken = JwtService.signRefreshToken(email);
 
-    return res.status(201).send({
+    return res.status(CREATED).send({
       access_token: accessToken,
       refresh_token: refreshToken
     });
   } else {
-    return res.status(401).send("Incorrect credentials");
+    return res.status(NOT_ACCEPTABLE).send("Incorrect credentials");
   }
 }
 
 export const refreshTokenFunction = (req: Request, res: Response, _next: NextFunction) => {
-  const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
-  const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET;
+  const refreshTokenString = req.body.refresh_token;
+  const refreshToken = JwtService.verifyToken(refreshTokenString, "refresh");
 
-  if (accessTokenSecret === undefined || refreshTokenSecret === undefined) {
-    return res.status(410).send("Secret service not available");
+  if (refreshToken === undefined || refreshToken.sub === undefined){
+    return res.status(NOT_AUTHORIZED).send("Invalid token");
   }
 
-  const refreshToken = req.body.refresh_token;
+  const accessToken = JwtService.signAccessToken(refreshToken.sub);
 
-  if (!jwt.verify(refreshToken, refreshTokenSecret)){
-    return res.status(401).send("Invalid token");
-  }
-
-  const refreshData = jwtDecode(refreshToken);
-  const refreshHeader = jwtDecode(refreshToken, {header : true});
-
-  if (refreshHeader.typ !== "refresh") {
-    return res.status(401).send("Invalid token");
-  }
-
-  const accessToken = jwt.sign({
-  }, accessTokenSecret, {
-    header : {
-      alg : "HS256",
-      typ : "access"
-    },
-    expiresIn : "1d",
-    issuer: "my server",
-    audience: "you",
-    subject: refreshData.sub,
-  });
-
-  return res.status(201).send({
+  return res.status(CREATED).send({
     access_token: accessToken,
-    refresh_token: refreshToken
+    refresh_token: refreshTokenString
   });
 
 }
 
 export const changePassword = async (req: Request, res: Response, _next: NextFunction) => {
-  const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
-  const refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET;
+  const accessTokenString = getAccessToken(req.headers.authorization);
+  const accessToken = JwtService.verifyToken(accessTokenString, "access");
 
-  if (accessTokenSecret === undefined || refreshTokenSecret === undefined) {
-    return res.status(410).send("Secret service not available");
-  }
-
-  const authorizationHeader = req.headers.authorization;
-
-  if (authorizationHeader === undefined){
-    return res.status(401).send("No authorization");
-  }
-
-  const accessTokenHeader = authorizationHeader.match(/^Bearer (\S*\.\S*\.\S*)$/);
-  if (accessTokenHeader === null){
-    return res.status(401).send("No access token found");
-  }
-  const accessToken = accessTokenHeader[0];
-
-
-  if (!jwt.verify(accessToken, accessTokenSecret)){
-    return res.status(401).send("Invalid access token");
-  }
-
-  const accessData = jwtDecode(accessToken);
-  const accessHeader = jwtDecode(accessToken, {header : true});
-
-  if (accessHeader.typ !== "access"){
-    return res.status(401).send("Invalid access token");
+  if (accessToken === undefined || accessToken.sub === undefined){
+    return res.status(NOT_AUTHORIZED).send("Invalid access token");
   }
 
   const newPassword = req.body.password;
+  const result = await updateCredential(accessToken.sub, newPassword);
 
-  const userCred = await user_credentials.findOne({user: accessData.sub});
-  if (userCred === null){
-    return res.status(403).send("No user exists");
-  }
-
-  const match = bcrypt.compareSync(newPassword, userCred.password);
-  if (match){
-    return res.status(405).send("The password is the same");
-  }
-
-  const schemaResult = userCredentialSchema.validate({username : userCred.username, password: newPassword});
-  if (schemaResult.error){
-    return res.status(403).send("Password invalid");
-  }
-
-  await user_credentials.updateOne({user: userCred.username}, {password: newPassword});
-  return res.status(201).send("Password changed successfully");
+  if (result)
+    return res.status(CREATED).send("Password changed successfully");
+  else
+    return res.status(NOT_ACCEPTABLE).send("Password refresh failed");
 
 }
 
-export const getUserData = (req: Request, res: Response, _next: NextFunction) => {
-  res.status(200).send("hello");
+export const getUserData = async (req: Request, res: Response, _next: NextFunction) => {
+  const accessTokenString = getAccessToken(req.headers.authorization);
+  const accessToken = JwtService.verifyToken(accessTokenString, "access");
+
+  if (accessToken === undefined || accessToken.sub === undefined){
+    return res.status(NOT_AUTHORIZED).send("Invalid access token");
+  }
+
+  const result = await readUserInformation(accessToken.sub);
+  if (result) {
+    return res.status(SUCCESS).send(result);
+  }
+  else return res.status(BAD_REQUEST).send("No user available");
 }
