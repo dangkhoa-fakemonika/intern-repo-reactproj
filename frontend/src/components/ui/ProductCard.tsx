@@ -28,8 +28,6 @@ function ProductCard({ limit }: ProductCardProps) {
         if (limit && limit > 0) {
           productList = productList.slice(0, limit);
         }
-
-        console.log(productList);
         setProducts(productList);
       } catch (err) {
         console.error(err);

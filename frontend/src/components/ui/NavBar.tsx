@@ -26,6 +26,7 @@ type Category = {
 type Users = { name: string; role: string };
 
 function NavBar() {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setLoading] = useState(true);
@@ -72,6 +73,26 @@ function NavBar() {
   const handleSearch = () => {
     navigate(`products/title/${searchTitle}`);
   };
+  useEffect(() => {
+    const token = userState.access_token;
+    if(token){
+      axiosInstance
+        .get<Users>("/auth/profile")
+        .then(res => setUser(res.data))
+        .catch(err => {
+          const status = err.response?.status;
+          if(status === 400 || status === 401){
+            dispatch(updateAccessToken(undefined));
+            dispatch(updateRefreshToken({refresh_token: undefined, max_age: undefined}));
+            dispatch(updateUser(undefined));
+            navigate("/auth/login", {replace:true});
+            alert("Phiên đăng nhập không còn hợp lệ, vui lòng đăng nhập lại.");
+          }else{
+            console.error("Lỗi không lấy được thông tin người dùng", err);
+          }
+        });
+    }
+  }, [dispatch, navigate, userState.access_token]);
 
   const handleLogout = () => {
     // Cookies.remove("access_token");
