@@ -1,17 +1,23 @@
-import type {Category} from "./category";
+// import type {Category} from "./category";
 // import Joi from "joi";
 
-type Product = {
+export type Product = {
   id : number,
   title : string,
-  slug : string,
   price : number,
   description : string,
-  category : Category,
+  categoryId : number
   images: string[],
   creationAt : string,
   updatedAt : string,
-  categoryId? : number
+}
+
+export type ProductFilters = {
+  title? : string,
+  price? : number,
+  price_max? : number,
+  price_min? : number,
+
 }
 
 
@@ -40,5 +46,3 @@ type Product = {
 // })
 //
 // export {type Product, productSchema};
-
-export {type Product};

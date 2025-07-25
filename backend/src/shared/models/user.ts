@@ -23,7 +23,7 @@ export const userCredentialSchema = joi.object({
 }).required();
 
 export const userSchema = joi.object({
-  role: joi.string().valid("customer", "admin").required(),
-  name: joi.string().max(250).min(0).required(),
-
-})
+  name: joi.string().max(100).required(),
+  description: joi.string().max(250).min(0).required(),
+  email : joi.required(),
+});

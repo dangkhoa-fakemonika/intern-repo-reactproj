@@ -1,23 +1,22 @@
 import {Request, Response, NextFunction} from 'express';
 import {client} from "@/shared/services/database/client";
+import {readProducts} from "@/shared/services/database/products";
 
 const database = client.db("shop");
 const products = database.collection("products");
 
 export const getAllProducts = async (req: Request, res: Response, _next: NextFunction) => {
-  const title = req.params.title;
-  const categoryId = req.params.categoryid;
-  const offset = req.params.offset;
-  const limit = req.params.limit;
-  const price = req.params.price;
-  const price_min = req.params.price_min;
-  const price_max = req.params.price_max;
+  const title = req.query.title as string;
+  // const categoryId = req.params.categoryId;
+  // const offset = req.params.offset;
+  // const limit = req.params.limit;
+  // const price = req.params.price;
+  // const price_min = req.params.price_min;
+  // const price_max = req.params.price_max;
+  console.log(title);
 
   try {
-    const cursor = products.find({});
-    const result = [];
-    for await (const doc of cursor)
-      result.push(doc);
+    const result = await readProducts({title : title});
     res.status(200).send(result);
   } catch (error) {
     console.log(error);

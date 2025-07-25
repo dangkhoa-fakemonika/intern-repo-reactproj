@@ -26,12 +26,12 @@ export const createCredential = async (email: string, password: string) => {
 }
 
 export const updateCredential = async (email: string, password: string) => {
-  const userCred = await users.findOne({user: email});
+  const userCred = await users.findOne({email: email});
   if (userCred === null) {
     return undefined;
   }
 
-  const schemaResult = userCredentialSchema.validate({username: userCred.username, password: password});
+  const schemaResult = userCredentialSchema.validate({email: userCred.email, password: password});
   if (schemaResult.error) {
     return undefined;
   }
@@ -43,11 +43,11 @@ export const updateCredential = async (email: string, password: string) => {
 
 
   const encryptedPassword = bcrypt.hashSync(password, 10);
-  return await users.updateOne({user: userCred.username}, {password: encryptedPassword});
+  return await users.updateOne({email: userCred.email}, {$set : {password: encryptedPassword}});
 }
 
 export const deleteUser = async (email: string) => {
-  return await users.deleteOne({user: email});
+  return await users.deleteOne({email: email});
 }
 
 export const readUserInformation = async (email: string) => {
@@ -63,7 +63,7 @@ export const updateUserInformation = async (user: User) => {
     return undefined;
   }
 
-  const result = await users.updateOne({email: user.email}, {user});
+  const result = await users.updateOne({email: user.email}, {$set : user});
   if (result) return result;
   else return undefined;
 }

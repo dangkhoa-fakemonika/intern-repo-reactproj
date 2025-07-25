@@ -7,7 +7,7 @@ import {
   createCredential,
   readCredential,
   readUserInformation,
-  updateCredential
+  updateCredential, updateUserInformation
 } from "@/shared/services/database/users";
 
 export const register = async (req: Request, res: Response, _next: NextFunction) => {
@@ -94,4 +94,25 @@ export const getUserData = async (req: Request, res: Response, _next: NextFuncti
     return res.status(SUCCESS).send(result);
   }
   else return res.status(BAD_REQUEST).send("No user available");
+}
+
+export const updateUserData = async (req: Request, res: Response, _next: NextFunction) => {
+  const accessTokenString = getAccessToken(req.headers.authorization);
+  const accessToken = JwtService.verifyToken(accessTokenString, "access");
+
+  if (accessToken === undefined || accessToken.sub === undefined){
+    return res.status(NOT_AUTHORIZED).send("Invalid access token");
+  }
+
+  const body = req.body;
+  const result = await updateUserInformation({email: accessToken.sub, ...body});
+
+  if (result) {
+    res.status(SUCCESS).send(result);
+  }
+  else {
+    res.status(BAD_REQUEST).send("Change profile failed");
+  }
+
+
 }

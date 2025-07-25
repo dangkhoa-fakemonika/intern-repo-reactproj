@@ -5,25 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Complete flow for authentication and database on serverside (as well as refactoring services)">
-      <change afterPath="$PROJECT_DIR$/backend/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/middlewares/authentication.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/shared/constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/shared/helpers/get-access-token.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/shared/services/database/categories.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/shared/services/database/products.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/shared/services/database/users.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/shared/services/jwt-service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/controllers/authentication.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/controllers/authentication.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/controllers/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/client.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/controllers/product-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/controllers/product-controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/models/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/category.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/models/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/models/user-credentials.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/routes/authentication-router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routes/authentication-router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/shared/models/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/product.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/shared/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/shared/services/database/products.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/products.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/shared/services/database/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/users.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,33 +72,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP Request.rest-api | #1.executor": "Run",
-    "HTTP Request.rest-api | #2.executor": "Run",
-    "HTTP Request.rest-api_1 | #1.executor": "Run",
-    "HTTP Request.rest-api_1 | Login failed.executor": "Run",
-    "HTTP Request.rest-api_1 | Login success.executor": "Run",
-    "HTTP Request.rest-api_1 | With authorization.executor": "Run",
-    "HTTP Request.rest-api_1 | Without authorization.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/backend-setup",
-    "javascript.nodejs.core.library.configured.version": "22.11.0",
-    "javascript.nodejs.core.library.typings.version": "22.16.3",
-    "last_opened_file_path": "C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/backend/src/models",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "npm.test.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.rest-api | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api | #2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Change password.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Change profile.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Get all products.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Login failed.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Login success.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | With authorization.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Without authorization.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/backend-setup&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.11.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.16.3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/backend/src/models&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\backend\src\models" />
@@ -123,29 +115,36 @@
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\components\ui" />
     </key>
   </component>
-  <component name="RunManager" selected="HTTP Request.rest-api_1 | Without authorization">
-    <configuration name="rest-api_1 | Login failed" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Login failed" index="2" runType="Run single request">
+  <component name="RunManager" selected="HTTP Request.rest-api_1 | Get all products">
+    <configuration name="rest-api_1 | Change password" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Change password" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api_1 | Login success" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Login success" runType="Run single request">
+    <configuration name="rest-api_1 | Change profile" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Change profile" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api_1 | With authorization" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="With authorization" index="2" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="rest-api_1 | Without authorization" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Without authorization" runType="Run single request">
+    <configuration name="rest-api_1 | Get all products" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Get all products" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="rest-api_1 | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.rest-api_1 | Without authorization" />
-        <item itemvalue="HTTP Request.rest-api_1 | With authorization" />
-        <item itemvalue="HTTP Request.rest-api_1 | Login success" />
-        <item itemvalue="HTTP Request.rest-api_1 | Login failed" />
+        <item itemvalue="HTTP Request.rest-api_1 | Get all products" />
+        <item itemvalue="npm.test" />
+        <item itemvalue="HTTP Request.rest-api_1 | Change profile" />
         <item itemvalue="HTTP Request.rest-api_1 | #1" />
+        <item itemvalue="HTTP Request.rest-api_1 | Change password" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +209,9 @@
       <workItem from="1752740327540" duration="5303000" />
       <workItem from="1752803250687" duration="12072000" />
       <workItem from="1752818936347" duration="7091000" />
-      <workItem from="1753149515858" duration="10801000" />
+      <workItem from="1753149515858" duration="10928000" />
+      <workItem from="1753166312435" duration="8578000" />
+      <workItem from="1753408287517" duration="2171000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -372,7 +373,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752815383799</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Complete flow for authentication and database on serverside (as well as refactoring services)">
+      <option name="closed" value="true" />
+      <created>1753160493944</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1753160493944</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
