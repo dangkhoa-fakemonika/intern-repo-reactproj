@@ -57,7 +57,7 @@ export function AnalyticsPage() {
     initialPaymentMethodShare.map(item => ({ ...item, active: true }))
   );
   
-  const handleLegendClick = (payload: any) => {
+  const handleLegendClick = (payload: {value : string}) => {
     const name = payload.value as string;
     setMethods(ms =>
       ms.map(m => m.name === name ? { ...m, active: !m.active } : m)

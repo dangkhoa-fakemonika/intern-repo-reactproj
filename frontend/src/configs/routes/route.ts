@@ -9,8 +9,7 @@ import {
   LoginPage,
   RegisterPage,
   UserPage,
-  ShoppingCart,
-  AddProductsAndCategories
+  ShoppingCart
 } from "@/features/index.tsx";
 import {SingleProduct} from "@/features/SingleProduct/SingleProduct.tsx";
 import {InvalidRoute} from "@/components/ui/InvalidRoute.tsx";

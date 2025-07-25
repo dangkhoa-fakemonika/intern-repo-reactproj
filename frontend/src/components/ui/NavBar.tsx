@@ -6,7 +6,7 @@ import icon_menu from "@/assets/images/icon_menu.png"
 import {FaCaretDown} from "react-icons/fa";
 import {useEffect, useState} from "react";
 import LoadingComponent from "@/components/ui/LoadingComponent";
-import {Categories, Users} from "@/shared/services/services.ts";
+import {axiosInstance, Categories, Users} from "@/shared/services/services.ts";
 import {NavLink} from "react-router-dom";
 import '@/shared/styles/index.css'
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
@@ -64,7 +64,7 @@ function NavBar() {
     const token = userState.access_token;
     if(token){
       axiosInstance
-        .get<Users>("/auth/profile")
+        .get<User>("/auth/profile")
         .then(res => setUser(res.data))
         .catch(err => {
           const status = err.response?.status;

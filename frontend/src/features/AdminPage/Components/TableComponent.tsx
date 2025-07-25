@@ -7,6 +7,7 @@ import {
   getFilteredRowModel,
   flexRender,
   type VisibilityState,
+  type SortingState
 } from '@tanstack/react-table';
 import { type ProductFilter } from '@/shared/types/type';
 import icon_next from '@/assets/images/icon_next.png';
@@ -44,7 +45,7 @@ export function TableComponent<T>({
   fileName,
   onExport,
 }: TableComponentProps<T>) {
-  const [sorting, setSorting] = useState<any>([]);
+  const [sorting, setSorting] = useState<SortingState>([]);
   const [filtering, setFiltering] = useState('');
   const [pageSize, setPageSize] = useState(defaultPageSize);
   const [pageIndex, setPageIndex] = useState(0);
@@ -96,7 +97,7 @@ export function TableComponent<T>({
   };
   return (
     <div className="container">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center">
         <div className="flex space-x-2">
           <input
             type="text"
@@ -115,14 +116,14 @@ export function TableComponent<T>({
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <img src={icon_setting} className="h-5 px-4" />
+            <img src={icon_setting} className="h-5 px-4" alt={"setting-icon"} />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {table.getAllColumns().filter(col => col.getCanHide()).map(col => (
               <DropdownMenuCheckboxItem
                 key={col.id}
                 checked={col.getIsVisible()}
-                onCheckedChange={v => col.toggleVisibility(!!v)}
+                onCheckedChange={v => col.toggleVisibility(v)}
                 className="capitalize"
               >
                 {col.id}
@@ -131,6 +132,43 @@ export function TableComponent<T>({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
+      {/* pagination */}
+      <div className="flex justify-between items-center mb-4">
+        <div className="flex space-x-2">
+          {[5, 10, 15, 20, 25].map(size => (
+            <button
+              key={size}
+              onClick={() => handlePageSizeChange(size)}
+              className={`px-3 py-1 rounded ${
+                pageSize === size ? 'bg-blue-950 text-white' : 'bg-gray-700 text-gray-200'
+              }`}
+            >
+              {size}
+            </button>
+          ))}
+        </div>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+            className="px-3 py-1 w-8 h-8 bg-gray-700 text-gray-200 rounded disabled:opacity-50"
+          >
+            <img src={icon_previous} alt="Previous" />
+          </button>
+          <span className="text-gray-200 bg-[#0A0E2C] px-3 py-1 rounded">
+            {table.getState().pagination.pageIndex + 1} / {table.getPageCount()}
+          </span>
+          <button
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+            className="px-3 py-1 w-8 h-8 bg-gray-700 text-gray-200 rounded disabled:opacity-50"
+          >
+            <img src={icon_next} alt="Next" />
+          </button>
+        </div>
+      </div>
+
       <div className="overflow-x-auto bg-[#020517] rounded-lg shadow-md border border-gray-600">
         <table className="min-w-full table-fixed divide-y divide-gray-700">
           <thead className="bg-[#0A0E2C]">
@@ -180,41 +218,7 @@ export function TableComponent<T>({
         </table>
       </div>
 
-      {/* pagination */}
-      <div className="flex justify-between items-center mt-4">
-        <div className="flex space-x-2">
-          {[5, 10, 15, 20, 25].map(size => (
-            <button
-              key={size}
-              onClick={() => handlePageSizeChange(size)}
-              className={`px-3 py-1 rounded ${
-                pageSize === size ? 'bg-blue-950 text-white' : 'bg-gray-700 text-gray-200'
-              }`}
-            >
-              {size}
-            </button>
-          ))}
-        </div>
-        <div className="flex items-center space-x-2">
-          <button
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-            className="px-3 py-1 w-8 h-8 bg-gray-700 text-gray-200 rounded disabled:opacity-50"
-          >
-            <img src={icon_previous} alt="Previous" />
-          </button>
-          <span className="text-gray-200 bg-[#0A0E2C] px-3 py-1 rounded">
-            {table.getState().pagination.pageIndex + 1} / {table.getPageCount()}
-          </span>
-          <button
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-            className="px-3 py-1 w-8 h-8 bg-gray-700 text-gray-200 rounded disabled:opacity-50"
-          >
-            <img src={icon_next} alt="Next" />
-          </button>
-        </div>
-      </div>
+
     </div>
   );
 }

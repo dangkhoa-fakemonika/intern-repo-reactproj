@@ -59,7 +59,8 @@ export function ManageProducts() {
        try {
          const data = await Products.getProducts();
          if (isMounted) setProducts(data);
-       } catch (err: any) {
+       }
+       catch (err) {
          if (isMounted) setError(err.message || 'Loading product failed');
        } finally {
          if (isMounted) setLoading(false);
