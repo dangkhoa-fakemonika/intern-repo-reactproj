@@ -30,7 +30,7 @@ function ProductCard({ limit }: ProductCardProps) {
         }
 
         setProducts(productList);
-      } catch (_err) {
+      } catch {
         setError("Can't load products");
       } finally {
         setLoading(false);

@@ -1,0 +1,7 @@
+export {DashBoardPage} from "@/features/AdminPage/Page/DashBoard/DashBoardPage"
+export {AnalyticsPage} from "@/features/AdminPage/Page/AnalyticsPage"
+export {ManageOrder} from "@/features/AdminPage/Page/ManageOrderPage"
+export {ManageProducts} from "@/features/AdminPage/Page/ManageProductsPage"
+export {ManageUsers} from "@/features/AdminPage/Page/ManageUsersPage"
+export {ReportsPage} from "@/features/AdminPage/Page/ReportsPage"
+export {SettingAdminPage} from "@/features/AdminPage/Page/SettingAdminPage"

@@ -15,6 +15,8 @@ import {
 import {SingleProduct} from "@/features/SingleProduct/SingleProduct.tsx";
 import {InvalidRoute} from "@/components/ui/InvalidRoute.tsx";
 import {waitForRehydration} from "@/shared/helpers/wait-for-rehydration.ts";
+import { AdminLayout } from "@/configs/layouts/AdminLayout";
+import { AnalyticsPage, DashBoardPage, ManageOrder, ManageProducts, ManageUsers, ReportsPage, SettingAdminPage } from "@/features/AdminPage";
 import {Users} from "@/shared/services/services.ts";
 
 const authLoader = async () => {
@@ -94,22 +96,28 @@ const router = createBrowserRouter([
         loader: nonAuthLoader,
         Component: ShoppingCart
       },
+
       {
         path: "*",
         Component: InvalidRoute
-      },
-      {
-        path: "admin",
-        loader: authAdminLoader,
-        children: [
-          {
-            path: "add-product",
-            Component: AddProductsAndCategories
-          }
-        ]
-      },
+      }
     ]
-  }
+  },
+     {
+    path: 'admin',
+    Component: AdminLayout,
+    loader: authAdminLoader,
+    children: [
+      { index: true, Component: DashBoardPage },
+      { path: 'dashboard', Component: DashBoardPage },
+      { path: 'analytics', Component: AnalyticsPage },
+      { path: 'reports', Component: ReportsPage },
+      { path: 'manageProducts', Component: ManageProducts },
+      { path: 'manageUsers', Component: ManageUsers },
+      { path: 'manageOrders', Component: ManageOrder },
+      { path: 'settings', Component: SettingAdminPage}
+    ],
+  },
 ]);
 
 export default router;

@@ -41,4 +41,23 @@ export class Products {
 
     return (response.status === 201);
   }
+  public static async createProduct( product: Product) : Promise<Product>{
+    const response = await axiosInstance.post(`/products`, product);
+    if(response.status === 201)
+      return response.data as Product;
+    else
+      throw new Error("Failed to created product")
+  }
+  public static async updateProduct(productId: number , product: Product) : Promise<Product>{
+    const response = await axiosInstance.put(`/products/${productId}`,product);
+    if(response.status===200)
+      return response.data as Product;
+    else
+      throw new Error("Failed to update product")
+  }
+  public static async deleteProduct(productId: number) : Promise<void>{
+    const response = await axiosInstance.delete(`/products/${productId}`);
+    if(response.status !== 204)
+      throw new Error("Failed to delete product");
+  }
 }
