@@ -24,7 +24,7 @@ export function ManageProducts() {
       cell: info => `${info.getValue<number>().toLocaleString()} ₫`,
     },
     {
-      accessorKey: 'category',
+      accessorKey: 'category.name',
       header: 'Category',
     },
     {

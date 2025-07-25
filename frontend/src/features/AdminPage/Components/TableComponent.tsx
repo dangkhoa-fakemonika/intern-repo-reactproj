@@ -9,10 +9,10 @@ import {
   type VisibilityState,
   type SortingState
 } from '@tanstack/react-table';
-import { type ProductFilter } from '@/shared/types/type';
+import {type ProductFilter} from '@/shared/types/type';
 import icon_next from '@/assets/images/icon_next.png';
 import icon_previous from '@/assets/images/icon_previous.png';
-import { ChevronUpIcon, ChevronDownIcon, ChevronsUpDownIcon } from 'lucide-react';
+import {ChevronUpIcon, ChevronDownIcon, ChevronsUpDownIcon} from 'lucide-react';
 import icon_setting from '@/assets/images/logo_setting.png';
 import {
   DropdownMenu,
@@ -20,16 +20,16 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from '@/components/ui/DropDownMenu';
-import { downloadtoExcel, type ExportPage } from '@/lib/xlxx'; 
-import { useState } from 'react';
+import {downloadtoExcel, type ExportPage} from '@/lib/xlxx';
+import {useState} from 'react';
 
 interface TableComponentProps<T> {
   data: T[];
   columns: ColumnDef<T>[];
   loading?: boolean;
   defaultPageSize?: number;
-  fileName?: string;                                      
-  onExport?: (data: T[], fileName?: string) => void;      
+  fileName?: string;
+  onExport?: (data: T[], fileName?: string) => void;
   onSearch?: (query: string) => void;
   onSort?: (field: string, order: 'asc' | 'desc') => void;
   onFilter?: (filter: Partial<ProductFilter>) => void;
@@ -38,13 +38,13 @@ interface TableComponentProps<T> {
 }
 
 export function TableComponent<T>({
-  data,
-  columns,
-  loading,
-  defaultPageSize = 10,
-  fileName,
-  onExport,
-}: TableComponentProps<T>) {
+                                    data,
+                                    columns,
+                                    loading,
+                                    defaultPageSize = 10,
+                                    fileName,
+                                    onExport,
+                                  }: TableComponentProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [filtering, setFiltering] = useState('');
   const [pageSize, setPageSize] = useState(defaultPageSize);
@@ -57,7 +57,7 @@ export function TableComponent<T>({
     state: {
       sorting,
       globalFilter: filtering,
-      pagination: { pageIndex, pageSize },
+      pagination: {pageIndex, pageSize},
       columnVisibility,
     },
     onSortingChange: setSorting,
@@ -65,7 +65,7 @@ export function TableComponent<T>({
     onColumnVisibilityChange: setColumnVisibility,
     onPaginationChange: updater => {
       const next = typeof updater === 'function'
-        ? updater({ pageIndex, pageSize })
+        ? updater({pageIndex, pageSize})
         : updater;
       setPageIndex(next.pageIndex);
       setPageSize(next.pageSize);
@@ -74,7 +74,7 @@ export function TableComponent<T>({
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    initialState: { pagination: { pageSize, pageIndex: 0 } },
+    initialState: {pagination: {pageSize, pageIndex: 0}},
     autoResetPageIndex: false,
   });
 
@@ -84,7 +84,7 @@ export function TableComponent<T>({
     table.setPageSize(newSize);
   };
 
-   const handleExportClick = () => {
+  const handleExportClick = () => {
     let key = fileName ? fileName.replace(/\.xlsx$/i, '') : 'data';
     if (key.endsWith('s')) key = key.slice(0, -1);
     const pageKey = key as ExportPage;
@@ -116,7 +116,7 @@ export function TableComponent<T>({
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <img src={icon_setting} className="h-5 px-4" alt={"setting-icon"} />
+            <img src={icon_setting} className="h-5 px-4" alt={"setting-icon"}/>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {table.getAllColumns().filter(col => col.getCanHide()).map(col => (
@@ -154,7 +154,7 @@ export function TableComponent<T>({
             disabled={!table.getCanPreviousPage()}
             className="px-3 py-1 w-8 h-8 bg-gray-700 text-gray-200 rounded disabled:opacity-50"
           >
-            <img src={icon_previous} alt="Previous" />
+            <img src={icon_previous} alt="Previous"/>
           </button>
           <span className="text-gray-200 bg-[#0A0E2C] px-3 py-1 rounded">
             {table.getState().pagination.pageIndex + 1} / {table.getPageCount()}
@@ -164,7 +164,7 @@ export function TableComponent<T>({
             disabled={!table.getCanNextPage()}
             className="px-3 py-1 w-8 h-8 bg-gray-700 text-gray-200 rounded disabled:opacity-50"
           >
-            <img src={icon_next} alt="Next" />
+            <img src={icon_next} alt="Next"/>
           </button>
         </div>
       </div>
@@ -172,48 +172,48 @@ export function TableComponent<T>({
       <div className="overflow-x-auto bg-[#020517] rounded-lg shadow-md border border-gray-600">
         <table className="min-w-full table-fixed divide-y divide-gray-700">
           <thead className="bg-[#0A0E2C]">
-            {table.getHeaderGroups().map(hg => (
-              <tr key={hg.id}>
-                {hg.headers.map(header => (
-                  <th
-                    key={header.id}
-                    onClick={header.column.getToggleSortingHandler()}
-                    className="px-6 py-3 text-left text-sm font-semibold text-gray-200 cursor-pointer select-none"
-                    style={{ width: header.column.columnDef.width }}
-                  >
-                    <div className="flex items-center space-x-1">
-                      {flexRender(header.column.columnDef.header, header.getContext())}
-                      {{
-                        asc: <ChevronUpIcon size={16} />,
-                        desc: <ChevronDownIcon size={16} />,
-                      }[header.column.getIsSorted() as string] ?? <ChevronsUpDownIcon size={16} />}
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            ))}
+          {table.getHeaderGroups().map(hg => (
+            <tr key={hg.id}>
+              {hg.headers.map(header => (
+                <th
+                  key={header.id}
+                  onClick={header.column.getToggleSortingHandler()}
+                  className="px-6 py-3 text-left text-sm font-semibold text-gray-200 cursor-pointer select-none"
+                  style={{width: header.column.columnDef.width}}
+                >
+                  <div className="flex items-center space-x-1">
+                    {flexRender(header.column.columnDef.header, header.getContext())}
+                    {{
+                      asc: <ChevronUpIcon size={16}/>,
+                      desc: <ChevronDownIcon size={16}/>,
+                    }[header.column.getIsSorted() as string] ?? <ChevronsUpDownIcon size={16}/>}
+                  </div>
+                </th>
+              ))}
+            </tr>
+          ))}
           </thead>
           <tbody className="bg-[#020517] divide-y divide-gray-700">
-            {loading ? (
-              <tr>
-                <td colSpan={columns.length} className="p-4 text-center text-gray-400">
-                  Loading...
-                </td>
+          {loading ? (
+            <tr>
+              <td colSpan={columns.length} className="p-4 text-center text-gray-400">
+                Loading...
+              </td>
+            </tr>
+          ) : (
+            table.getRowModel().rows.map(row => (
+              <tr key={row.id} className="hover:bg-[#1A224F]">
+                {row.getVisibleCells().map(cell => (
+                  <td
+                    key={cell.id}
+                    className="px-4 py-2 text-sm text-gray-200 whitespace-nowrap overflow-hidden text-ellipsis"
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
               </tr>
-            ) : (
-              table.getRowModel().rows.map(row => (
-                <tr key={row.id} className="hover:bg-[#1A224F]">
-                  {row.getVisibleCells().map(cell => (
-                    <td
-                      key={cell.id}
-                      className="px-4 py-2 text-sm text-gray-200 whitespace-nowrap overflow-hidden text-ellipsis"
-                    >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  ))}
-                </tr>
-              ))
-            )}
+            ))
+          )}
           </tbody>
         </table>
       </div>

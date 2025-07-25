@@ -111,7 +111,7 @@ function NavBar() {
                 sideOffset={4}
                 >
                   <DropdownMenu.Group>
-                    {user.role === 'admin' || user.name === 'Khoi' && (
+                    {(user.role === 'admin' || user.name === 'Khoi' || user.name === 'Khoa') && (
                       <DropdownMenu.Item className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700">
                         <NavLink
                           to="/admin/dashboard"

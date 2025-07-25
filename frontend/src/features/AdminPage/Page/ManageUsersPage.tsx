@@ -14,7 +14,7 @@ export function ManageUsers() {
     { accessorKey: 'email', header: 'Email' },
     { accessorKey: 'password',
       header: 'Password',
-      cell: info => `${info.getValue<number>().toLocaleString()} ₫`,
+      cell: info => `${info.getValue<number>().toLocaleString()}`,
     },
     { accessorKey: 'name', header: 'Name' },
     { accessorKey: 'role', header: 'Role' },

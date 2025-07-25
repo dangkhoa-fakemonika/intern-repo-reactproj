@@ -164,15 +164,15 @@ export function AnalyticsPage() {
       </div>
       <div className="card bg-admin-palette p-4 rounded-lg">
         <p className="text-lg mb-4 font-semibold">Web Traffic – Desktop vs Mobile</p>
-        <div className="bg-admin-template h-64 p-0 rounded">
+        <div className="bg-admin-template h-96 pt-4 px-2 rounded">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={revenueStatistics}
               margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
+              <XAxis className={"text-sm"} dataKey="name" />
+              <YAxis className={"text-sm"}/>
               <Tooltip />
               <Legend />
               <Bar dataKey="web" fill="#5C2880ED" />
