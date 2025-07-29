@@ -104,7 +104,7 @@ export function RegisterPage() {
             disabled={loading}
             className="w-full py-2 text-white !bg-[#F09728] !rounded-xl hover:bg-orange-600 transition disabled:opacity-50"
           >
-            {loading ? 'Đang xử lý...' : 'Register'}
+            {loading ? 'Processing...' : 'Register'}
           </button>
         </form>
       </div>

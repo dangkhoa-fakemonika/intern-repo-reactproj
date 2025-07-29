@@ -1,31 +1,25 @@
 import avatar_mac_dinh from "@/assets/images/avatar_mac_dinh.jpg";
-import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "@/shared/stores/store.ts";
+import { axiosInstance } from "@/shared/services/services";
+import { updateUser } from "@/shared/stores/states/user";
 
-
-interface User {
-  name: string;
-  email: string;
-  role: string;
-  avatar: string;
-  password: string;
-}
 export function UserPage() {
-
-  const [user, setUser] = useState<Partial<User>>({});
-
-  useEffect(() => {
-    const raw = Cookies.get("current_user");
-    if (raw) {
-      try {
-        setUser(JSON.parse(raw));
-      } catch {
-        Cookies.remove("current_user");
-        setUser({});
-      }
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user.data);
+  const access_token = useSelector((state: RootState) => state.user.access_token);
+ useEffect(() => {
+    if (!user && access_token) {
+      axiosInstance
+        .get('/auth/profile')
+        .then(res => dispatch(updateUser(res.data)))
+        .catch(err => console.error("Can't fetch user info", err));
     }
-  }, []);
-
+  }, [user, access_token, dispatch]);
+  if (!user) {
+    return <div>Loading...</div>;
+  }
  return (
   <section className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-sm w-full justify-center items-center mx-auto my-10">
       <div className="bg-gray-50 h-28 flex items-center justify-center">

@@ -6,7 +6,7 @@ import icon_menu from "@/assets/images/icon_menu.png"
 import {FaCaretDown} from "react-icons/fa";
 import {useEffect, useState} from "react";
 import LoadingComponent from "@/components/ui/LoadingComponent";
-import {Categories, Users} from "@/shared/services/services.ts";
+import {axiosInstance, Categories, Users} from "@/shared/services/services.ts";
 import {NavLink} from "react-router-dom";
 import '@/shared/styles/index.css'
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
@@ -18,6 +18,7 @@ import type {User, Category} from "@/shared/types/type.ts";
 
 
 function NavBar() {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setLoading] = useState(true);
@@ -49,17 +50,36 @@ function NavBar() {
 
   useEffect(() => {
     const token = userState.access_token;
-
+    console.log('Access Token:', token);
     if (token) {
       Users.getProfile()
         .then(res => res ? setUser(res) : null)
     }
-
   }, [userState.access_token]);
 
   const handleSearch = () => {
     navigate(`products/title/${searchTitle}`);
   };
+  useEffect(() => {
+    const token = userState.access_token;
+    if(token){
+      axiosInstance
+        .get<User>("/auth/profile")
+        .then(res => setUser(res.data))
+        .catch(err => {
+          const status = err.response?.status;
+          if(status === 400 || status === 401){
+            dispatch(updateAccessToken(undefined));
+            dispatch(updateRefreshToken({refresh_token: undefined, max_age: undefined}));
+            dispatch(updateUser(undefined));
+            navigate("/auth/login", {replace:true});
+            alert("Phiên đăng nhập không còn hợp lệ, vui lòng đăng nhập lại.");
+          }else{
+            console.error("Lỗi không lấy được thông tin người dùng", err);
+          }
+        });
+    }
+  }, [dispatch, navigate, userState.access_token]);
 
   const handleLogout = () => {
     dispatch(updateAccessToken(undefined));
@@ -91,7 +111,7 @@ function NavBar() {
                 sideOffset={4}
                 >
                   <DropdownMenu.Group>
-                    {user.role === 'admin' && (
+                    {(user.role === 'admin' || user.name === 'Khoi' || user.name === 'Khoa') && (
                       <DropdownMenu.Item className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700">
                         <NavLink
                           to="/admin/dashboard"
@@ -101,9 +121,9 @@ function NavBar() {
                         </NavLink>
                       </DropdownMenu.Item>
                     )}
-                    <DropdownMenu.Item className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700 ">
+                    <DropdownMenu.Item className="px-2 py-1 hover:bg-gray-100 cursor-pointer text-gray-500 text-sm hover:text-gray-700">
                       <NavLink
-                        to="/auth/userpage"
+                        to="/userpage"
                         className="w-full text-left text-sm !text-gray-500 hover:text-gray-700 !no-underline"
                       >
                         Personal information
@@ -138,7 +158,6 @@ function NavBar() {
             </span>
         )}
       </div>
-
       <header
         className="flex items-center justify-between text-black py-1 px-6 md:px-10 bg-white border-b border-gray-200 ">
         <NavLink to={"/"}>

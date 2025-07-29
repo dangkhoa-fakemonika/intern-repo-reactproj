@@ -4,19 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Installed category routes">
-      <change afterPath="$PROJECT_DIR$/backend/src/controllers/category-controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/routes/category-routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/shared/models/cart.ts" afterDir="false" />
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Implemented complete version of add product">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/controllers/product-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/controllers/product-controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/routes/product-routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routes/product-routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/models/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/category.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/models/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/services/database/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/categories.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/services/database/products.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/products.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/configs/layouts/AdminLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/layouts/AdminLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/AdminPage/Components/TableComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/AdminPage/Components/TableComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/AdminPage/Page/AnalyticsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/AdminPage/Page/AnalyticsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/AdminPage/Page/ManageProductsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/AdminPage/Page/ManageProductsPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +44,7 @@
     </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="staging" />
+        <entry key="$PROJECT_DIR$" value="feature/add-product-and-categories-Khoa" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,9 +61,6 @@
     &quot;accountId&quot;: &quot;7c61bafb-7c45-4dea-ae48-9ef77fafd443&quot;
   }
 }</component>
-  <component name="HttpClientSelectedEnvironments">
-    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/get-requests.http" environment="test" />
-  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -79,59 +73,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;HTTP Request.rest-api | #1.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api | #2.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_1 | #1.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_1 | Change password.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_1 | Change profile.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_1 | Get all products.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_1 | Login failed.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_1 | Login success.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_1 | With authorization.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP Request.rest-api_1 | Without authorization.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/backend-setup&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.11.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.16.3&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/backend/src/models&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;npm.test.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\backend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "staging",
+    "last_opened_file_path": "C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj/frontend/public/samples",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\backend\src\models" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\public\samples" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\backend\src\shared\services\database" />
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\backend\src\shared\services" />
-      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\backend\src\shared" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\shared\helpers" />
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\components\ui" />
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\configs\routes" />
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\configs\routes\loaders" />
+      <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\features\ShoppingCart\components\ShoppingCart" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
-    <configuration name="rest-api_1 | Change password" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Change password" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="rest-api_1 | Change profile" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Change profile" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="rest-api_1 | Get all products" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Get all products" runType="Run single request">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/frontend/package.json" />
       <command value="run" />
@@ -142,23 +112,10 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/backend/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="test" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.test" />
-        <item itemvalue="HTTP Request.rest-api_1 | Get all products" />
-        <item itemvalue="HTTP Request.rest-api_1 | Change profile" />
-        <item itemvalue="HTTP Request.rest-api_1 | Change password" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -214,24 +171,6 @@
       <workItem from="1752199683067" duration="244000" />
       <workItem from="1752199943519" duration="23266000" />
       <workItem from="1752544467597" duration="3218000" />
-      <workItem from="1752552466404" duration="3243000" />
-      <workItem from="1752561098875" duration="4870000" />
-      <workItem from="1752566036524" duration="1633000" />
-      <workItem from="1752723212298" duration="1511000" />
-      <workItem from="1752726512335" duration="1017000" />
-      <workItem from="1752733000657" duration="18000" />
-      <workItem from="1752740327540" duration="5303000" />
-      <workItem from="1752803250687" duration="12072000" />
-      <workItem from="1752818936347" duration="7091000" />
-      <workItem from="1753149515858" duration="10928000" />
-      <workItem from="1753166312435" duration="8578000" />
-      <workItem from="1753408287517" duration="2171000" />
-      <workItem from="1753423872311" duration="9536000" />
-      <workItem from="1753447813358" duration="88000" />
-      <workItem from="1753459397382" duration="70000" />
-      <workItem from="1753507631384" duration="242000" />
-      <workItem from="1753692020607" duration="41000" />
-      <workItem from="1753754609926" duration="5000000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -377,31 +316,7 @@
       <option name="project" value="LOCAL" />
       <updated>1752219733905</updated>
     </task>
-    <task id="LOCAL-00019" summary="Simple backend installment, not structurally correct yet">
-      <option name="closed" value="true" />
-      <created>1752566458506</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1752566458506</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Implemented basic authentication with JWT">
-      <option name="closed" value="true" />
-      <created>1752815383799</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1752815383799</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Complete flow for authentication and database on serverside (as well as refactoring services)">
-      <option name="closed" value="true" />
-      <created>1753160493944</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1753160493944</updated>
-    </task>
-    <option name="localTasksCounter" value="22" />
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -419,6 +334,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Apply changes" />
     <MESSAGE value="Setting up the project structure" />
     <MESSAGE value="Create staging branch" />
     <MESSAGE value="Re-create staging branch" />
@@ -440,10 +356,6 @@
     <MESSAGE value="Configure adding product API and fix minor bugs" />
     <MESSAGE value="Fully install the create product API except image upload and category creation" />
     <MESSAGE value="Implemented complete version of add product" />
-    <MESSAGE value="Simple backend installment, not structurally correct yet" />
-    <MESSAGE value="Implemented basic authentication with JWT" />
-    <MESSAGE value="Complete flow for authentication and database on serverside (as well as refactoring services)" />
-    <MESSAGE value="Installed category routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Installed category routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented complete version of add product" />
   </component>
 </project>

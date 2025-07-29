@@ -18,7 +18,7 @@ export function SearchAndFilter(){
 
   useEffect(() => {
     navigate("/products");
-  }, []);
+  });
 
   const updateFilterData = useCallback((filter: ProductFilter) => {
     if (convertToFilterQuery(filter) !== convertToFilterQuery(filterData)) setFilterData(filter);

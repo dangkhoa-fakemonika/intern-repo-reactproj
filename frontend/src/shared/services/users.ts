@@ -3,6 +3,13 @@ import type {User} from "@/shared/types/user.ts";
 // import Cookies from "js-cookie";
 
 export class Users {
+
+  public static async getAllUsers(): Promise<Users[]> {
+    const res = await axiosInstance.get<Users[]>("/users");
+    if (res.status === 200) return res.data;
+    throw new Error(`Failed to fetch users: ${res.status}`);
+  }
+
    public static async getUser(id : number){
     const response = await axiosInstance.get(`users/${id}`);
     if (response.status === 200)
@@ -51,6 +58,6 @@ export class Users {
      }
      else return undefined;
   }
-  
+
   
 }
