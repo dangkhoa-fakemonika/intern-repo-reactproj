@@ -1,23 +1,25 @@
 // import type {Category} from "./category";
 // import Joi from "joi";
 
+import {ObjectId} from "mongodb";
+
 export type Product = {
-  id : number,
+  id? : typeof ObjectId,
   title : string,
   price : number,
   description : string,
-  categoryId : number
+  categoryId : string
   images: string[],
-  creationAt : string,
-  updatedAt : string,
+  creationAt? : string,
+  updatedAt? : string,
 }
 
-export type ProductFilters = {
+export type ProductFiltersOptions = {
   title? : string,
   price? : number,
   price_max? : number,
   price_min? : number,
-
+  limit? : number
 }
 
 

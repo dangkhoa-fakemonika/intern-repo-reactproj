@@ -1,9 +1,10 @@
 import express from "express";
-import {authenticationRouter, productRouter} from "@/routes";
+import {authenticationRouter, categoryRouter, productRouter} from "@/routes";
 
 const app = express();
 app.use(express.json());
 
+app.use("/categories", categoryRouter);
 app.use('/products', productRouter);
 app.use('/auth', authenticationRouter);
 app.get("/", (req, res) => {

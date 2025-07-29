@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Complete flow for authentication and database on serverside (as well as refactoring services)">
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Installed category routes">
+      <change afterPath="$PROJECT_DIR$/backend/src/controllers/category-controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/routes/category-routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/shared/models/cart.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/controllers/authentication.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/controllers/authentication.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/controllers/product-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/controllers/product-controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/routes/authentication-router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routes/authentication-router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routes/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/routes/product-routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routes/product-routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/shared/models/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/category.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/shared/models/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/shared/services/database/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/categories.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/shared/services/database/products.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/products.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/services/database/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/users.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +64,9 @@
     &quot;accountId&quot;: &quot;7c61bafb-7c45-4dea-ae48-9ef77fafd443&quot;
   }
 }</component>
+  <component name="HttpClientSelectedEnvironments">
+    <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/get-requests.http" environment="test" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -98,7 +105,7 @@
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
     &quot;npm.test.executor&quot;: &quot;Run&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\backend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -115,7 +122,7 @@
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\frontend\src\components\ui" />
     </key>
   </component>
-  <component name="RunManager" selected="HTTP Request.rest-api_1 | Get all products">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="rest-api_1 | Change password" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Change password" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -125,7 +132,14 @@
     <configuration name="rest-api_1 | Get all products" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="Get all products" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api_1 | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" executionIdentifier="#1" runType="Run single request">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -140,10 +154,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.rest-api_1 | Get all products" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.test" />
+        <item itemvalue="HTTP Request.rest-api_1 | Get all products" />
         <item itemvalue="HTTP Request.rest-api_1 | Change profile" />
-        <item itemvalue="HTTP Request.rest-api_1 | #1" />
         <item itemvalue="HTTP Request.rest-api_1 | Change password" />
       </list>
     </recent_temporary>
@@ -212,6 +226,12 @@
       <workItem from="1753149515858" duration="10928000" />
       <workItem from="1753166312435" duration="8578000" />
       <workItem from="1753408287517" duration="2171000" />
+      <workItem from="1753423872311" duration="9536000" />
+      <workItem from="1753447813358" duration="88000" />
+      <workItem from="1753459397382" duration="70000" />
+      <workItem from="1753507631384" duration="242000" />
+      <workItem from="1753692020607" duration="41000" />
+      <workItem from="1753754609926" duration="5000000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />
@@ -399,7 +419,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Apply changes" />
     <MESSAGE value="Setting up the project structure" />
     <MESSAGE value="Create staging branch" />
     <MESSAGE value="Re-create staging branch" />
@@ -424,6 +443,7 @@
     <MESSAGE value="Simple backend installment, not structurally correct yet" />
     <MESSAGE value="Implemented basic authentication with JWT" />
     <MESSAGE value="Complete flow for authentication and database on serverside (as well as refactoring services)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete flow for authentication and database on serverside (as well as refactoring services)" />
+    <MESSAGE value="Installed category routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Installed category routes" />
   </component>
 </project>
