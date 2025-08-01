@@ -5,7 +5,7 @@ import type {User} from "@/shared/types/user.ts";
 export class Users {
 
   public static async getAllUsers(): Promise<Users[]> {
-    const res = await axiosInstance.get<Users[]>("/users");
+    const res = await axiosInstance.get<Users[]>("/");
     if (res.status === 200) return res.data;
     throw new Error(`Failed to fetch users: ${res.status}`);
   }
@@ -22,7 +22,7 @@ export class Users {
     password: string;
     avatar: string;
   }) {
-    const res = await axiosInstance.post('users/', payload);
+    const res = await axiosInstance.post('auth/register/', payload);
     return res.data;
   }
 
@@ -31,7 +31,7 @@ export class Users {
     password: string;
   }) {
     
-    const res = await axiosInstance.post('/users/', payload);
+    const res = await axiosInstance.post('auth/login/', payload);
     // const { access, refresh } = res.data as { access: string; refresh: string };
     
     // Cookies.set('access_token', access, { path: '/' });
@@ -46,12 +46,12 @@ export class Users {
     newavatar?: string;
     newpassword?: string;
   }) {
-    const res = await axiosInstance.put(`users/${id}`, payload);
+    const res = await axiosInstance.put(`auth/my-profile`, payload);
     return res.data;
   }
 
   public static async getProfile() : Promise<User | undefined>{
-     const response = await axiosInstance.get("auth/profile");
+     const response = await axiosInstance.get("auth/my-profile");
 
      if (response.status === 200){
        return response.data as User;

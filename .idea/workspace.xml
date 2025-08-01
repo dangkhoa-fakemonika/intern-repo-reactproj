@@ -4,32 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Installed category routes">
-      <change afterPath="$PROJECT_DIR$/backend/src/controllers/delivery-controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/routes/delivery-router.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/shared/models/delivery.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/shared/services/database/deliveries.ts" afterDir="false" />
+    <list default="true" id="5b61ea9f-5f70-4b0f-9104-54d22d794ae8" name="Changes" comment="Patching minor changes from frontend to backend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/controllers/product-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/controllers/product-controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/models/cart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/cart.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/models/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/models/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/services/database/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/categories.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/services/database/products.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/products.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/shared/services/database/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/shared/services/database/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/product-display/ShopProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/configs/routes/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/SearchAndFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/SearchAndFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SearchAndFilter/components/FilterTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/SingleProduct/SingleProduct.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/axios/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/axios/axios.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/categories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/categories.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/services/products.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/services/products.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/types/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/types/category.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/shared/types/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/types/product.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +57,7 @@
     <file url="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/get-requests.http" environment="test" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -92,37 +68,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP Request.rest-api | #1.executor": "Run",
-    "HTTP Request.rest-api | #2.executor": "Run",
-    "HTTP Request.rest-api_1 | #1.executor": "Run",
-    "HTTP Request.rest-api_1 | Change password.executor": "Run",
-    "HTTP Request.rest-api_1 | Change profile.executor": "Run",
-    "HTTP Request.rest-api_1 | Get all products.executor": "Run",
-    "HTTP Request.rest-api_1 | Login failed.executor": "Run",
-    "HTTP Request.rest-api_1 | Login success.executor": "Run",
-    "HTTP Request.rest-api_1 | Registering an account.executor": "Run",
-    "HTTP Request.rest-api_1 | With authorization.executor": "Run",
-    "HTTP Request.rest-api_1 | Without authorization.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/backend-setup",
-    "javascript.nodejs.core.library.configured.version": "22.11.0",
-    "javascript.nodejs.core.library.typings.version": "22.16.3",
-    "last_opened_file_path": "C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "npm.test.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\backend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.rest-api | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api | #2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Change password.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Change profile.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Get all products.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Login failed.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Login success.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Registering an account.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | With authorization.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.rest-api_1 | Without authorization.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;staging&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.11.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.16.3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Study/code_html_css/intern-repo-reactproj&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Desktop\\Study\\code_html_css\\intern-repo-reactproj\\backend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Desktop\Study\code_html_css\intern-repo-reactproj\backend\src\models" />
@@ -250,6 +226,7 @@
       <workItem from="1753775329846" duration="149000" />
       <workItem from="1753775496941" duration="2316000" />
       <workItem from="1754014653108" duration="600000" />
+      <workItem from="1754017320617" duration="509000" />
     </task>
     <task id="LOCAL-00001" summary="Apply changes">
       <option name="closed" value="true" />

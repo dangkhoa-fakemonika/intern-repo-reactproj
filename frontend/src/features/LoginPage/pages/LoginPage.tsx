@@ -40,7 +40,7 @@ export function LoginPage() {
       if (data.remember) {
         dispatch(updateRefreshToken({refresh_token : refresh_token, max_age : 30 * 24 * 60 * 60}));
       }
-      const profileRes = await axiosInstance.get("auth/profile", {
+      const profileRes = await axiosInstance.get("auth/my-profile", {
         headers: { Authorization: `Bearer ${access_token}` }
       });
       const user = profileRes.data;
