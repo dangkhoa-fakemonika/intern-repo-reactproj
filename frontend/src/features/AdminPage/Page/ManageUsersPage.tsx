@@ -10,17 +10,19 @@ export function ManageUsers() {
   const [error, setError] = useState<string | null>(null);
 
   const columns: ColumnDef<Users>[] = [
-    { accessorKey: 'id', header: 'ID' },
-    { accessorKey: 'email', header: 'Email' },
+    { accessorKey: 'id', header: 'ID',size:60 },
+    { accessorKey: 'email', header: 'Email' ,size: 300 },
     { accessorKey: 'password',
       header: 'Password',
+      size: 200,
       cell: info => `${info.getValue<number>().toLocaleString()}`,
     },
-    { accessorKey: 'name', header: 'Name' },
-    { accessorKey: 'role', header: 'Role' },
+    { accessorKey: 'name', header: 'Name', size: 200 },
+    { accessorKey: 'role', header: 'Role', size: 250 },
     {
       id: 'actions',
       header: 'Action',
+      size: 150,
       cell: () => (
         <div className="space-x-2">
           <button className="text-blue-500 hover:underline" onClick={() => alert(`Edit`)}>

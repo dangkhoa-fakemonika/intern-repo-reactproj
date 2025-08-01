@@ -71,7 +71,7 @@ export const AddProductsAndCategories = memo(function AddProductsAndCategories()
             <div className={"w-full flex flex-row justify-end"}>
               <button
                 type={"submit"}
-                className={"p-2 text-white bg-palette rounded hover:scale-105 w-fit rounded"}
+                className={"p-2 text-white bg-palette  hover:scale-105 w-fit rounded"}
               >
                 Confirm
               </button>

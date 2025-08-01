@@ -105,7 +105,7 @@ const router = createBrowserRouter([
      {
     path: 'admin',
     Component: AdminLayout,
-    loader: authAdminLoader,
+    loader: nonAuthLoader,
     children: [
       { index: true, Component: DashBoardPage },
       { path: 'dashboard', Component: DashBoardPage },
