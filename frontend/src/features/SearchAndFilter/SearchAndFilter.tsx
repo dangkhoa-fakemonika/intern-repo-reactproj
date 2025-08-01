@@ -11,7 +11,7 @@ export function SearchAndFilter(){
   const params = useParams();
   const [filterData, setFilterData] = useState<ProductFilter>({
     title: params.title,
-    categorySlug: params.category_slug ?? ""
+    categoryId: params.categoryId ?? ""
   });
 
   const navigate = useNavigate();

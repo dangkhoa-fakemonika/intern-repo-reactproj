@@ -5,16 +5,29 @@ import {Category} from "@/shared/models/category";
 const database = client.db("shop");
 const categories = database.collection("categories");
 
-export const readCategories = async (limit? : number) => {
+export const readCategories = async (limit? : number, pagination? : {token: string, direction: "searchBefore" | "searchAfter"}) => {
   const pipeline = [];
-  pipeline.push({
-    $search : {
-      "index" : "categories-pagination",
-      "exists" : {
-        "path" : "name"
+  if (pagination){
+    pipeline.push({
+      $search : {
+        "index" : "categories-pagination",
+        [pagination.direction] : pagination.token,
+        "exists" : {
+          "path" : "name"
+        }
       }
-    }
-  });
+    });
+  }
+  else {
+    pipeline.push({
+      $search : {
+        "index" : "categories-pagination",
+        "exists" : {
+          "path" : "name"
+        }
+      }
+    });
+  }
 
 
   if (limit){
@@ -22,6 +35,16 @@ export const readCategories = async (limit? : number) => {
       "limit" : limit
     });
   }
+
+  pipeline.push({
+    $project : {
+      "_id" : 1,
+      "name" : 1,
+      "image" : 1,
+      "paginationToken": {$meta: "searchSequenceToken"},
+      "score": {$meta: "searchScore"}
+    }
+  })
 
   return await categories.aggregate(pipeline).toArray();
 }

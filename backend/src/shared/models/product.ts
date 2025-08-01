@@ -1,10 +1,5 @@
-// import type {Category} from "./category";
-// import Joi from "joi";
-
-import {ObjectId} from "mongodb";
-
 export type Product = {
-  id? : typeof ObjectId,
+  id? : string,
   title : string,
   price : number,
   description : string,

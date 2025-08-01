@@ -41,7 +41,6 @@ export const updateCredential = async (email: string, password: string) => {
     return undefined;
   }
 
-
   const encryptedPassword = bcrypt.hashSync(password, 10);
   return await users.updateOne({email: userCred.email}, {$set : {password: encryptedPassword}});
 }

@@ -1,7 +1,6 @@
 import joi from "joi";
-
 export type User = {
-  id : number,
+  id : string,
   name : string,
   role : "customer" | "admin",
   email : string,

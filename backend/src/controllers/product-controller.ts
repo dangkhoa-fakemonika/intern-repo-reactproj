@@ -29,7 +29,7 @@ export const getAllProducts = async (req: Request, res: Response, _next: NextFun
 
     res.status(SUCCESS).send(result);
   } catch (error) {
-    res.status(INTERNAL_SERVER_ERROR).send("Can't fetch data");
+    res.status(INTERNAL_SERVER_ERROR).send(error);
   }
 }
 

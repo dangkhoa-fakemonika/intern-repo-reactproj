@@ -95,16 +95,22 @@ export const readProducts = async (filters?: ProductFiltersOptions, pagination? 
 
   if (filters.limit){
     pipeline.push({
-      $limit: filters.limit ?? 10
+      $limit: filters.limit
     });
   }
 
   pipeline.push({
-    from : "categories",
-    localField : "categoryId",
-    foreignField : "_id",
-    as : "category"
+    $lookup : {
+      from : "categories",
+      localField : "categoryId",
+      foreignField : "_id",
+      as : "category"
+    }
   });
+
+  pipeline.push({
+    $unwind : "$category"
+  })
 
   pipeline.push({
     $project: {
@@ -112,6 +118,9 @@ export const readProducts = async (filters?: ProductFiltersOptions, pagination? 
       "title": 1,
       "description": 1,
       "price": 1,
+      "categoryId" : 1,
+      "category" : 1,
+      "images" : 1,
       "paginationToken": {$meta: "searchSequenceToken"},
       "score": {$meta: "searchScore"}
     }
@@ -125,7 +134,7 @@ export const insertProduct = async (product : Product) => {
     title : product.title,
     description : product.description,
     price : product.price,
-    categoryId : product.categoryId
+    categoryId : new ObjectId(product.categoryId)
   });
 }
 
@@ -137,7 +146,7 @@ export const updateProduct = async (productId : string, product : Product) =>{
       title : product.title,
       description : product.description,
       price : product.price,
-      categoryId : product.categoryId
+      categoryId : new ObjectId(product.categoryId)
     });
 }
 

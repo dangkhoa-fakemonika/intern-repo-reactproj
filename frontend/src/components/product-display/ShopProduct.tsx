@@ -17,7 +17,7 @@ export const ShopProduct = memo(function ShopProduct(props : ShopProductProps){
     >
       <img
         src={props.productData.images[0]}
-        alt={props.productData.slug}
+        alt={props.productData.id}
         className={"rounded hover:scale-105 transition-transform duration-300 transform mb-4 min-w-9/12 aspect-square"}
         crossOrigin={"anonymous"}
       />
