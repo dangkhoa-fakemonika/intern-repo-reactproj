@@ -118,7 +118,7 @@ export const ShoppingCart = memo(function ShoppingCart() {
                       <div className={"w-full flex flex-col gap-2"}>
                         {
                           data.map((p) => (
-                            <OrderedItems product={p} key={p.product.slug}/>
+                            <OrderedItems product={p} key={p.product.id}/>
                           ))
                         }
                       </div>

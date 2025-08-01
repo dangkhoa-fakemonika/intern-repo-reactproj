@@ -77,7 +77,7 @@ const router = createBrowserRouter([
             Component: SearchAndFilter,
           },
           {
-            path: "category/:category_slug",
+            path: "category/:categoryId",
             Component: SearchAndFilter,
           },
           {

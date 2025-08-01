@@ -3,14 +3,14 @@ import type {Category} from "@/shared/types/type.ts";
 
 export class Categories{
   public static async getCategories(limit : number = 10) : Promise<Category[]>{
-    const response = await axiosInstance.get(`categories?limit=${limit}`);
+    const response = await axiosInstance.get(`categories`);
 
     if (response.status === 200)
       return response.data as Category[];
     else return [];
   }
 
-  public static async getCategory(id : number): Promise<Category>{
+  public static async getCategory(id : string): Promise<Category>{
     const response = await axiosInstance.get(`categories/${id}`);
 
     if (response.status === 200)

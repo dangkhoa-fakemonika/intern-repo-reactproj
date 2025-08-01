@@ -3,8 +3,7 @@ type ProductFilter = {
   price? : number,
   price_min? : number,
   price_max? :number,
-  categoryId? : number,
-  categorySlug? : string
+  categoryId? : string,
 }
 
 function convertToFilterQuery(filter : ProductFilter) {

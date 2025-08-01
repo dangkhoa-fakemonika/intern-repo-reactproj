@@ -70,7 +70,7 @@ export const FilterTable = memo(function FilterTable(props: FilterTableProps) {
             <SmartHintTextField name={'Product Name'} registerName={'title'}/>
             <Controller
               control={control}
-              name={"categorySlug"}
+              name={"categoryId"}
               render={({field}) => (
                 <Select.Root onValueChange={field.onChange} value={field.value}>
                   <Select.Trigger
@@ -99,7 +99,7 @@ export const FilterTable = memo(function FilterTable(props: FilterTableProps) {
                       {categories.map((category) =>
                         <Select.Item
                           key={category.id}
-                          value={category.slug}
+                          value={category.id ?? " "}
                           className={"p-2 text-black hover:bg-gray-200 duration-300 transition-colors outline-none"}
                         >
                           <Select.ItemText>{category.name}</Select.ItemText>

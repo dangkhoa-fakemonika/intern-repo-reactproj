@@ -1,7 +1,7 @@
 type Category = {
   id? : string,
   name : string,
-  image : string,
+  images : [],
   creationAt? : string,
   updatedAt? : string
 }

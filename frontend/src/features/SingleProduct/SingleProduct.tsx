@@ -24,9 +24,13 @@ export const SingleProduct = memo(function SingleProduct() {
 
   useLayoutEffect(() => {
     async function getData() {
-      const productID = parseInt(params.id ?? "0");
+      const productID = params.id;
 
-      const result =  await Products.getProduct(productID);
+      if (productID == undefined){
+        return;
+      }
+
+      const result = await Products.getProduct(productID);
       setProduct(result);
       setSelectedImage(result.images[0]);
 

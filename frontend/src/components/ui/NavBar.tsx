@@ -195,7 +195,7 @@ function NavBar() {
                       <div
                         className="!text-black !no-underline break-words"
                         onClick={() => {
-                          navigate(`/products/category/${category.slug}`);
+                          navigate(`/products/category/${category.id ?? "temp"}`);
                           window.location.reload();
                         }}
                       >
